@@ -50,7 +50,6 @@ class TasksFragment : BaseFragment() {
         }
         binding.list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
                 val layoutManager = recyclerView.layoutManager as LinearLayoutManager
                 val position = layoutManager.findLastVisibleItemPosition()
 
