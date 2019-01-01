@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/home_fragment">
+
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="com.laiyuanwen.android.baby.tasks.TasksFragment">
+
+        <action
+            android:id="@+id/action_home_to_user"
+            app:destination="@id/user_fragment" />
+        <action
+            android:id="@+id/action_home_fragment_to_detailActivity"
+            app:destination="@id/detailActivity" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/user_fragment"
+        android:name="com.laiyuanwen.android.baby.user.UserFragment">
+
+        <action
+            android:id="@+id/action_user_to_home"
+            app:destination="@id/home_fragment" />
+    </fragment>
+
+    <activity
+        android:id="@+id/detailActivity"
+        android:name="com.laiyuanwen.android.baby.detail.DetailActivity"
+        android:label="activity_detail"
+        tools:layout="@layout/activity_detail">
+
+        <argument
+            android:name="taskId"
+            app:argType="long" />
+
+
+    </activity>
+
+</navigation>
