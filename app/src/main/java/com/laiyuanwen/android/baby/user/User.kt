@@ -5,7 +5,7 @@ package com.laiyuanwen.android.baby.user
  */
 
 data class User(
-        val id: Long,
+        val userId: String,
         val avatar: String,
         val name: String
 )

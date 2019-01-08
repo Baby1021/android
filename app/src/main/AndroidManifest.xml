@@ -17,7 +17,11 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name="com.laiyuanwen.android.baby.debug.DebugActivity" />
-        <activity android:name="com.laiyuanwen.android.baby.detail.DetailActivity" />
+
+        <activity
+            android:name="com.laiyuanwen.android.baby.detail.DetailActivity"
+            android:theme="@style/FlutterTheme" />
+
         <activity android:name="com.laiyuanwen.android.baby.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -11,6 +11,7 @@ data class Task(
         val title: String,
         val description: String,
         val done: Boolean,
-        val createTime: Long,
+//        val createTime: Long,
+//        val updateTime: Long,
         val processor: User
 )

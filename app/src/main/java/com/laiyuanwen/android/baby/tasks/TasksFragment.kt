@@ -34,9 +34,7 @@ class TasksFragment : BaseFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val context = context ?: return
-
-        viewModel = ViewModelProviders.of(this, Injector.provideTasksViewModelFactory(context))
+        viewModel = ViewModelProviders.of(this, Injector.provideTasksViewModelFactory(requireContext()))
                 .get(TasksViewModel::class.java)
 
         initRecyclerView()
