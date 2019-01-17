@@ -1,6 +1,7 @@
 package com.laiyuanwen.android.baby.repository
 
 import com.laiyuanwen.android.baby.user.User
+import java.io.Serializable
 
 /**
  * Created by laiyuanwen on 2018/12/31.
@@ -14,4 +15,4 @@ data class Task(
 //        val createTime: Long,
 //        val updateTime: Long,
         val processor: User
-)
+) : Serializable

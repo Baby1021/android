@@ -14,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.laiyuanwen.android.baby.base.BaseFragment
 import com.laiyuanwen.android.baby.databinding.FragmentTasksBinding
 import com.laiyuanwen.android.baby.inject.Injector
+import com.laiyuanwen.android.baby.util.Provider
 
 /**
  * Created by laiyuanwen on 2018/12/31.
@@ -44,7 +45,7 @@ class TasksFragment : BaseFragment() {
 
     private fun initRecyclerView() {
         adapter = TasksAdapter(this) { task ->
-            findNavController().navigate(TasksFragmentDirections.actionHomeFragmentToDetailActivity(task.id))
+            findNavController().navigate(TasksFragmentDirections.actionHomeFragmentToDetailActivity(Provider.getGson().toJson(task)))
         }
         binding.list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
