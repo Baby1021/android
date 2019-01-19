@@ -1,6 +1,7 @@
 package com.laiyuanwen.android.baby.repository
 
 import com.laiyuanwen.android.baby.api.RetrofitService
+import com.laiyuanwen.android.baby.util.getUserId
 import kotlinx.coroutines.*
 
 /**
@@ -20,6 +21,6 @@ class TaskRepository {
     }
 
     fun getTasks(): Deferred<List<Task>> {
-        return RetrofitService.getTeamworkApi().getTasks("laiyuanwen", 1, 10)
+        return RetrofitService.getTeamworkApi().getTasks(getUserId(), 1, 10)
     }
 }

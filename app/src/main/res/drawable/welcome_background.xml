@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape>
+            <solid android:color="#F0BCC0" />
+        </shape>
+    </item>
+
+
+    <item
+        android:drawable="@mipmap/icon"
+        android:gravity="center|top"
+        android:top="150dp" />
+
+
+    <item
+        android:width="65dp"
+        android:height="20dp"
+        android:bottom="150dp"
+        android:gravity="bottom|center">
+
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/text"
+            android:tint="#646060" />
+
+    </item>
+
+</layer-list>

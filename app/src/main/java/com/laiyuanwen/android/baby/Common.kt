@@ -14,4 +14,8 @@ object Common {
      * Flutter MethodChannel 参数方法
      */
     const val CHANNEL_METHOD_GET_ARGUMENT = "getArgument"
+
+    object SharedPreferenceKey {
+        const val USER_ID = "userId"
+    }
 }
