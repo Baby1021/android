@@ -1,10 +1,17 @@
 package com.laiyuanwen.android.baby
 
+import android.app.DownloadManager
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.laiyuanwen.android.baby.receiver.DownloadFinishReceiver
+import com.laiyuanwen.android.baby.util.checkUpdate
+import com.laiyuanwen.android.baby.util.downloadApk
 
 class MainActivity : AppCompatActivity() {
+
+    private val downloadFinishReceiver = DownloadFinishReceiver()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -13,9 +20,19 @@ class MainActivity : AppCompatActivity() {
         if (hasNotification()) {
             startActivity(Intent(this, NotificationActivity::class.java))
         }
+
+        checkUpdate(this, { url ->
+            downloadApk(this@MainActivity, url)
+            registerReceiver(downloadFinishReceiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
+        })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(downloadFinishReceiver)
     }
 
     private fun hasNotification(): Boolean {
-        return true
+        return false
     }
 }
