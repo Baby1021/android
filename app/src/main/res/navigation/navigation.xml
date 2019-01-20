@@ -45,7 +45,8 @@
 
         <argument
             android:name="love"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="true" />
 
 
     </activity>

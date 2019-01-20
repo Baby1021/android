@@ -8,6 +8,7 @@ import com.google.gson.JsonSyntaxException
 import com.laiyuanwen.android.baby.Common.CHANNEL_METHOD_GET_ARGUMENT
 import com.laiyuanwen.android.baby.Common.CHANNEL_PAGE_ARGUMENT
 import com.laiyuanwen.android.baby.util.Provider
+import com.laiyuanwen.android.baby.util.getUserId
 import io.flutter.app.FlutterActivity
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugins.GeneratedPluginRegistrant
@@ -33,7 +34,9 @@ open class BaseFlutterActivity : FlutterActivity() {
         if (intent == null || intent.extras == null) {
             return "{}"
         }
-        val bundle = intent.extras
+        val bundle: Bundle = intent.extras
+
+        bundle.putString("userId", getUserId())
 
         val json = JsonObject()
 
