@@ -43,13 +43,6 @@
 
         </activity>
 
-        <!-- 首页弹窗 -->
-        <activity
-            android:name=".NotificationActivity"
-            android:theme="@style/TranslucentTheme">
-
-        </activity>
-
         <!-- Debug页面 -->
         <activity android:name=".debug.DebugActivity">
 

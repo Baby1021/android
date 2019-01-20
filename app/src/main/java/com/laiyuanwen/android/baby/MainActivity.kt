@@ -1,11 +1,11 @@
 package com.laiyuanwen.android.baby
 
 import android.app.DownloadManager
-import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.laiyuanwen.android.baby.receiver.DownloadFinishReceiver
+import com.laiyuanwen.android.baby.surprise.TextSurpriseDialogFragment
 import com.laiyuanwen.android.baby.util.checkUpdate
 import com.laiyuanwen.android.baby.util.downloadApk
 
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         if (hasNotification()) {
-            startActivity(Intent(this, NotificationActivity::class.java))
+            TextSurpriseDialogFragment().show(supportFragmentManager, "")
         }
 
         checkUpdate(this, { url ->
@@ -33,6 +33,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun hasNotification(): Boolean {
-        return false
+        return true
     }
 }
