@@ -1,5 +1,5 @@
 include ':app'
 
-rootProject.name = 'baby'
+rootProject.name = 'babyAndroid'
 setBinding(new Binding([gradle: this]))
 evaluate(new File('../baby_flutter/.android/include_flutter.groovy'))

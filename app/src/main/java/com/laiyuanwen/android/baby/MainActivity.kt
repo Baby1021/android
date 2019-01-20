@@ -9,6 +9,9 @@ import com.laiyuanwen.android.baby.surprise.TextSurpriseDialogFragment
 import com.laiyuanwen.android.baby.util.checkUpdate
 import com.laiyuanwen.android.baby.util.downloadApk
 
+/**
+ * todo 记得注销广播
+ */
 class MainActivity : AppCompatActivity() {
 
     private val downloadFinishReceiver = DownloadFinishReceiver()
@@ -25,11 +28,6 @@ class MainActivity : AppCompatActivity() {
             downloadApk(this@MainActivity, url)
             registerReceiver(downloadFinishReceiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
         })
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        unregisterReceiver(downloadFinishReceiver)
     }
 
     private fun hasNotification(): Boolean {

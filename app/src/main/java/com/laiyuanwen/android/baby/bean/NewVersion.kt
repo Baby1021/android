@@ -1,5 +1,6 @@
 package com.laiyuanwen.android.baby.bean
 
+import androidx.annotation.Keep
 import java.io.Serializable
 
 /**
@@ -7,6 +8,7 @@ import java.io.Serializable
  *
  * 新版本
  */
+@Keep
 data class NewVersion(
         val versionCode: Int,
         val versionName: String,    // 版本名字
@@ -16,4 +18,5 @@ data class NewVersion(
         val force: Boolean          // 是否强制更新
 ) : Serializable
 
+@Keep
 data class NewVersionResult(val version: NewVersion?)

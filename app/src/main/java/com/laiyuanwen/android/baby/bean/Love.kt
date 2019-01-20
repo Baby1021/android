@@ -1,6 +1,6 @@
 package com.laiyuanwen.android.baby.bean
 
-import com.laiyuanwen.android.baby.user.User
+import androidx.annotation.Keep
 import java.io.Serializable
 
 /**
@@ -8,6 +8,7 @@ import java.io.Serializable
  *
  * Love数据结构
  */
+@Keep
 data class Love(
         val id: Long,
         val content: String,

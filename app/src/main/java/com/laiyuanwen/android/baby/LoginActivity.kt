@@ -23,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
             if ((userId == "laiyuanwen" && password == "0528") || (userId == "lizhuohua" && password == "0122")) {
                 saveLogin(this, userId)
                 startActivity(Intent(this, MainActivity::class.java))
+                finish()
             } else {
                 AlertDialog.Builder(this)
                         .setTitle("登录失败")
