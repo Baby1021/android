@@ -1,4 +1,4 @@
-package com.laiyuanwen.android.baby.tasks
+package com.laiyuanwen.android.baby.love
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,16 +13,17 @@ import com.google.android.material.snackbar.Snackbar
 import com.laiyuanwen.android.baby.base.BaseFragment
 import com.laiyuanwen.android.baby.databinding.FragmentTasksBinding
 import com.laiyuanwen.android.baby.inject.Injector
+import com.laiyuanwen.android.baby.tasks.TasksFragmentDirections
 import com.laiyuanwen.android.baby.util.Provider
 
 /**
- * Created by laiyuanwen on 2018/12/31.
+ * Created by laiyuanwen on 2019-01-20.
  */
-class TasksFragment : BaseFragment() {
+class LovesFragment : BaseFragment() {
 
-    private lateinit var viewModel: TasksViewModel
+    private lateinit var viewModel: LovesViewModel
     private lateinit var binding: FragmentTasksBinding
-    private lateinit var adapter: TasksAdapter
+    private lateinit var adapter: LovesAdapter
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -34,8 +35,8 @@ class TasksFragment : BaseFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel = ViewModelProviders.of(this, Injector.provideTasksViewModelFactory(requireContext()))
-                .get(TasksViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, Injector.provideLovesViewModelFactory(requireContext()))
+                .get(LovesViewModel::class.java)
 
         initRecyclerView()
         initRefresh()
@@ -43,8 +44,8 @@ class TasksFragment : BaseFragment() {
     }
 
     private fun initRecyclerView() {
-        adapter = TasksAdapter(this) { task ->
-            findNavController().navigate(TasksFragmentDirections.actionHomeFragmentToDetailActivity(Provider.getGson().toJson(task)))
+        adapter = LovesAdapter(this) { love ->
+            findNavController().navigate(LovesFragmentDirections.actionHomeFragmentToDetailActivity(Provider.getGson().toJson(love)))
         }
         binding.list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -68,7 +69,7 @@ class TasksFragment : BaseFragment() {
 
 
     private fun subscribeUI() {
-        viewModel.tasks.observe(this, Observer { task ->
+        viewModel.loves.observe(this, Observer { task ->
             adapter.submitList(task)
             binding.refresh.isRefreshing = false
         })

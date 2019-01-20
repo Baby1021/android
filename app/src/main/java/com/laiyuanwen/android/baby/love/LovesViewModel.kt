@@ -1,22 +1,22 @@
-package com.laiyuanwen.android.baby.tasks
+package com.laiyuanwen.android.baby.love
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.laiyuanwen.android.baby.bean.Task
-import com.laiyuanwen.android.baby.repository.TaskRepository
+import com.laiyuanwen.android.baby.bean.Love
+import com.laiyuanwen.android.baby.repository.LoveRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /**
- * Created by laiyuanwen on 2019/1/1.
+ * Created by laiyuanwen on 2019-01-20.
  */
-class TasksViewModel(
-        private val repository: TaskRepository
+class LovesViewModel(
+        private val repository: LoveRepository
 ) : ViewModel() {
 
-    val tasks: MutableLiveData<List<Task>> = MutableLiveData()
+    val loves: MutableLiveData<List<Love>> = MutableLiveData()
 
     init {
         fetch()
@@ -28,10 +28,10 @@ class TasksViewModel(
 
     fun fetch() {
         CoroutineScope(Dispatchers.IO).launch {
-            val result = repository.getTasks().await()
+            val result = repository.getLoves().await()
 
             withContext(Dispatchers.Main) {
-                tasks.value = result
+                loves.value = result
             }
         }
     }

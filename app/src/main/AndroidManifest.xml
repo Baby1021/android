@@ -50,7 +50,7 @@
 
         <!-- 详情页 -->
         <activity
-            android:name=".detail.DetailActivity"
+            android:name=".love.LoveDetailActivity"
             android:theme="@style/FlutterTheme">
 
         </activity>

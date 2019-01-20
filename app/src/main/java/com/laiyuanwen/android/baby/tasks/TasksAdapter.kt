@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.laiyuanwen.android.baby.databinding.ItemTaskBinding
-import com.laiyuanwen.android.baby.repository.Task
+import com.laiyuanwen.android.baby.bean.Task
 
 /**
  * Created by laiyuanwen on 2019/1/1.

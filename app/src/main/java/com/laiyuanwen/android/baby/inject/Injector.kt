@@ -2,6 +2,8 @@ package com.laiyuanwen.android.baby.inject
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
+import com.laiyuanwen.android.baby.love.LovesViewModelFactory
+import com.laiyuanwen.android.baby.repository.LoveRepository
 import com.laiyuanwen.android.baby.repository.TaskRepository
 import com.laiyuanwen.android.baby.tasks.TasksViewModelFactory
 
@@ -20,8 +22,16 @@ object Injector {
         return TaskRepository.getInstance()
     }
 
+    fun provideLovesRepository(context: Context): LoveRepository {
+        return LoveRepository.getInstance()
+    }
+
     fun provideTasksViewModelFactory(context: Context): ViewModelProvider.Factory {
         return TasksViewModelFactory(provideTasksRepository(context))
+    }
+
+    fun provideLovesViewModelFactory(context: Context): ViewModelProvider.Factory {
+        return LovesViewModelFactory(provideLovesRepository(context))
     }
 
 }

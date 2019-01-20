@@ -1,4 +1,4 @@
-package com.laiyuanwen.android.baby.repository
+package com.laiyuanwen.android.baby.bean
 
 import com.laiyuanwen.android.baby.user.User
 import java.io.Serializable

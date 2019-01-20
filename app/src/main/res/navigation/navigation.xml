@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/home_fragment">
+    app:startDestination="@id/lovesFragment">
 
     <fragment
         android:id="@+id/home_fragment"
@@ -18,6 +18,17 @@
     </fragment>
 
     <fragment
+        android:id="@+id/lovesFragment"
+        android:name="com.laiyuanwen.android.baby.love.LovesFragment"
+        android:label="LovesFragment">
+
+        <action
+            android:id="@+id/action_home_fragment_to_detailActivity"
+            app:destination="@id/detailActivity" />
+
+    </fragment>
+
+    <fragment
         android:id="@+id/user_fragment"
         android:name="com.laiyuanwen.android.baby.user.UserFragment">
 
@@ -28,15 +39,16 @@
 
     <activity
         android:id="@+id/detailActivity"
-        android:name="com.laiyuanwen.android.baby.detail.DetailActivity"
+        android:name="com.laiyuanwen.android.baby.love.LoveDetailActivity"
         android:label="activity_detail"
         tools:layout="@layout/activity_detail">
 
         <argument
-            android:name="task"
+            android:name="love"
             app:argType="string" />
 
 
     </activity>
+
 
 </navigation>
