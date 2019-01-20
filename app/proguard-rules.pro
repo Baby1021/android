@@ -19,7 +19,7 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
--keep @android.support.annotation.Keep class **
+-keep @androidx.annotation.Keep class **
 
 #Flutter 混淆配置
 -keep class io.flutter.app.** { *; }
@@ -28,3 +28,5 @@
 -keep class io.flutter.view.**  { *; }
 -keep class io.flutter.**  { *; }
 -keep class io.flutter.plugins.**  { *; }
+
+-ignorewarnings
