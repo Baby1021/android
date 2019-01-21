@@ -1,36 +1,50 @@
 package com.laiyuanwen.android.baby
 
-import android.app.DownloadManager
-import android.content.IntentFilter
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.laiyuanwen.android.baby.receiver.DownloadFinishReceiver
-import com.laiyuanwen.android.baby.surprise.TextSurpriseDialogFragment
-import com.laiyuanwen.android.baby.util.checkUpdate
-import com.laiyuanwen.android.baby.util.downloadApk
+import com.laiyuanwen.android.baby.api.RetrofitService
+import com.laiyuanwen.android.baby.bean.Surprise
+import com.laiyuanwen.android.baby.surprise.ImageSurpriseDialogFragment
+import com.laiyuanwen.android.baby.util.getUserId
+import com.tencent.bugly.Bugly
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * todo 记得注销广播
  */
 class MainActivity : AppCompatActivity() {
 
-    private val downloadFinishReceiver = DownloadFinishReceiver()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (hasNotification()) {
-            TextSurpriseDialogFragment().show(supportFragmentManager, "")
-        }
+        Bugly.init(applicationContext, "7484f50fa8", BuildConfig.DEBUG)
 
-        checkUpdate(this, { url ->
-            downloadApk(this@MainActivity, url)
-            registerReceiver(downloadFinishReceiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
-        })
+
+        fetchSurprise()
     }
 
-    private fun hasNotification(): Boolean {
-        return true
+    private fun fetchSurprise() {
+
+        CoroutineScope(Dispatchers.IO).launch {
+            var result = RetrofitService.getBabyApi().getSurprise(getUserId()).await()
+
+            if (result.data == null) {
+                return@launch
+            }
+
+            val data: Surprise = result.data!!
+
+            withContext(Dispatchers.Main) {
+                showSurprise(data)
+            }
+        }
+    }
+
+    private fun showSurprise(surprise: Surprise) {
+        ImageSurpriseDialogFragment.getInstance(surprise).show(supportFragmentManager, "")
     }
 }
