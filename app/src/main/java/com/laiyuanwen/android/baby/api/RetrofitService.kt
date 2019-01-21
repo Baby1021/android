@@ -17,7 +17,7 @@ class RetrofitService {
                 .build()
 
         @JvmField
-        val babyApi = retrofit.create(TeamworkApi::class.java)
+        val babyApi = retrofit.create(BabyApi::class.java)
 
         fun getBabyApi() = babyApi
     }
