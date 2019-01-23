@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 // navigation生成跳转代码的插件
 apply plugin: 'androidx.navigation.safeargs'
 
