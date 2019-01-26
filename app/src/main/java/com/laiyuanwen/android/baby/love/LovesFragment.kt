@@ -78,7 +78,7 @@ class LovesFragment : BaseFragment() {
 
                 if (position == adapter.itemCount - 1) {
                     // 触发下一页
-                    Snackbar.make(recyclerView, "已经滑到底部啦", Snackbar.LENGTH_LONG).show()
+//                    Snackbar.make(recyclerView, "已经滑到底部啦", Snackbar.LENGTH_LONG).show()
                 }
             }
         })

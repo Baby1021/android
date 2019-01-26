@@ -20,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
         login.setOnClickListener {
             val userId = userId.text.toString();
             val password = password.text.toString();
-            if ((userId == "laiyuanwen" && password == "0528") || (userId == "lizhuohua" && password == "0122")) {
+            if ((userId == "laiyuanwen" && password == "0528") || (userId == "lizhuohua" && password == "0122") || (userId == "test" && password == "test") ) {
                 saveLogin(this, userId)
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
