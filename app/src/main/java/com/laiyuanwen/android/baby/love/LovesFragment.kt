@@ -1,19 +1,22 @@
 package com.laiyuanwen.android.baby.love
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import com.laiyuanwen.android.baby.Common.ActivityRequestCode.FLUTTER_RESULT
+import com.laiyuanwen.android.baby.Common.ActivityRequestCode.LOVE_DETAIL
+import com.laiyuanwen.android.baby.Common.BundleKey.FLUTTER_LOVE_DETAIL_IS_CHANGE
 import com.laiyuanwen.android.baby.R
 import com.laiyuanwen.android.baby.base.BaseFragment
 import com.laiyuanwen.android.baby.databinding.FragmentTasksBinding
 import com.laiyuanwen.android.baby.inject.Injector
-import com.laiyuanwen.android.baby.util.Provider
+import com.laiyuanwen.android.baby.util.startLoveDetailActivity
 import kotlinx.android.synthetic.main.fragment_tasks.*
 
 /**
@@ -27,7 +30,7 @@ class LovesFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true);
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -58,7 +61,7 @@ class LovesFragment : BaseFragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (R.id.add_love == item.itemId) {
-            findNavController().navigate(LovesFragmentDirections.actionHomeFragmentToDetailActivity(null))
+            startLoveDetailActivity(this, null, LOVE_DETAIL)
             return true
         }
         return super.onOptionsItemSelected(item)
@@ -66,7 +69,7 @@ class LovesFragment : BaseFragment() {
 
     private fun initRecyclerView() {
         adapter = LovesAdapter(this) { love ->
-            findNavController().navigate(LovesFragmentDirections.actionHomeFragmentToDetailActivity(Provider.getGson().toJson(love)))
+            startLoveDetailActivity(this, love, LOVE_DETAIL)
         }
         binding.list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -94,5 +97,27 @@ class LovesFragment : BaseFragment() {
             adapter.submitList(task)
             binding.refresh.isRefreshing = false
         })
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            LOVE_DETAIL -> {
+                loveDetailResult(data)
+            }
+        }
+    }
+
+    private fun loveDetailResult(data: Intent?) {
+        if (data == null || data.extras == null) {
+            return
+        }
+
+        val bundle = data.extras ?: return
+        val isRefresh = bundle.getString(FLUTTER_LOVE_DETAIL_IS_CHANGE, "false") ?: "false"
+
+        if (isRefresh.toBoolean()) {
+            viewModel.refresh()
+        }
     }
 }

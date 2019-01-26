@@ -44,7 +44,7 @@ class TasksFragment : BaseFragment() {
 
     private fun initRecyclerView() {
         adapter = TasksAdapter(this) { task ->
-            findNavController().navigate(TasksFragmentDirections.actionHomeFragmentToDetailActivity(Provider.getGson().toJson(task)))
+//            findNavController().navigate(TasksFragmentDirections.actionHomeFragmentToDetailActivity(Provider.getGson().toJson(task)))
         }
         binding.list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
