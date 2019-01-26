@@ -14,8 +14,21 @@ object Common {
      * Flutter MethodChannel 参数方法
      */
     const val CHANNEL_METHOD_GET_ARGUMENT = "getArgument"
+    const val CHANNEL_METHOD_SET_RESULT = "setResult"
 
     object SharedPreferenceKey {
         const val USER_ID = "userId"
+    }
+
+    object BundleKey {
+        /**
+         * 是否改变
+         */
+        const val FLUTTER_LOVE_DETAIL_IS_CHANGE = "isRefresh"
+    }
+
+    object ActivityRequestCode {
+        const val FLUTTER_RESULT = 1
+        const val LOVE_DETAIL = 2
     }
 }
