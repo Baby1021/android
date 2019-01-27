@@ -8,6 +8,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.lang.Exception
 
 /**
  * Created by laiyuanwen on 2019-01-20.
@@ -28,10 +29,14 @@ class LovesViewModel(
 
     fun fetch() {
         CoroutineScope(Dispatchers.IO).launch {
-            val result = repository.getLoves().await()
+            try {
+                val result = repository.getLoves().await()
 
-            withContext(Dispatchers.Main) {
-                loves.value = result
+                withContext(Dispatchers.Main) {
+                    loves.value = result
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
     }

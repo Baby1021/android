@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.laiyuanwen.android.baby.LoginActivity
 import com.laiyuanwen.android.baby.bean.Love
-import com.laiyuanwen.android.baby.love.LoveDetailActivity
+import com.laiyuanwen.android.baby.flutter.LoveDetailActivity
 
 /**
  * Created by laiyuanwen on 2019-01-25.

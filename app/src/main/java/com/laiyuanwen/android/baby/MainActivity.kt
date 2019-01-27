@@ -27,16 +27,20 @@ class MainActivity : AppCompatActivity() {
     private fun fetchSurprise() {
 
         CoroutineScope(Dispatchers.IO).launch {
-            var result = RetrofitService.getBabyApi().getSurprise(getUserId()).await()
+            try {
+                val result = RetrofitService.getBabyApi().getSurprise(getUserId()).await()
 
-            if (result.data == null) {
-                return@launch
-            }
+                if (result.data == null) {
+                    return@launch
+                }
 
-            val data: Surprise = result.data!!
+                val data: Surprise = result.data
 
-            withContext(Dispatchers.Main) {
-                showSurprise(data)
+                withContext(Dispatchers.Main) {
+                    showSurprise(data)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
     }
