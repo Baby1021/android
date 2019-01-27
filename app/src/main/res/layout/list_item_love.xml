@@ -22,7 +22,7 @@
             android:id="@+id/item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="100dp"
+            android:minHeight="80dp"
             android:padding="10dp">
 
             <!--用户头像-->

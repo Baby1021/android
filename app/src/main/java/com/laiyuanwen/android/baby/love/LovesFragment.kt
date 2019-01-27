@@ -3,6 +3,7 @@ package com.laiyuanwen.android.baby.love
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -69,7 +70,8 @@ class LovesFragment : BaseFragment() {
 
     private fun initRecyclerView() {
         adapter = LovesAdapter(this) { love ->
-            startLoveDetailActivity(this, love, LOVE_DETAIL)
+//            startLoveDetailActivity(this, love, LOVE_DETAIL)
+            Toast.makeText(context,"❤❤❤❤❤❤❤❤❤❤❤❤",Toast.LENGTH_SHORT).show()
         }
         binding.list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
