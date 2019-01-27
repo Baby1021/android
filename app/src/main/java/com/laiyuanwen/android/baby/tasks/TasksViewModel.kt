@@ -28,10 +28,15 @@ class TasksViewModel(
 
     fun fetch() {
         CoroutineScope(Dispatchers.IO).launch {
-            val result = repository.getTasks().await()
+            try {
 
-            withContext(Dispatchers.Main) {
-                tasks.value = result
+                val result = repository.getTasks().await()
+
+                withContext(Dispatchers.Main) {
+                    tasks.value = result
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
     }

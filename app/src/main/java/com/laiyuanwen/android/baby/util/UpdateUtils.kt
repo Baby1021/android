@@ -35,20 +35,25 @@ fun checkUpdate(context: Context,
                 cancel: () -> Unit = {}) {
 
     CoroutineScope(Dispatchers.IO).launch {
-        val result = RetrofitService.getBabyApi().checkUpdate(BuildConfig.VERSION_CODE).await()
+        try {
 
-        if (result.version == null) {
-            return@launch
-        }
+            val result = RetrofitService.getBabyApi().checkUpdate(BuildConfig.VERSION_CODE).await()
 
-        withContext(Dispatchers.Main) {
-            AlertDialog.Builder(context)
-                    .setTitle(result.version.title)
-                    .setMessage(result.version.changeLog)
-                    .setPositiveButton("更新") { _, _ -> update(result.version.url) }
-                    .setNegativeButton("取消") { _, _ -> cancel() }
-                    .setOnCancelListener { cancel() }
-                    .show()
+            if (result.version == null) {
+                return@launch
+            }
+
+            withContext(Dispatchers.Main) {
+                AlertDialog.Builder(context)
+                        .setTitle(result.version.title)
+                        .setMessage(result.version.changeLog)
+                        .setPositiveButton("更新") { _, _ -> update(result.version.url) }
+                        .setNegativeButton("取消") { _, _ -> cancel() }
+                        .setOnCancelListener { cancel() }
+                        .show()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 

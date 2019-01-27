@@ -8,51 +8,88 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="3dp"
+        android:layout_margin="2dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         app:cardCornerRadius="2dp">
 
-        <TextView
-            android:layout_width="5dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorAccent" />
+        <!--<TextView-->
+        <!--android:layout_width="5dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@color/colorAccent" />-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="80dp"
             android:padding="10dp">
 
+            <!--用户头像-->
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@mipmap/icon" />
+
+            <!--名字-->
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:includeFontPadding="false"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/avatar"
+                app:layout_constraintTop_toTopOf="@+id/avatar"
+                tools:text="赖远文" />
+
+            <!--文字内容-->
             <TextView
                 android:id="@+id/love_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/avatar"
-                tools:text="任务描述" />
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="3dp"
+                android:numColumns="3"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/avatar"
+                app:layout_constraintTop_toBottomOf="@id/username"
+                tools:text="小宝贝，今天又去败家啦" />
 
-            <ImageView
-                android:id="@+id/avatar"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
+            <GridLayout
+                android:id="@+id/images_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@mipmap/icon" />
+                app:layout_constraintStart_toEndOf="@id/avatar"
+                app:layout_constraintTop_toBottomOf="@id/love_content"
+                android:columnCount="3"
+                tools:layout_height="100dp">
 
-            <TextView
-                android:id="@+id/username"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/avatar"
-                app:layout_constraintStart_toStartOf="@+id/avatar"
-                app:layout_constraintTop_toBottomOf="@+id/avatar"
-                tools:text="赖远文" />
+            </GridLayout>
+            <!--<com.laiyuanwen.android.baby.view.BabyGridView-->
+            <!--android:id="@+id/images_layout"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginStart="5dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:gravity="center"-->
+            <!--android:horizontalSpacing="3dp"-->
+            <!--android:scrollbars="none"-->
+            <!--android:numColumns="3"-->
+            <!--android:verticalSpacing="3dp"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toEndOf="@id/avatar"-->
+            <!--app:layout_constraintTop_toBottomOf="@id/love_content"-->
+            <!--tools:layout_height="100dp">-->
+
+            <!--</com.laiyuanwen.android.baby.view.BabyGridView>-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

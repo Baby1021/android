@@ -1,14 +1,17 @@
 package com.laiyuanwen.android.baby.love
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.laiyuanwen.android.baby.bean.Love
 import com.laiyuanwen.android.baby.databinding.ListItemLoveBinding
+import com.laiyuanwen.android.baby.databinding.ListItemLoveImageBinding
 
 /**
  * Created by laiyuanwen on 2019-01-20.
@@ -30,6 +33,24 @@ class LovesAdapter(
 
         holder.binding.root.setOnClickListener {
             callback(love)
+        }
+
+        if (!love.images.isNullOrEmpty()) {
+
+            love.images.forEachIndexed { index, s ->
+                val imageView = ListItemLoveImageBinding.inflate(
+                        LayoutInflater.from(holder.binding.root.context), holder.binding.imagesLayout, true)
+
+                imageView.loveImage.setOnClickListener {
+                    fragment.findNavController().navigate(
+                            LovesFragmentDirections.actionHomeFragmentToImageDetailFragment(love.images.toTypedArray(), index))
+                }
+                Glide.with(fragment)
+                        .load(s)
+                        .into(imageView.loveImage)
+            }
+        } else {
+            holder.binding.imagesLayout.visibility = View.GONE
         }
     }
 

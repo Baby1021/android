@@ -1,6 +1,5 @@
 package com.laiyuanwen.android.baby.util
 
-import android.app.Application
 import android.content.Context
 import androidx.core.content.edit
 import com.laiyuanwen.android.baby.Common
@@ -22,6 +21,11 @@ fun isLogin(context: Context): Boolean {
 
 fun getUserId(): String = getSp(getApplicationContext()).getString(USER_ID, "") ?: ""
 
+fun logout() {
+    getSp(getApplicationContext()).edit {
+        this.putString(Common.SharedPreferenceKey.USER_ID, "")
+    }
+}
 
 fun saveLogin(context: Context, userId: String) {
     getSp(context).edit {
