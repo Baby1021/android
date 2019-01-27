@@ -1,9 +1,10 @@
 package com.laiyuanwen.android.baby.util
 
-import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.laiyuanwen.android.baby.LoginActivity
 import com.laiyuanwen.android.baby.bean.Love
 import com.laiyuanwen.android.baby.love.LoveDetailActivity
 
@@ -17,9 +18,14 @@ fun startLoveDetailActivity(fragment: Fragment?, love: Love?, code: Int) {
     }
     val intent = Intent(fragment.context, LoveDetailActivity::class.java)
     val bundle = Bundle()
-    if(love != null){
+    if (love != null) {
         bundle.putString("love", Provider.getGson().toJson(love))
     }
     intent.putExtras(bundle)
     fragment.startActivityForResult(intent, code)
+}
+
+fun toLogin(context: Context) {
+    val intent = Intent(context, LoginActivity::class.java)
+    context.startActivity(intent)
 }
