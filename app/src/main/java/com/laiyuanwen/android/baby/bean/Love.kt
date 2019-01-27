@@ -13,5 +13,6 @@ data class Love(
         val id: Long,
         val content: String,
         val user: User,
-        val createTime: Long
+        val createTime: Long,
+        val images: List<String>?
 ) : Serializable

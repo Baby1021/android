@@ -17,6 +17,11 @@
         android:id="@+id/lovesFragment"
         android:name="com.laiyuanwen.android.baby.love.LovesFragment"
         android:label="LovesFragment">
+        <action
+            android:id="@+id/action_home_fragment_to_imageDetailFragment"
+            app:destination="@id/imageDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
 
     </fragment>
 
@@ -27,6 +32,22 @@
         <action
             android:id="@+id/action_user_to_home"
             app:destination="@id/home_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/imageDetailFragment"
+        android:name="com.laiyuanwen.android.baby.love.ImageDetailFragment"
+        android:label="ImageDetailFragment">
+
+        <argument
+            android:name="images"
+            app:argType="string[]" />
+
+        <argument
+            android:name="index"
+            app:argType="integer" />
+
+
     </fragment>
 
 </navigation>

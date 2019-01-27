@@ -64,13 +64,13 @@ dependencies {
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
     // use kapt for Kotlin
     testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
-    def room_version = "2.1.0-alpha03"
+    def room_version = "2.1.0-alpha04"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     // use kapt for Kotlin
     implementation "androidx.room:room-coroutines:$room_version"
     testImplementation "androidx.room:room-testing:$room_version"
-    def paging_version = "2.1.0-rc01"
+    def paging_version = "2.1.0"
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
     // use -ktx for Kotlin
     testImplementation "androidx.paging:paging-common-ktx:$paging_version"
