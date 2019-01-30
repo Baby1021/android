@@ -86,6 +86,7 @@ class LovesFragment : BaseFragment() {
 
     private fun initRefresh() {
         binding.refresh.setOnRefreshListener {
+            binding.refresh.isRefreshing = true
             viewModel.refresh()
         }
     }
@@ -116,6 +117,7 @@ class LovesFragment : BaseFragment() {
         val isRefresh = bundle.getString(FLUTTER_LOVE_DETAIL_IS_CHANGE, "false") ?: "false"
 
         if (isRefresh.toBoolean()) {
+            binding.refresh.isRefreshing = true
             viewModel.refresh()
         }
     }
