@@ -9,16 +9,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
-import com.laiyuanwen.android.baby.Common.ActivityRequestCode.FLUTTER_RESULT
 import com.laiyuanwen.android.baby.Common.ActivityRequestCode.LOVE_DETAIL
 import com.laiyuanwen.android.baby.Common.BundleKey.FLUTTER_LOVE_DETAIL_IS_CHANGE
 import com.laiyuanwen.android.baby.R
 import com.laiyuanwen.android.baby.base.BaseFragment
-import com.laiyuanwen.android.baby.databinding.FragmentTasksBinding
 import com.laiyuanwen.android.baby.inject.Injector
 import com.laiyuanwen.android.baby.util.startLoveDetailActivity
-import kotlinx.android.synthetic.main.fragment_tasks.*
+import kotlinx.android.synthetic.main.fragment_loves.*
 
 /**
  * Created by laiyuanwen on 2019-01-20.
@@ -26,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_tasks.*
 class LovesFragment : BaseFragment() {
 
     private lateinit var viewModel: LovesViewModel
-    private lateinit var binding: FragmentTasksBinding
+    private lateinit var binding: com.laiyuanwen.android.baby.databinding.FragmentLovesBinding
     private lateinit var adapter: LovesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +36,7 @@ class LovesFragment : BaseFragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentTasksBinding.inflate(layoutInflater, container, false)
+        binding = com.laiyuanwen.android.baby.databinding.FragmentLovesBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 

@@ -50,15 +50,16 @@
             <!--文字内容-->
             <TextView
                 android:id="@+id/love_content"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="3dp"
                 android:numColumns="3"
                 android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/avatar"
                 app:layout_constraintTop_toBottomOf="@id/username"
-                tools:text="小宝贝，今天又去败家啦" />
+                tools:text="小宝贝，今天又去败家啦,小宝贝，23今天又去败家啦,小宝贝，今天又去败家啦,小宝贝，今天又去败家啦,小宝贝，今天又去败家啦," />
 
             <GridLayout
                 android:id="@+id/images_layout"
@@ -66,10 +67,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
+                android:columnCount="3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/avatar"
                 app:layout_constraintTop_toBottomOf="@id/love_content"
-                android:columnCount="3"
                 tools:layout_height="100dp">
 
             </GridLayout>
