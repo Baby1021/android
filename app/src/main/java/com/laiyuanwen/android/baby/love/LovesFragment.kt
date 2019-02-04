@@ -10,15 +10,14 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
-import com.laiyuanwen.android.baby.Common.ActivityRequestCode.FLUTTER_RESULT
 import com.laiyuanwen.android.baby.Common.ActivityRequestCode.LOVE_DETAIL
 import com.laiyuanwen.android.baby.Common.BundleKey.FLUTTER_LOVE_DETAIL_IS_CHANGE
 import com.laiyuanwen.android.baby.R
 import com.laiyuanwen.android.baby.base.BaseFragment
-import com.laiyuanwen.android.baby.databinding.FragmentTasksBinding
+import com.laiyuanwen.android.baby.databinding.FragmentLovesBinding
 import com.laiyuanwen.android.baby.inject.Injector
 import com.laiyuanwen.android.baby.util.startLoveDetailActivity
-import kotlinx.android.synthetic.main.fragment_tasks.*
+import kotlinx.android.synthetic.main.fragment_loves.*
 
 /**
  * Created by laiyuanwen on 2019-01-20.
@@ -26,7 +25,7 @@ import kotlinx.android.synthetic.main.fragment_tasks.*
 class LovesFragment : BaseFragment() {
 
     private lateinit var viewModel: LovesViewModel
-    private lateinit var binding: FragmentTasksBinding
+    private lateinit var binding: com.laiyuanwen.android.baby.databinding.FragmentLovesBinding
     private lateinit var adapter: LovesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +38,7 @@ class LovesFragment : BaseFragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentTasksBinding.inflate(layoutInflater, container, false)
+        binding = FragmentLovesBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -69,10 +68,12 @@ class LovesFragment : BaseFragment() {
     }
 
     private fun initRecyclerView() {
-        adapter = LovesAdapter(this) { love ->
-//            startLoveDetailActivity(this, love, LOVE_DETAIL)
-            Toast.makeText(context,"❤❤❤❤❤❤❤❤❤❤❤❤",Toast.LENGTH_SHORT).show()
-        }
+        adapter = LovesAdapter(this, { content, loveId ->
+            viewModel.comment(content, loveId)
+        }, { love ->
+            //            startLoveDetailActivity(this, love, LOVE_DETAIL)
+            Toast.makeText(context, "❤❤❤❤❤❤❤❤❤❤❤❤", Toast.LENGTH_SHORT).show()
+        })
         binding.list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 val layoutManager = recyclerView.layoutManager as LinearLayoutManager
@@ -89,15 +90,34 @@ class LovesFragment : BaseFragment() {
 
     private fun initRefresh() {
         binding.refresh.setOnRefreshListener {
+            binding.refresh.isRefreshing = true
             viewModel.refresh()
         }
     }
 
-
     private fun subscribeUI() {
-        viewModel.loves.observe(this, Observer { task ->
-            adapter.submitList(task)
+        viewModel.loves.observe(this, Observer { love ->
+            adapter.submitList(love)
             binding.refresh.isRefreshing = false
+        })
+
+        viewModel.reminds.observe(this, Observer { remind ->
+            if (remind.isNullOrEmpty())
+                return@Observer
+
+            val fragment = LoveRemindsFragment(remind)
+
+            // todo 这个自己的manager和child的manager的区别
+            fragment.show(childFragmentManager, "");
+        })
+
+        viewModel.commentResult.observe(this, Observer {
+            if (it){
+                Snackbar.make(binding.root, "评论成功", Snackbar.LENGTH_LONG).show()
+                viewModel.refresh()
+            } else{
+                Snackbar.make(binding.root, "评论失败", Snackbar.LENGTH_LONG).show()
+            }
         })
     }
 
@@ -119,6 +139,7 @@ class LovesFragment : BaseFragment() {
         val isRefresh = bundle.getString(FLUTTER_LOVE_DETAIL_IS_CHANGE, "false") ?: "false"
 
         if (isRefresh.toBoolean()) {
+            binding.refresh.isRefreshing = true
             viewModel.refresh()
         }
     }
