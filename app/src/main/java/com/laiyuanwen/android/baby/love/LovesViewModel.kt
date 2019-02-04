@@ -18,9 +18,25 @@ class LovesViewModel(
 ) : ViewModel() {
 
     val loves: MutableLiveData<List<Love>> = MutableLiveData()
+    val reminds: MutableLiveData<List<Love>> = MutableLiveData()
 
     init {
         fetch()
+        fetchReminds()
+    }
+
+    private fun fetchReminds() {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val result = repository.getRemindLoves().await()
+
+                withContext(Dispatchers.Main) {
+                    reminds.value = result
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
     }
 
     fun refresh() {

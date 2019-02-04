@@ -23,4 +23,8 @@ class LoveRepository {
     fun getLoves(): Deferred<List<Love>> {
         return RetrofitService.getBabyApi().getLoves(getUserId(), 1, 10)
     }
+
+    fun getRemindLoves(): Deferred<List<Love>> {
+        return RetrofitService.getBabyApi().getRemindLoves(getUserId())
+    }
 }

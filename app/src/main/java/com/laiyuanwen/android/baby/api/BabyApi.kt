@@ -19,6 +19,9 @@ interface BabyApi {
     @GET("api/v1/love")
     fun getLoves(@Query("userId") userId: String, @Query("page") page: Int, @Query("limit") limit: Int): Deferred<List<Love>>
 
+    @GET("api/v1/love/")
+    fun getRemindLoves(@Query("userId/remind") userId: String): Deferred<List<Love>>
+
     @GET("api/v1/surprise")
     fun getSurprise(@Query("userId") userId: String): Deferred<SurpriseResponse>
 

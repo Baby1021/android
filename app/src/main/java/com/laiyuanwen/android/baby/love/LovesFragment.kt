@@ -13,6 +13,7 @@ import com.laiyuanwen.android.baby.Common.ActivityRequestCode.LOVE_DETAIL
 import com.laiyuanwen.android.baby.Common.BundleKey.FLUTTER_LOVE_DETAIL_IS_CHANGE
 import com.laiyuanwen.android.baby.R
 import com.laiyuanwen.android.baby.base.BaseFragment
+import com.laiyuanwen.android.baby.databinding.FragmentLovesBinding
 import com.laiyuanwen.android.baby.inject.Injector
 import com.laiyuanwen.android.baby.util.startLoveDetailActivity
 import kotlinx.android.synthetic.main.fragment_loves.*
@@ -36,7 +37,7 @@ class LovesFragment : BaseFragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        binding = com.laiyuanwen.android.baby.databinding.FragmentLovesBinding.inflate(layoutInflater, container, false)
+        binding = FragmentLovesBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -91,11 +92,20 @@ class LovesFragment : BaseFragment() {
         }
     }
 
-
     private fun subscribeUI() {
-        viewModel.loves.observe(this, Observer { task ->
-            adapter.submitList(task)
+        viewModel.loves.observe(this, Observer { love ->
+            adapter.submitList(love)
             binding.refresh.isRefreshing = false
+        })
+
+        viewModel.reminds.observe(this, Observer { remind ->
+            if(remind.isNullOrEmpty())
+                return@Observer
+
+            val fragment = LoveRemindsFragment(remind)
+
+            // todo 这个自己的manager和child的manager的区别
+            fragment.show(childFragmentManager,"");
         })
     }
 
