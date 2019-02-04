@@ -14,5 +14,6 @@ data class Love(
         val content: String,
         val user: User,
         val createTime: Long,
-        val images: List<String>?
+        val images: List<String>?,
+        val comments: List<LoveComment>
 ) : Serializable

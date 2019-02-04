@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.laiyuanwen.android.baby.Common.ActivityRequestCode.LOVE_DETAIL
 import com.laiyuanwen.android.baby.Common.BundleKey.FLUTTER_LOVE_DETAIL_IS_CHANGE
 import com.laiyuanwen.android.baby.R
@@ -67,10 +68,12 @@ class LovesFragment : BaseFragment() {
     }
 
     private fun initRecyclerView() {
-        adapter = LovesAdapter(this) { love ->
-//            startLoveDetailActivity(this, love, LOVE_DETAIL)
-            Toast.makeText(context,"❤❤❤❤❤❤❤❤❤❤❤❤",Toast.LENGTH_SHORT).show()
-        }
+        adapter = LovesAdapter(this, { content, loveId ->
+            viewModel.comment(content, loveId)
+        }, { love ->
+            //            startLoveDetailActivity(this, love, LOVE_DETAIL)
+            Toast.makeText(context, "❤❤❤❤❤❤❤❤❤❤❤❤", Toast.LENGTH_SHORT).show()
+        })
         binding.list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 val layoutManager = recyclerView.layoutManager as LinearLayoutManager
@@ -99,13 +102,22 @@ class LovesFragment : BaseFragment() {
         })
 
         viewModel.reminds.observe(this, Observer { remind ->
-            if(remind.isNullOrEmpty())
+            if (remind.isNullOrEmpty())
                 return@Observer
 
             val fragment = LoveRemindsFragment(remind)
 
             // todo 这个自己的manager和child的manager的区别
-            fragment.show(childFragmentManager,"");
+            fragment.show(childFragmentManager, "");
+        })
+
+        viewModel.commentResult.observe(this, Observer {
+            if (it){
+                Snackbar.make(binding.root, "评论成功", Snackbar.LENGTH_LONG).show()
+                viewModel.refresh()
+            } else{
+                Snackbar.make(binding.root, "评论失败", Snackbar.LENGTH_LONG).show()
+            }
         })
     }
 
