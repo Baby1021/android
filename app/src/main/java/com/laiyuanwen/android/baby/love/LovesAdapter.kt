@@ -48,7 +48,7 @@ class LovesAdapter(
         }
 
         if (!love.images.isNullOrEmpty()) {
-
+            holder.binding.imagesLayout.removeAllViews()
             love.images.forEachIndexed { index, s ->
                 val imageView = ListItemLoveImageBinding.inflate(
                         LayoutInflater.from(holder.binding.root.context), holder.binding.imagesLayout, true)
@@ -66,7 +66,7 @@ class LovesAdapter(
         }
 
         if (!love.comments.isNullOrEmpty()) {
-
+            holder.binding.commentLayout.removeAllViews()
             love.comments.forEach { comment ->
                 val commentBinding = ListItemLoveCommentBinding.inflate(LayoutInflater.from(holder.binding.root.context), holder.binding.commentLayout, true)
                 commentBinding.commentContent.text = comment.content
@@ -107,7 +107,7 @@ class LovesAdapter(
                 }
                 .setPositiveButton("确定") { dialog, which ->
                     val content = input.text.toString()
-                    commentCallback(content,loveId)
+                    commentCallback(content, loveId)
                 }
         builder.show()
     }
