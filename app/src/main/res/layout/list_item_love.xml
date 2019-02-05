@@ -3,7 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data />
+    <data>
+
+        <variable
+            name="createTime"
+            type="String" />
+
+        <variable
+            name="love"
+            type="com.laiyuanwen.android.baby.bean.Love" />
+
+    </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -41,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:includeFontPadding="false"
+                android:text="@{love.user.name}"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@id/avatar"
@@ -55,6 +66,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="3dp"
                 android:numColumns="3"
+                android:text="@{love.content}"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/avatar"
@@ -81,20 +93,23 @@
                 android:id="@+id/create_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="10sp"
                 android:layout_marginStart="5dp"
-                android:text="21:30"
+                android:layout_marginTop="5dp"
+                android:text="@{createTime}"
+                android:textSize="10sp"
                 app:layout_constraintStart_toEndOf="@+id/avatar"
-                app:layout_constraintTop_toBottomOf="@id/images_layout" />
+                app:layout_constraintTop_toBottomOf="@id/images_layout"
+                tools:text="21:30" />
 
             <!-- 评论按钮-->
             <TextView
                 android:id="@+id/comment_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:drawableEnd="@drawable/ic_comment_black_14dp"
-                android:textSize="12sp"
                 android:text="评论"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/images_layout"
                 tools:layout_editor_absoluteY="40dp" />
