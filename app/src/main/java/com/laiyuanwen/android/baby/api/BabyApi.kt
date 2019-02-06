@@ -6,6 +6,7 @@ import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
+import java.util.*
 
 /**
  * Created by laiyuanwen on 2018/12/31.
@@ -18,8 +19,8 @@ interface BabyApi {
     @GET("api/v1/love")
     fun getLoves(@Query("userId") userId: String, @Query("page") page: Int, @Query("limit") limit: Int): Deferred<List<Love>>
 
-    @GET("api/v1/love/")
-    fun getRemindLoves(@Query("userId/remind") userId: String): Deferred<List<Love>>
+    @GET("api/v1/love/remind")
+    fun getRemindLoves(@Query("userId") userId: String): Deferred<List<Love>>
 
     @GET("api/v1/surprise")
     fun getSurprise(@Query("userId") userId: String): Deferred<SurpriseResponse>
@@ -30,4 +31,8 @@ interface BabyApi {
     // 评论
     @POST("api/v1/lovecomment")
     fun comment(@retrofit2.http.Body comment: JsonObject): Deferred<Body<Long>>
+
+    // 提醒曝光
+    @POST("api/v1/love/remind")
+    fun exposureRemind(@retrofit2.http.Body data: JsonObject): Deferred<Body<Any>>
 }

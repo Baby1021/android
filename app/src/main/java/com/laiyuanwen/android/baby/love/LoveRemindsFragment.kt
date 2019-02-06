@@ -15,6 +15,12 @@ import com.laiyuanwen.android.baby.bean.Love
 import com.laiyuanwen.android.baby.databinding.FragmentLoveRemindsBinding
 import com.laiyuanwen.android.baby.databinding.ListItemLoveImageBinding
 import com.laiyuanwen.android.baby.databinding.ListItemLoveRemindsBinding
+import com.laiyuanwen.android.baby.repository.LoveRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.lang.Exception
 
 
 /**
@@ -25,6 +31,12 @@ class LoveRemindsFragment(
 ) : DialogFragment() {
 
     lateinit var binding: FragmentLoveRemindsBinding
+    lateinit var repository: LoveRepository
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        repository = LoveRepository.getInstance()
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentLoveRemindsBinding.inflate(inflater, container, false)
@@ -42,6 +54,7 @@ class LoveRemindsFragment(
             }
 
             override fun onPageSelected(position: Int) {
+                exposureRemind(reminds[position].id)
                 binding.indicator.text = "${position + 1} / ${reminds.size}"
             }
 
@@ -85,6 +98,11 @@ class LoveRemindsFragment(
             override fun getCount() = reminds.size
         }
 
+
+        binding.viewPage.currentItem = 0
+
+        exposureRemind(reminds[0].id)
+
         Glide.with(this)
                 .load(reminds[0].user.avatar)
                 .into(binding.avatar)
@@ -105,5 +123,18 @@ class LoveRemindsFragment(
         lp.height = (point.y * 0.6).toInt()
 
         dialog.window!!.attributes = lp
+    }
+
+    fun exposureRemind(loveId: Long) {
+
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                repository.exposureRemind(loveId).await()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+
+
     }
 }
