@@ -71,6 +71,7 @@ class LovesAdapter(
 
     private fun setImageLayout(love: Love, holder: ViewHolder) {
         if (!love.images.isNullOrEmpty()) {
+            holder.binding.imagesLayout.visibility = View.VISIBLE
             holder.binding.imagesLayout.removeAllViews()
             love.images.forEachIndexed { index, s ->
                 val imageView = ListItemLoveImageBinding.inflate(
@@ -91,6 +92,7 @@ class LovesAdapter(
 
     private fun setCommentLayout(love: Love, holder: ViewHolder) {
         if (!love.comments.isNullOrEmpty()) {
+            holder.binding.commentLayout.visibility = View.VISIBLE
             holder.binding.commentLayout.removeAllViews()
             love.comments.forEach { comment ->
                 val commentBinding = ListItemLoveCommentBinding.inflate(LayoutInflater.from(holder.binding.root.context), holder.binding.commentLayout, true)
