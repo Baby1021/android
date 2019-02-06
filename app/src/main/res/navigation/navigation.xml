@@ -22,6 +22,9 @@
             app:destination="@id/imageDetailFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_lovesFragment_to_loveRemindsFragment"
+            app:destination="@id/loveRemindsFragment" />
 
     </fragment>
 
@@ -47,6 +50,20 @@
             android:name="index"
             app:argType="integer" />
 
+    </fragment>
+
+    <fragment
+        android:id="@+id/loveRemindsFragment"
+        android:name="com.laiyuanwen.android.baby.love.LoveRemindsFragment"
+        android:label="LoveRemindsFragment">
+
+        <argument
+            android:name="loves"
+            app:argType="com.laiyuanwen.android.baby.bean.Love[]" />
+
+        <action
+            android:id="@+id/action_loveRemindsFragment_to_imageDetailFragment"
+            app:destination="@id/imageDetailFragment" />
 
     </fragment>
 

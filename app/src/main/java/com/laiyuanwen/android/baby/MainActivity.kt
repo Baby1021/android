@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val result = RetrofitService.getBabyApi().getSurprise(getUserId()).await()
+                val result = RetrofitService.getBabyApi().getSurpriseAsync(getUserId()).await()
 
                 if (result.data == null) {
                     return@launch

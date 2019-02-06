@@ -10,15 +10,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RetrofitService {
     companion object {
         @JvmField
-        val retrofit = Retrofit.Builder()
+        val retrofit: Retrofit = Retrofit.Builder()
                 .baseUrl("http://39.108.227.137:3000")
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
         @JvmField
-        val babyApi = retrofit.create(BabyApi::class.java)
+        val babyApi: BabyApi = retrofit.create(BabyApi::class.java)
 
-        fun getBabyApi() = babyApi
+        fun getBabyApi(): BabyApi = babyApi
     }
 }

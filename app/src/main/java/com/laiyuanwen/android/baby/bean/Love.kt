@@ -1,5 +1,7 @@
 package com.laiyuanwen.android.baby.bean
 
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.annotation.Keep
 import java.io.Serializable
 
@@ -16,4 +18,36 @@ data class Love(
         val createTime: Long,
         val images: List<String>?,
         val comments: List<LoveComment>
-) : Serializable
+) : Serializable, Parcelable {
+    constructor(parcel: Parcel) : this(
+            parcel.readLong(),
+            parcel.readString(),
+            parcel.readParcelable(User::class.java.classLoader),
+            parcel.readLong(),
+            parcel.createStringArrayList(),
+            parcel.createTypedArrayList(LoveComment)) {
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeLong(id)
+        parcel.writeString(content)
+        parcel.writeParcelable(user, flags)
+        parcel.writeLong(createTime)
+        parcel.writeStringList(images)
+        parcel.writeTypedList(comments)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Love> {
+        override fun createFromParcel(parcel: Parcel): Love {
+            return Love(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Love?> {
+            return arrayOfNulls(size)
+        }
+    }
+}
