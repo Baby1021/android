@@ -27,28 +27,52 @@ class LovesAdapter(
         private val callback: (Love) -> Unit
 ) : ListAdapter<Love, LovesAdapter.ViewHolder>(TaskDiffCallback()) {
 
+    class ViewHolder(val binding: ListItemLoveBinding) : RecyclerView.ViewHolder(binding.root)
+
+    class TaskDiffCallback : DiffUtil.ItemCallback<Love>() {
+
+        override fun areContentsTheSame(oldItem: Love, newItem: Love): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areItemsTheSame(oldItem: Love, newItem: Love): Boolean {
+            return oldItem == newItem
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = ListItemLoveBinding.inflate(LayoutInflater.from(parent.context), parent, false);
+        return ViewHolder(binding)
+    }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val format = SimpleDateFormat("MM/dd HH:mm", Locale.CHINA)
+
         val love = getItem(position)
 
-        holder.binding.loveContent.text = love.content
-        holder.binding.username.text = love.user.name
-        val format = SimpleDateFormat("MM/dd HH:mm", Locale.CHINA)
-        holder.binding.createTime.text = format.format(Date(love.createTime))
+        holder.binding.love = love
+        holder.binding.setCreateTime(format.format(Date(love.createTime)))
 
         holder.binding.commentBtn.setOnClickListener {
             showCommentEditDialog(love.id)
         }
 
-        Glide.with(fragment)
-                .load(love.user.avatar)
-                .into(holder.binding.avatar)
-
         holder.binding.root.setOnClickListener {
             callback(love)
         }
 
-        if (!love.images.isNullOrEmpty()) {
+        setImageLayout(love, holder)
+        setCommentLayout(love, holder)
 
+        Glide.with(fragment)
+                .load(love.user.avatar)
+                .into(holder.binding.avatar)
+    }
+
+    private fun setImageLayout(love: Love, holder: ViewHolder) {
+        if (!love.images.isNullOrEmpty()) {
+            holder.binding.imagesLayout.visibility = View.VISIBLE
+            holder.binding.imagesLayout.removeAllViews()
             love.images.forEachIndexed { index, s ->
                 val imageView = ListItemLoveImageBinding.inflate(
                         LayoutInflater.from(holder.binding.root.context), holder.binding.imagesLayout, true)
@@ -64,50 +88,32 @@ class LovesAdapter(
         } else {
             holder.binding.imagesLayout.visibility = View.GONE
         }
+    }
 
+    private fun setCommentLayout(love: Love, holder: ViewHolder) {
         if (!love.comments.isNullOrEmpty()) {
-
+            holder.binding.commentLayout.visibility = View.VISIBLE
+            holder.binding.commentLayout.removeAllViews()
             love.comments.forEach { comment ->
                 val commentBinding = ListItemLoveCommentBinding.inflate(LayoutInflater.from(holder.binding.root.context), holder.binding.commentLayout, true)
-                commentBinding.commentContent.text = comment.content
-                commentBinding.username.text = comment.user.name
+                commentBinding.comment = comment
             }
         } else {
             holder.binding.commentLayout.visibility = View.GONE
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ListItemLoveBinding.inflate(LayoutInflater.from(parent.context), parent, false);
-        return ViewHolder(binding)
-    }
-
-    class ViewHolder(val binding: ListItemLoveBinding) : RecyclerView.ViewHolder(binding.root)
-
-    class TaskDiffCallback : DiffUtil.ItemCallback<Love>() {
-
-        override fun areContentsTheSame(oldItem: Love, newItem: Love): Boolean {
-            return oldItem.id == newItem.id
-        }
-
-        override fun areItemsTheSame(oldItem: Love, newItem: Love): Boolean {
-            return oldItem == newItem
-        }
-
-    }
-
-    fun showCommentEditDialog(loveId: Long) {
+    private fun showCommentEditDialog(loveId: Long) {
         val input = EditText(fragment.context)
         val builder = AlertDialog.Builder(fragment.context)
 
         builder.setTitle("输入评论")
                 .setView(input)
-                .setNegativeButton("取消") { dialog, which ->
+                .setNegativeButton("取消") { dialog, _ ->
                     dialog.dismiss()
                 }
-                .setPositiveButton("确定") { dialog, which ->
-                    val content = input.text.toString()
-                    commentCallback(content,loveId)
+                .setPositiveButton("确定") { _, _ ->
+                    commentCallback(input.text.toString(), loveId)
                 }
         builder.show()
     }

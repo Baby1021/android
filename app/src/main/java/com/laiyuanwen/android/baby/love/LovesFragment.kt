@@ -71,7 +71,6 @@ class LovesFragment : BaseFragment() {
         adapter = LovesAdapter(this, { content, loveId ->
             viewModel.comment(content, loveId)
         }, { love ->
-            //            startLoveDetailActivity(this, love, LOVE_DETAIL)
             Toast.makeText(context, "❤❤❤❤❤❤❤❤❤❤❤❤", Toast.LENGTH_SHORT).show()
         })
         binding.list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -81,7 +80,6 @@ class LovesFragment : BaseFragment() {
 
                 if (position == adapter.itemCount - 1) {
                     // 触发下一页
-//                    Snackbar.make(recyclerView, "已经滑到底部啦", Snackbar.LENGTH_LONG).show()
                 }
             }
         })
@@ -112,10 +110,10 @@ class LovesFragment : BaseFragment() {
         })
 
         viewModel.commentResult.observe(this, Observer {
-            if (it){
+            if (it) {
                 Snackbar.make(binding.root, "评论成功", Snackbar.LENGTH_LONG).show()
                 viewModel.refresh()
-            } else{
+            } else {
                 Snackbar.make(binding.root, "评论失败", Snackbar.LENGTH_LONG).show()
             }
         })

@@ -40,4 +40,14 @@ class LoveRepository {
         map.add("comment", comment)
         return RetrofitService.getBabyApi().comment(map)
     }
+
+    fun exposureRemind(loveId: Long): Deferred<Body<Any>> {
+
+        val json = JsonObject()
+
+        json.addProperty("loveId", loveId)
+        json.addProperty("remind", "true")
+
+        return RetrofitService.getBabyApi().exposureRemind(json)
+    }
 }
