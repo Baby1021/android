@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.core.content.edit
 import com.laiyuanwen.android.baby.Common
 import com.laiyuanwen.android.baby.Common.SharedPreferenceKey.USER_ID
-import com.laiyuanwen.android.baby.TeamworkApplication.Companion.getApplicationContext
+import com.laiyuanwen.android.baby.BabyApplication.Companion.getApplicationContext
 
 /**
  * Created by laiyuanwen on 2019-01-19.
