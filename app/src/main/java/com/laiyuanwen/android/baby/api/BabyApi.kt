@@ -6,10 +6,7 @@ import com.laiyuanwen.android.baby.bean.NewVersionResult
 import com.laiyuanwen.android.baby.bean.SurpriseResponse
 import com.laiyuanwen.android.baby.bean.Task
 import kotlinx.coroutines.Deferred
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 /**
  * Created by laiyuanwen on 2018/12/31.
@@ -54,4 +51,10 @@ interface BabyApi {
      */
     @POST("api/v1/love/remind")
     fun exposureRemindAsync(@Body data: JsonObject): Deferred<HttpBody<Any>>
+
+    /**
+     * 更新PushToken
+     */
+    @PUT("api/v1/user/pushToken")
+    fun uploadPushToken(@Body data: JsonObject): Deferred<HttpBody<Any>>
 }

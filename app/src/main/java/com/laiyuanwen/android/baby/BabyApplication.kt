@@ -3,6 +3,7 @@ package com.laiyuanwen.android.baby
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
+import com.laiyuanwen.android.baby.util.savePushToken
 import com.umeng.commonsdk.UMConfigure
 import com.umeng.message.IUmengRegisterCallback
 import com.umeng.message.PushAgent
@@ -49,6 +50,7 @@ class BabyApplication : FlutterApplication() {
             override fun onSuccess(deviceToken: String) {
                 //注册成功会返回deviceToken deviceToken是推送消息的唯一标志
                 Log.i(TAG, "注册成功：deviceToken：-------->  $deviceToken")
+                savePushToken(deviceToken)
             }
 
             override fun onFailure(s: String, s1: String) {

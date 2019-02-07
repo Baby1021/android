@@ -5,6 +5,7 @@ import androidx.core.content.edit
 import com.laiyuanwen.android.baby.Common
 import com.laiyuanwen.android.baby.Common.SharedPreferenceKey.USER_ID
 import com.laiyuanwen.android.baby.BabyApplication.Companion.getApplicationContext
+import com.laiyuanwen.android.baby.Common.SharedPreferenceKey.PUSH_TOKEN
 
 /**
  * Created by laiyuanwen on 2019-01-19.
@@ -33,3 +34,12 @@ fun saveLogin(context: Context, userId: String) {
     }
 }
 
+fun getPushToken(): String =
+        getSp(getApplicationContext()).getString(PUSH_TOKEN, "") ?: ""
+
+
+fun savePushToken(token: String) {
+    getSp(getApplicationContext()).edit {
+        this.putString(Common.SharedPreferenceKey.PUSH_TOKEN, token)
+    }
+}

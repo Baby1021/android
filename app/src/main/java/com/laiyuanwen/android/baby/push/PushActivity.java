@@ -4,9 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.laiyuanwen.android.baby.LoginActivity;
+import com.laiyuanwen.android.baby.MainActivity;
 import com.umeng.message.UmengNotifyClickActivity;
 
 import org.android.agoo.common.AgooConstants;
+
+import static com.laiyuanwen.android.baby.util.UserCenterKt.isLogin;
 
 /**
  * Created by laiyuanwen on 2019-02-07.
@@ -18,7 +22,12 @@ public class PushActivity extends UmengNotifyClickActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-//        setContentView(R.layout.activity_mipush);
+        if (isLogin(this)) {
+            startActivity(new Intent(this, MainActivity.class));
+        } else {
+            startActivity(new Intent(this, LoginActivity.class));
+        }
+        finish();
     }
 
     @Override

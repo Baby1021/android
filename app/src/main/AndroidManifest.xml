@@ -17,7 +17,8 @@
 
     <permission
         android:name="com.laiyuanwen.android.baby.permission.MIPUSH_RECEIVE"
-        android:protectionLevel="signature" />
+        android:protectionLevel="signature"
+        tools:replace="android:protectionLevel" />
 
     <uses-permission android:name="com.laiyuanwen.android.baby.permission.MIPUSH_RECEIVE" />
 
@@ -38,7 +39,8 @@
         <activity
             android:name=".push.PushActivity"
             android:exported="true"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:theme="@style/WelcomeTheme" />
 
         <!-- 欢迎页 -->
         <activity
