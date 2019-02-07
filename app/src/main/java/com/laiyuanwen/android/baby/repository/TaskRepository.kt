@@ -21,7 +21,7 @@ class TaskRepository {
 
     }
 
-    fun getTasks(): Deferred<List<Task>> {
-        return RetrofitService.getBabyApi().getTasks(getUserId(), 1, 10)
+    suspend fun getTasks(): List<Task> {
+        return RetrofitService.getBabyApi().getTasksAsync(getUserId(), 1, 10).await()
     }
 }

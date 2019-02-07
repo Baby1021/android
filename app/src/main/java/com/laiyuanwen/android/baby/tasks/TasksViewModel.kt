@@ -30,7 +30,7 @@ class TasksViewModel(
         CoroutineScope(Dispatchers.IO).launch {
             try {
 
-                val result = repository.getTasks().await()
+                val result = repository.getTasks()
 
                 withContext(Dispatchers.Main) {
                     tasks.value = result

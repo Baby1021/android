@@ -30,7 +30,7 @@ class LovesViewModel(
     private fun fetchReminds() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val result = repository.getRemindLoves().await()
+                val result = repository.getRemindLoves()
 
                 withContext(Dispatchers.Main) {
                     reminds.value = result
@@ -48,7 +48,7 @@ class LovesViewModel(
     fun fetch() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val result = repository.getLoves().await()
+                val result = repository.getLoves()
 
                 withContext(Dispatchers.Main) {
                     loves.value = result
@@ -62,7 +62,7 @@ class LovesViewModel(
     fun comment(content: String, loveId: Long) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val result = repository.comment(content, loveId).await()
+                val result = repository.comment(content, loveId)
 
                 withContext(Dispatchers.Main) {
                     commentResult.value = true

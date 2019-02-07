@@ -12,7 +12,7 @@ object BuglyCenter {
 
     fun init(context: Context) {
         val strategy = CrashReport.UserStrategy(context)
-        strategy.appChannel = BuildConfig.BUILD_TYPE
+        strategy.appChannel = if (BuildConfig.DEBUG) "debug" else "Umeng"
         Bugly.init(context, "7484f50fa8", BuildConfig.DEBUG, strategy)
     }
 

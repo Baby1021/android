@@ -3,8 +3,6 @@ package com.laiyuanwen.android.baby
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.laiyuanwen.android.baby.Common.SharedPreferenceKey.USER_ID
-import com.laiyuanwen.android.baby.util.getSp
 import com.laiyuanwen.android.baby.util.isLogin
 
 class WelcomeActivity : AppCompatActivity() {

@@ -18,6 +18,7 @@ object Common {
 
     object SharedPreferenceKey {
         const val USER_ID = "userId"
+        const val PUSH_TOKEN = "push_token"
     }
 
     object BundleKey {

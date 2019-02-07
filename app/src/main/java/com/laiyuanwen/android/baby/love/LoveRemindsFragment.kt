@@ -19,8 +19,6 @@ import com.laiyuanwen.android.baby.repository.LoveRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.lang.Exception
 
 
 /**
@@ -129,7 +127,7 @@ class LoveRemindsFragment(
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                repository.exposureRemind(loveId).await()
+                repository.exposureRemind(loveId)
             } catch (e: Exception) {
                 e.printStackTrace()
             }

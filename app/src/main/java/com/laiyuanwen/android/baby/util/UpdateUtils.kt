@@ -37,7 +37,7 @@ fun checkUpdate(context: Context,
     CoroutineScope(Dispatchers.IO).launch {
         try {
 
-            val result = RetrofitService.getBabyApi().checkUpdate(BuildConfig.VERSION_CODE).await()
+            val result = RetrofitService.getBabyApi().checkUpdateAsync(BuildConfig.VERSION_CODE).await()
 
             if (result.version == null) {
                 return@launch

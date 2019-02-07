@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
     app:startDestination="@id/lovesFragment">
 
     <fragment
-        android:id="@+id/home_fragment"
-        android:name="com.laiyuanwen.android.baby.tasks.TasksFragment">
-
-        <action
-            android:id="@+id/action_home_to_user"
-            app:destination="@id/user_fragment" />
-    </fragment>
-
-    <fragment
         android:id="@+id/lovesFragment"
         android:name="com.laiyuanwen.android.baby.love.LovesFragment"
-        android:label="LovesFragment">
+        android:label="LovesFragment"
+        tools:layout="@layout/fragment_loves">
         <action
             android:id="@+id/action_home_fragment_to_imageDetailFragment"
             app:destination="@id/imageDetailFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
-
-    </fragment>
-
-    <fragment
-        android:id="@+id/user_fragment"
-        android:name="com.laiyuanwen.android.baby.user.UserFragment">
-
         <action
-            android:id="@+id/action_user_to_home"
-            app:destination="@id/home_fragment" />
+            android:id="@+id/action_lovesFragment_to_loveRemindsFragment"
+            app:destination="@id/loveRemindsFragment" />
+        <action
+            android:id="@+id/action_lovesFragment_to_voiceSurpriseDialogFragment"
+            app:destination="@id/voiceSurpriseDialogFragment" />
+        <action
+            android:id="@+id/action_lovesFragment_to_videoSurpriseDialogFragment"
+            app:destination="@id/videoSurpriseDialogFragment" />
+        <action
+            android:id="@+id/action_lovesFragment_to_imageSurpriseDialogFragment"
+            app:destination="@id/imageSurpriseDialogFragment" />
+        <action
+            android:id="@+id/action_lovesFragment_to_loveDetailActivity"
+            app:destination="@id/loveDetailActivity" />
+
     </fragment>
 
     <fragment
         android:id="@+id/imageDetailFragment"
         android:name="com.laiyuanwen.android.baby.love.ImageDetailFragment"
-        android:label="ImageDetailFragment">
+        android:label="ImageDetailFragment"
+        tools:layout="@layout/fragment_image">
 
         <argument
             android:name="images"
@@ -47,7 +47,39 @@
             android:name="index"
             app:argType="integer" />
 
+    </fragment>
+
+    <fragment
+        android:id="@+id/loveRemindsFragment"
+        android:name="com.laiyuanwen.android.baby.love.LoveRemindsFragment"
+        android:label="LoveRemindsFragment"
+        tools:layout="@layout/fragment_love_reminds">
+
+        <argument
+            android:name="loves"
+            app:argType="com.laiyuanwen.android.baby.bean.Love[]" />
+
+        <action
+            android:id="@+id/action_loveRemindsFragment_to_imageDetailFragment"
+            app:destination="@id/imageDetailFragment" />
 
     </fragment>
+    <fragment
+        android:id="@+id/imageSurpriseDialogFragment"
+        android:name="com.laiyuanwen.android.baby.surprise.ImageSurpriseDialogFragment"
+        android:label="ImageSurpriseDialogFragment" />
+    <fragment
+        android:id="@+id/videoSurpriseDialogFragment"
+        android:name="com.laiyuanwen.android.baby.surprise.VideoSurpriseDialogFragment"
+        android:label="VideoSurpriseDialogFragment" />
+    <fragment
+        android:id="@+id/voiceSurpriseDialogFragment"
+        android:name="com.laiyuanwen.android.baby.surprise.VoiceSurpriseDialogFragment"
+        android:label="VoiceSurpriseDialogFragment" />
+    <activity
+        android:id="@+id/loveDetailActivity"
+        android:name="com.laiyuanwen.android.baby.flutter.LoveDetailActivity"
+        android:label="activity_detail"
+        tools:layout="@layout/activity_detail" />
 
 </navigation>

@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
@@ -25,7 +26,7 @@ import kotlinx.android.synthetic.main.fragment_loves.*
 class LovesFragment : BaseFragment() {
 
     private lateinit var viewModel: LovesViewModel
-    private lateinit var binding: com.laiyuanwen.android.baby.databinding.FragmentLovesBinding
+    private lateinit var binding: FragmentLovesBinding
     private lateinit var adapter: LovesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,6 +101,7 @@ class LovesFragment : BaseFragment() {
         })
 
         viewModel.reminds.observe(this, Observer { remind ->
+            // todo navigation
             if (remind.isNullOrEmpty())
                 return@Observer
 
