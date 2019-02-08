@@ -11,8 +11,8 @@ android {
         applicationId "com.laiyuanwen.android.baby"
         minSdkVersion 23
         targetSdkVersion 28
-        versionCode 5
-        versionName "0.0.5"
+        versionCode 6
+        versionName "0.0.6"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         ndk {
@@ -31,6 +31,14 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    signingConfigs {
+        release {
+            storeFile file('~/Android签名')
+            storePassword System.getenv('05280122')
+            keyAlias = 'wen'
+            keyPassword System.getenv('05280122')
+        }
     }
 
 
