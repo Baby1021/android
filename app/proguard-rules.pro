@@ -31,9 +31,9 @@
 -keep class io.flutter.plugins.**  { *; }
 
 # Bugly 混淆配
--dontwarn com.tencent.bugly.**
--keep public class com.tencent.bugly.**{*;}
--keep class android.support.**{*;}
+#-dontwarn com.tencent.bugly.**
+#-keep public class com.tencent.bugly.**{*;}
+#-keep class android.support.**{*;}
 
 ## Okhttp
 -dontwarn okhttp3.**
@@ -90,3 +90,10 @@
 -keep public class **.R$*{
    public static final int *;
 }
+
+
+# 蒲公英
+-libraryjars libs/pgyer_sdk_x.x.jar
+-dontwarn com.pgyersdk.**
+-keep class com.pgyersdk.** { *; }
+-keep class com.pgyersdk.**$* { *; }

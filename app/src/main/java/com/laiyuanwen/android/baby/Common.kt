@@ -32,4 +32,8 @@ object Common {
         const val FLUTTER_RESULT = 1
         const val LOVE_DETAIL = 2
     }
+
+    object PermissionRequestCode {
+        const val RC_WRITE_EXTERNAL_STORAGE = 1
+    }
 }
