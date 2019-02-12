@@ -46,6 +46,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+        navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
+            val currentName = (navHostFragment.navController.currentDestination as FragmentNavigator.Destination).className
+            when (currentName) {
+                HomeFragment::class.java.name -> {
+                    navigation_view.selectedItemId = R.id.navigation_home
+                }
+                LovesFragment::class.java.name -> {
+                    navigation_view.selectedItemId = R.id.navigation_love
+                }
+                TakeCaseFragment::class.java.name -> {
+                    navigation_view.selectedItemId = R.id.navigation_take_case
+                }
+                TasksFragment::class.java.name -> {
+                    navigation_view.selectedItemId = R.id.navigation_tasks
+                }
+                UserFragment::class.java.name -> {
+                    navigation_view.selectedItemId = R.id.navigation_user
+                }
+            }
+        }
         navigation_view.setOnNavigationItemSelectedListener { item ->
             val currentName = (navHostFragment.navController.currentDestination as FragmentNavigator.Destination).className
             when (item.itemId) {
