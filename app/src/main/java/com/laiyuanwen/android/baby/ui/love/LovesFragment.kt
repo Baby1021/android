@@ -1,4 +1,4 @@
-package com.laiyuanwen.android.baby.love
+package com.laiyuanwen.android.baby.ui.love
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
@@ -19,7 +18,9 @@ import com.laiyuanwen.android.baby.base.BaseFragment
 import com.laiyuanwen.android.baby.bean.Surprise
 import com.laiyuanwen.android.baby.databinding.FragmentLovesBinding
 import com.laiyuanwen.android.baby.inject.Injector
-import com.laiyuanwen.android.baby.surprise.ImageSurpriseDialogFragment
+import com.laiyuanwen.android.baby.love.LovesAdapter
+import com.laiyuanwen.android.baby.love.LovesViewModel
+import com.laiyuanwen.android.baby.ui.surprise.ImageSurpriseDialogFragment
 import com.laiyuanwen.android.baby.util.getUserId
 import com.laiyuanwen.android.baby.util.startLoveDetailActivity
 import kotlinx.android.synthetic.main.fragment_loves.*

@@ -1,4 +1,4 @@
-package com.laiyuanwen.android.baby.tasks
+package com.laiyuanwen.android.baby.ui.task
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.laiyuanwen.android.baby.base.BaseFragment
 import com.laiyuanwen.android.baby.databinding.FragmentTasksBinding
 import com.laiyuanwen.android.baby.inject.Injector
-import com.laiyuanwen.android.baby.util.Provider
+import com.laiyuanwen.android.baby.tasks.TasksAdapter
+import com.laiyuanwen.android.baby.tasks.TasksViewModel
 
 /**
  * Created by laiyuanwen on 2018/12/31.
@@ -44,7 +44,7 @@ class TasksFragment : BaseFragment() {
 
     private fun initRecyclerView() {
         adapter = TasksAdapter(this) { task ->
-//            findNavController().navigate(TasksFragmentDirections.actionHomeFragmentToDetailActivity(Provider.getGson().toJson(task)))
+            //            findNavController().navigate(TasksFragmentDirections.actionHomeFragmentToDetailActivity(Provider.getGson().toJson(task)))
         }
         binding.list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {

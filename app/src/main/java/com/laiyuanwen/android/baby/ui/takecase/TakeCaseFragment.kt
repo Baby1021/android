@@ -1,19 +1,23 @@
-package com.laiyuanwen.android.baby.user
+package com.laiyuanwen.android.baby.ui.takecase
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.laiyuanwen.android.baby.base.BaseFragment
-import com.laiyuanwen.android.baby.databinding.FragmentUserBinding
+import com.laiyuanwen.android.baby.databinding.FragmentTakeCaseBinding
 
 /**
- * Created by laiyuanwen on 2018/12/31.
+ * Created by laiyuanwen on 2019-02-11.
+ *
+ * 关爱
  */
-class UserFragment : BaseFragment() {
+class TakeCaseFragment : BaseFragment() {
+
+    lateinit var binding: FragmentTakeCaseBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val binding = FragmentUserBinding.inflate(inflater, container, false)
+        binding = FragmentTakeCaseBinding.inflate(layoutInflater)
         return binding.root
     }
 }
