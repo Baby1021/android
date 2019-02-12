@@ -34,30 +34,30 @@ class TasksFragment : BaseFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel = ViewModelProviders.of(this, Injector.provideTasksViewModelFactory(requireContext()))
-                .get(TasksViewModel::class.java)
-
-        initRecyclerView()
-        initRefresh()
-        subscribeUI()
+//        viewModel = ViewModelProviders.of(this, Injector.provideTasksViewModelFactory(requireContext()))
+//                .get(TasksViewModel::class.java)
+//
+//        initRecyclerView()
+//        initRefresh()
+//        subscribeUI()
     }
 
     private fun initRecyclerView() {
-        adapter = TasksAdapter(this) { task ->
-            //            findNavController().navigate(TasksFragmentDirections.actionHomeFragmentToDetailActivity(Provider.getGson().toJson(task)))
-        }
-        binding.list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-                val position = layoutManager.findLastVisibleItemPosition()
-
-                if (position == adapter.itemCount - 1) {
-                    // 触发下一页
-                    Snackbar.make(recyclerView, "已经滑到底部啦", Snackbar.LENGTH_LONG).show()
-                }
-            }
-        })
-        binding.list.adapter = adapter
+//        adapter = TasksAdapter(this) { task ->
+//            //            findNavController().navigate(TasksFragmentDirections.actionHomeFragmentToDetailActivity(Provider.getGson().toJson(task)))
+//        }
+//        binding.list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+//                val position = layoutManager.findLastVisibleItemPosition()
+//
+//                if (position == adapter.itemCount - 1) {
+//                    // 触发下一页
+//                    Snackbar.make(recyclerView, "已经滑到底部啦", Snackbar.LENGTH_LONG).show()
+//                }
+//            }
+//        })
+//        binding.list.adapter = adapter
     }
 
     private fun initRefresh() {
