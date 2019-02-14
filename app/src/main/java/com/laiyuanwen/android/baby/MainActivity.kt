@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ActionOnlyNavDirections
 import androidx.navigation.NavDirections
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -71,32 +72,31 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.navigation_home -> {
                     if (currentName != HomeFragment::class.java.name) {
-                        navHostFragment.findNavController().navigate(ActionOnlyNavDirections(R.id.main_to_home))
-                        navHostFragment.navController
+                        navHostFragment.findNavController().navigate(R.id.homeFragment)
                     }
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.navigation_love -> {
                     if (currentName != LovesFragment::class.java.name) {
-                        navHostFragment.findNavController().navigate(ActionOnlyNavDirections(R.id.main_to_love))
+                        navHostFragment.findNavController().navigate(R.id.lovesFragment)
                     }
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.navigation_take_case -> {
                     if (currentName != TakeCaseFragment::class.java.name) {
-                        navHostFragment.findNavController().navigate(ActionOnlyNavDirections(R.id.main_to_take_case))
+                        navHostFragment.findNavController().navigate(R.id.takeCaseFragment)
                     }
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.navigation_tasks -> {
                     if (currentName != TasksFragment::class.java.name) {
-                        navHostFragment.findNavController().navigate(ActionOnlyNavDirections(R.id.main_to_task))
+                        navHostFragment.findNavController().navigate(R.id.tasksFragment)
                     }
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.navigation_user -> {
                     if (currentName != UserFragment::class.java.name) {
-                        navHostFragment.findNavController().navigate(ActionOnlyNavDirections(R.id.main_to_user))
+                        navHostFragment.findNavController().navigate(R.id.userFragment)
                     }
                     return@setOnNavigationItemSelectedListener true
                 }

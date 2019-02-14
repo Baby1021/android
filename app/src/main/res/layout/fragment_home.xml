@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout">
 
     <data />
 
@@ -9,18 +11,192 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- 自定义背景 -->
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon"
+            app:layout_constraintBottom_toTopOf="@+id/horizontal_40_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <!-- 头像背景 -->
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:background="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@+id/horizontal_40_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- 用户头像 -->
+        <ImageView
+            android:id="@+id/boy_avatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/icon"
+            app:layout_constraintBottom_toTopOf="@+id/horizontal_40_line"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- 用户头像 -->
+        <ImageView
+            android:id="@+id/girl_avatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/icon"
+            app:layout_constraintBottom_toTopOf="@+id/horizontal_40_line"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- 恋爱时间 -->
         <TextView
+            android:id="@+id/start_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="在一起1234天7小时5分10秒啦"
+            android:textColor="#444444"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/horizontal_40_line"
+            app:layout_constraintEnd_toStartOf="@+id/girl_avatar"
+            app:layout_constraintStart_toEndOf="@+id/boy_avatar" />
+
+        <!-- 小金库 -->
+        <TextView
+            android:id="@+id/money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:text="功能开发中"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="小金库：¥1000"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/girl_recent_photo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/horizontal_40_line" />
+
+        <TextView
+            android:id="@+id/girl_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="睡觉中"
+            app:layout_constraintEnd_toEndOf="@id/girl_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/girl_avatar" />
+
+        <TextView
+            android:id="@+id/boy_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上班中~~"
+            app:layout_constraintStart_toStartOf="@+id/boy_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/boy_avatar" />
+
+        <ImageView
+            android:id="@+id/girl_recent_photo"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon"
+            app:layout_constraintBottom_toTopOf="@id/operation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/center_line"
+            app:layout_constraintTop_toTopOf="@id/horizontal_40_line"
+            tools:layout_editor_absoluteY="233dp" />
+
+
+        <ImageView
+            android:id="@+id/boy_recent_photo"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon"
+            app:layout_constraintBottom_toTopOf="@id/operation"
+            app:layout_constraintEnd_toStartOf="@+id/center_line"
+            app:layout_constraintHorizontal_bias="0.275"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/horizontal_40_line"
+            tools:layout_editor_absoluteY="233dp" />
+
+        <TextView
+            android:id="@+id/boy_more_recent_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="更新时间，11-12"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/boy_recent_photo"
+            app:layout_constraintStart_toStartOf="@+id/boy_recent_photo"
+            app:layout_constraintTop_toBottomOf="@+id/boy_recent_photo" />
+
+        <TextView
+            android:id="@+id/girl_more_recent_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="更新时间，11-12"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/girl_recent_photo"
+            app:layout_constraintStart_toStartOf="@+id/girl_recent_photo"
+            app:layout_constraintTop_toBottomOf="@+id/girl_recent_photo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="小目标"
+            app:layout_constraintBottom_toTopOf="@+id/girl_recent_photo"
+            app:layout_constraintEnd_toEndOf="@+id/girl_more_recent_photo"
+            app:layout_constraintStart_toStartOf="@+id/girl_more_recent_photo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="小目标"
+            app:layout_constraintBottom_toTopOf="@+id/boy_recent_photo"
+            app:layout_constraintEnd_toEndOf="@+id/boy_more_recent_photo"
+            app:layout_constraintStart_toStartOf="@+id/boy_more_recent_photo" />
+
+        <TextView
+            android:id="@+id/operation"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/center_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontal_40_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.35" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
