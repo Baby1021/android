@@ -2,32 +2,18 @@ package com.laiyuanwen.android.baby
 
 import android.Manifest
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.ActionOnlyNavDirections
-import androidx.navigation.NavDirections
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navOptions
-import com.google.gson.JsonObject
 import com.laiyuanwen.android.baby.Common.PermissionRequestCode.RC_WRITE_EXTERNAL_STORAGE
-import com.laiyuanwen.android.baby.api.RetrofitService
 import com.laiyuanwen.android.baby.platform.PlatformService
 import com.laiyuanwen.android.baby.ui.home.HomeFragment
-import com.laiyuanwen.android.baby.ui.home.HomeFragmentDirections
 import com.laiyuanwen.android.baby.ui.love.LovesFragment
-import com.laiyuanwen.android.baby.ui.love.LovesFragmentDirections
 import com.laiyuanwen.android.baby.ui.takecase.TakeCaseFragment
 import com.laiyuanwen.android.baby.ui.task.TasksFragment
 import com.laiyuanwen.android.baby.ui.user.UserFragment
-import com.laiyuanwen.android.baby.util.getPushToken
-import com.laiyuanwen.android.baby.util.getUserId
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import pub.devrel.easypermissions.AfterPermissionGranted
 import pub.devrel.easypermissions.EasyPermissions
 

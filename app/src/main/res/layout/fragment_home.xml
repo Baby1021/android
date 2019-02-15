@@ -9,194 +9,212 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg">
 
-        <!-- 自定义背景 -->
+        <com.laiyuanwen.android.baby.ui.CircleImageView
+            android:id="@+id/left_avatar"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/icon"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/love_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="1000天"
+            android:textColor="#636363"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/left_avatar"
+            app:layout_constraintEnd_toStartOf="@+id/right_avatar"
+            app:layout_constraintStart_toEndOf="@+id/left_avatar"
+            app:layout_constraintTop_toTopOf="@+id/left_avatar" />
+
+        <TextView
+            android:id="@+id/love_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="10小时20分钟23秒"
+            android:textColor="#5F5F5F"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/right_avatar"
+            app:layout_constraintStart_toEndOf="@+id/left_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/love_date" />
+
+        <com.laiyuanwen.android.baby.ui.CircleImageView
+            android:id="@+id/right_avatar"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/icon"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/left_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_main_state_left"
+            android:paddingStart="16dp"
+            android:paddingTop="3dp"
+            android:paddingEnd="15dp"
+            android:paddingBottom="3dp"
+            android:text="上班中"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/left_avatar" />
+
+        <TextView
+            android:id="@+id/right_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_main_state_right"
+            android:paddingStart="15dp"
+            android:paddingTop="3dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="3dp"
+            android:text="上班中"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/right_avatar" />
+
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageview"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="8dp"
+            android:minHeight="200dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/icon"
-            app:layout_constraintBottom_toTopOf="@+id/horizontal_40_line"
+            android:src="@drawable/test2"
+            app:layout_constraintBottom_toTopOf="@+id/nestedScrollView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@id/right_state" />
 
-        <!-- 头像背景 -->
-        <View
-            android:id="@+id/view"
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
             android:layout_width="0dp"
-            android:layout_height="25dp"
-            android:background="@android:color/white"
-            app:layout_constraintBottom_toTopOf="@+id/horizontal_40_line"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <!-- 用户头像 -->
-        <ImageView
-            android:id="@+id/boy_avatar"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/icon"
-            app:layout_constraintBottom_toTopOf="@+id/horizontal_40_line"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <!-- 用户头像 -->
-        <ImageView
-            android:id="@+id/girl_avatar"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/icon"
-            app:layout_constraintBottom_toTopOf="@+id/horizontal_40_line"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <!-- 恋爱时间 -->
-        <TextView
-            android:id="@+id/start_day"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="在一起1234天7小时5分10秒啦"
-            android:textColor="#444444"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/horizontal_40_line"
-            app:layout_constraintEnd_toStartOf="@+id/girl_avatar"
-            app:layout_constraintStart_toEndOf="@+id/boy_avatar" />
-
-        <!-- 小金库 -->
-        <TextView
-            android:id="@+id/money"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:text="小金库：¥1000"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/girl_recent_photo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/horizontal_40_line" />
-
-        <TextView
-            android:id="@+id/girl_state"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="睡觉中"
-            app:layout_constraintEnd_toEndOf="@id/girl_avatar"
-            app:layout_constraintTop_toBottomOf="@+id/girl_avatar" />
-
-        <TextView
-            android:id="@+id/boy_state"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="上班中~~"
-            app:layout_constraintStart_toStartOf="@+id/boy_avatar"
-            app:layout_constraintTop_toBottomOf="@+id/boy_avatar" />
-
-        <ImageView
-            android:id="@+id/girl_recent_photo"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/icon"
-            app:layout_constraintBottom_toTopOf="@id/operation"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/center_line"
-            app:layout_constraintTop_toTopOf="@id/horizontal_40_line"
-            tools:layout_editor_absoluteY="233dp" />
-
-
-        <ImageView
-            android:id="@+id/boy_recent_photo"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/icon"
-            app:layout_constraintBottom_toTopOf="@id/operation"
-            app:layout_constraintEnd_toStartOf="@+id/center_line"
-            app:layout_constraintHorizontal_bias="0.275"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/horizontal_40_line"
-            tools:layout_editor_absoluteY="233dp" />
-
-        <TextView
-            android:id="@+id/boy_more_recent_photo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="更新时间，11-12"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toEndOf="@+id/boy_recent_photo"
-            app:layout_constraintStart_toStartOf="@+id/boy_recent_photo"
-            app:layout_constraintTop_toBottomOf="@+id/boy_recent_photo" />
-
-        <TextView
-            android:id="@+id/girl_more_recent_photo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="更新时间，11-12"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toEndOf="@+id/girl_recent_photo"
-            app:layout_constraintStart_toStartOf="@+id/girl_recent_photo"
-            app:layout_constraintTop_toBottomOf="@+id/girl_recent_photo" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="小目标"
-            app:layout_constraintBottom_toTopOf="@+id/girl_recent_photo"
-            app:layout_constraintEnd_toEndOf="@+id/girl_more_recent_photo"
-            app:layout_constraintStart_toStartOf="@+id/girl_more_recent_photo" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="小目标"
-            app:layout_constraintBottom_toTopOf="@+id/boy_recent_photo"
-            app:layout_constraintEnd_toEndOf="@+id/boy_more_recent_photo"
-            app:layout_constraintStart_toStartOf="@+id/boy_more_recent_photo" />
-
-        <TextView
-            android:id="@+id/operation"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/center_line"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/horizontal_40_line"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.35" />
+                <TextView
+                    android:id="@+id/operation_blue"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/operation_blue"
+                    android:gravity="center"
+                    android:text="任务"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/operation_zi"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/operation_zi"
+                    android:gravity="center"
+                    android:text="购物车"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/operation_blue" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/operation_shenglang"
+                    android:gravity="center"
+                    android:text="小目标"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/operation_zi" />
+
+                <TextView
+                    android:id="@+id/view3"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/operation_cheng"
+                    android:gravity="center"
+                    android:text="小金库"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/operation_green"
+                    android:gravity="center"
+                    android:text="宝贝近照"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+                <TextView
+                    android:id="@+id/view2"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/operation_fenghong"
+                    android:gravity="center"
+                    android:text="纪念日"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/guideline"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

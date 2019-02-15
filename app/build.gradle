@@ -54,10 +54,13 @@ buildDir = new File(rootProject.projectDir, "../baby_flutter/build/host")
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha11'
-    implementation 'android.arch.navigation:navigation-ui:1.0.0-alpha11'
-    implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0-alpha11'
-    implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0-alpha11'
+
+
+    def navigation_version = "1.0.0-beta02"
+    implementation "android.arch.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "android.arch.navigation:navigation-ui-ktx:$navigation_version"
+
+
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.core:core-ktx:1.0.1'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
