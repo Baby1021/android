@@ -1,4 +1,4 @@
-package com.laiyuanwen.android.baby.surprise
+package com.laiyuanwen.android.baby.ui.surprise
 
 import com.laiyuanwen.android.baby.base.BaseDialogFragment
 

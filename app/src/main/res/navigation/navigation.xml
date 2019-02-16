@@ -3,11 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/lovesFragment">
+    app:startDestination="@id/homeFragment">
 
+
+    <!-- 首页 -->
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.laiyuanwen.android.baby.ui.home.HomeFragment"
+        android:label="首页"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/main_to_take_case"
+            app:destination="@id/takeCaseFragment" />
+        <action
+            android:id="@+id/main_to_user"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/main_to_task"
+            app:destination="@id/tasksFragment" />
+        <action
+            android:id="@+id/main_to_love"
+            app:destination="@id/lovesFragment" />
+    </fragment>
+
+    <!-- Love列表 -->
     <fragment
         android:id="@+id/lovesFragment"
-        android:name="com.laiyuanwen.android.baby.love.LovesFragment"
+        android:name="com.laiyuanwen.android.baby.ui.love.LovesFragment"
         android:label="LovesFragment"
         tools:layout="@layout/fragment_loves">
         <action
@@ -30,9 +52,22 @@
         <action
             android:id="@+id/action_lovesFragment_to_loveDetailActivity"
             app:destination="@id/loveDetailActivity" />
+        <action
+            android:id="@+id/main_to_take_case"
+            app:destination="@id/takeCaseFragment" />
+        <action
+            android:id="@+id/main_to_user"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/main_to_home"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/main_to_task"
+            app:destination="@id/tasksFragment" />
 
     </fragment>
 
+    <!-- 图片详情 -->
     <fragment
         android:id="@+id/imageDetailFragment"
         android:name="com.laiyuanwen.android.baby.love.ImageDetailFragment"
@@ -49,9 +84,10 @@
 
     </fragment>
 
+    <!-- love提醒列表 -->
     <fragment
         android:id="@+id/loveRemindsFragment"
-        android:name="com.laiyuanwen.android.baby.love.LoveRemindsFragment"
+        android:name="com.laiyuanwen.android.baby.ui.love.LoveRemindsFragment"
         android:label="LoveRemindsFragment"
         tools:layout="@layout/fragment_love_reminds">
 
@@ -64,22 +100,100 @@
             app:destination="@id/imageDetailFragment" />
 
     </fragment>
+
+    <!-- todo 这个Surprise应该可以合并 -->
     <fragment
         android:id="@+id/imageSurpriseDialogFragment"
-        android:name="com.laiyuanwen.android.baby.surprise.ImageSurpriseDialogFragment"
+        android:name="com.laiyuanwen.android.baby.ui.surprise.ImageSurpriseDialogFragment"
         android:label="ImageSurpriseDialogFragment" />
     <fragment
         android:id="@+id/videoSurpriseDialogFragment"
-        android:name="com.laiyuanwen.android.baby.surprise.VideoSurpriseDialogFragment"
+        android:name="com.laiyuanwen.android.baby.ui.surprise.VideoSurpriseDialogFragment"
         android:label="VideoSurpriseDialogFragment" />
     <fragment
         android:id="@+id/voiceSurpriseDialogFragment"
-        android:name="com.laiyuanwen.android.baby.surprise.VoiceSurpriseDialogFragment"
+        android:name="com.laiyuanwen.android.baby.ui.surprise.VoiceSurpriseDialogFragment"
         android:label="VoiceSurpriseDialogFragment" />
+
     <activity
         android:id="@+id/loveDetailActivity"
         android:name="com.laiyuanwen.android.baby.flutter.LoveDetailActivity"
         android:label="activity_detail"
         tools:layout="@layout/activity_detail" />
+    <fragment
+        android:id="@+id/dateFragment"
+        android:name="com.laiyuanwen.android.baby.ui.date.DateFragment"
+        android:label="DateFragment">
+        <action
+            android:id="@+id/main_to_task"
+            app:destination="@id/tasksFragment" />
+        <action
+            android:id="@+id/main_to_take_case"
+            app:destination="@id/takeCaseFragment" />
+        <action
+            android:id="@+id/main_to_love"
+            app:destination="@id/lovesFragment" />
+        <action
+            android:id="@+id/main_to_home"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/main_to_user"
+            app:destination="@id/userFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/takeCaseFragment"
+        android:name="com.laiyuanwen.android.baby.ui.takecase.TakeCaseFragment"
+        android:label="TakeCaseFragment">
+        <action
+            android:id="@+id/main_to_love"
+            app:destination="@id/lovesFragment" />
+        <action
+            android:id="@+id/action_to_date"
+            app:destination="@id/dateFragment" />
+        <action
+            android:id="@+id/main_to_home"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/main_to_task"
+            app:destination="@id/tasksFragment" />
+        <action
+            android:id="@+id/main_to_user"
+            app:destination="@id/userFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.laiyuanwen.android.baby.ui.user.UserFragment"
+        android:label="UserFragment">
+        <action
+            android:id="@+id/main_to_task"
+            app:destination="@id/tasksFragment" />
+        <action
+            android:id="@+id/main_to_take_case"
+            app:destination="@id/takeCaseFragment" />
+        <action
+            android:id="@+id/main_to_love"
+            app:destination="@id/lovesFragment" />
+        <action
+            android:id="@+id/main_to_home"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tasksFragment"
+        android:name="com.laiyuanwen.android.baby.ui.task.TasksFragment"
+        android:label="TasksFragment">
+        <action
+            android:id="@+id/main_to_user"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/main_to_take_case"
+            app:destination="@id/takeCaseFragment" />
+        <action
+            android:id="@+id/main_to_love"
+            app:destination="@id/lovesFragment" />
+        <action
+            android:id="@+id/main_to_home"
+            app:destination="@id/homeFragment" />
+    </fragment>
 
 </navigation>

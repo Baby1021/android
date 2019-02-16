@@ -1,4 +1,4 @@
-package com.laiyuanwen.android.baby.love
+package com.laiyuanwen.android.baby.ui.love
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,18 +7,28 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.laiyuanwen.android.baby.Common.ActivityRequestCode.LOVE_DETAIL
 import com.laiyuanwen.android.baby.Common.BundleKey.FLUTTER_LOVE_DETAIL_IS_CHANGE
 import com.laiyuanwen.android.baby.R
+import com.laiyuanwen.android.baby.api.RetrofitService
 import com.laiyuanwen.android.baby.base.BaseFragment
+import com.laiyuanwen.android.baby.bean.Surprise
 import com.laiyuanwen.android.baby.databinding.FragmentLovesBinding
 import com.laiyuanwen.android.baby.inject.Injector
+import com.laiyuanwen.android.baby.love.LovesAdapter
+import com.laiyuanwen.android.baby.love.LovesViewModel
+import com.laiyuanwen.android.baby.ui.surprise.ImageSurpriseDialogFragment
+import com.laiyuanwen.android.baby.util.getUserId
+import com.laiyuanwen.android.baby.util.setStatusBarColor
 import com.laiyuanwen.android.baby.util.startLoveDetailActivity
 import kotlinx.android.synthetic.main.fragment_loves.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * Created by laiyuanwen on 2019-01-20.
@@ -31,7 +41,9 @@ class LovesFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setStatusBarColor(activity!!, resources.getColor(R.color.colorPrimary))
         setHasOptionsMenu(true)
+        fetchSurprise()
     }
 
     override fun onCreateView(
@@ -142,5 +154,30 @@ class LovesFragment : BaseFragment() {
             binding.refresh.isRefreshing = true
             viewModel.refresh()
         }
+    }
+
+    private fun fetchSurprise() {
+
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val result = RetrofitService.getBabyApi().getSurpriseAsync(getUserId()).await()
+
+                if (result.data == null) {
+                    return@launch
+                }
+
+                val data: Surprise = result.data
+
+                withContext(Dispatchers.Main) {
+                    showSurprise(data)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    private fun showSurprise(surprise: Surprise) {
+        ImageSurpriseDialogFragment.getInstance(surprise).show(childFragmentManager, "")
     }
 }
