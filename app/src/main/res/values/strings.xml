@@ -6,4 +6,6 @@
     <string name="action_sign_in">登录</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="string_menu_add_menu">添加Love</string>
+
+    <string name="string_time">%1$2d小时%2$2d分钟%3$02d秒</string>
 </resources>

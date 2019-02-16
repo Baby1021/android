@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg">
+        android:background="@drawable/bg_home">
 
         <LinearLayout
             android:id="@+id/left_state_layout"
@@ -78,7 +78,7 @@
                 android:paddingTop="3dp"
                 android:paddingEnd="8dp"
                 android:paddingBottom="3dp"
-                android:text="上班中"
+                android:text="不知道在干嘛"
                 android:textColor="@android:color/white"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -125,7 +125,7 @@
             android:layout_marginEnd="8dp"
             android:minHeight="200dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/test2"
+            android:src="@drawable/default_lover_image"
             app:layout_constraintBottom_toTopOf="@+id/nestedScrollView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -192,7 +192,7 @@
 
                 <!-- 小金库 -->
                 <Button
-                    android:id="@+id/view3"
+                    android:id="@+id/deposit_item"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
                     android:layout_margin="8dp"
@@ -222,6 +222,7 @@
 
                 <!-- 宝贝近照 -->
                 <Button
+                    android:id="@+id/recent_photo_item"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
                     android:layout_margin="8dp"
@@ -233,7 +234,7 @@
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/guideline"
-                    app:layout_constraintTop_toBottomOf="@+id/view3" />
+                    app:layout_constraintTop_toBottomOf="@+id/deposit_item" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline"

@@ -22,6 +22,7 @@ import com.laiyuanwen.android.baby.love.LovesAdapter
 import com.laiyuanwen.android.baby.love.LovesViewModel
 import com.laiyuanwen.android.baby.ui.surprise.ImageSurpriseDialogFragment
 import com.laiyuanwen.android.baby.util.getUserId
+import com.laiyuanwen.android.baby.util.setStatusBarColor
 import com.laiyuanwen.android.baby.util.startLoveDetailActivity
 import kotlinx.android.synthetic.main.fragment_loves.*
 import kotlinx.coroutines.CoroutineScope
@@ -40,6 +41,7 @@ class LovesFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setStatusBarColor(activity!!, resources.getColor(R.color.colorPrimary))
         setHasOptionsMenu(true)
         fetchSurprise()
     }

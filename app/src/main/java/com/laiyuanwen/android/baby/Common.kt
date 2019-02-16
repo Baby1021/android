@@ -1,5 +1,7 @@
 package com.laiyuanwen.android.baby
 
+import java.util.*
+
 /**
  * Created by laiyuanwen on 2019/1/9.
  */
@@ -36,4 +38,9 @@ object Common {
     object PermissionRequestCode {
         const val RC_WRITE_EXTERNAL_STORAGE = 1
     }
+
+    /**
+     * 两个人开始时间
+     */
+    const val LOVER_START_TIME_MILLIS: Long = 1413899526000
 }
