@@ -64,6 +64,7 @@ class HomeFragment : BaseFragment() {
             toast("宝贝近照功能开发中")
         }
 
+        updateLoveDateAndTime()
         setTimer()
     }
 
