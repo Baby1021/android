@@ -147,13 +147,13 @@
 
                 <!-- 任务 -->
                 <Button
-                    android:id="@+id/task_item"
+                    android:id="@+id/bill_item"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
                     android:layout_margin="8dp"
                     android:background="@drawable/bg_ripper_for_blue"
                     android:gravity="center"
-                    android:text="任务"
+                    android:text="记账sss"
                     android:textColor="@android:color/white"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toStartOf="@+id/guideline"
@@ -188,7 +188,7 @@
                     android:textSize="20sp"
                     app:layout_constraintEnd_toStartOf="@+id/guideline"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/task_item" />
+                    app:layout_constraintTop_toBottomOf="@id/bill_item" />
 
                 <!-- 小金库 -->
                 <Button

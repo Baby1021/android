@@ -45,8 +45,8 @@ class HomeFragment : BaseFragment() {
         binding.loverImage.setOnClickListener {
             toast("图片功能开发中")
         }
-        binding.taskItem.setOnClickListener {
-            toast("任务功能开发中")
+        binding.billItem.setOnClickListener {
+            toast("记账功能开发中")
         }
         binding.anniversaryItem.setOnClickListener {
             toast("纪念日功能开发中")
@@ -70,6 +70,9 @@ class HomeFragment : BaseFragment() {
 
     private fun setTimer() {
         handler.postDelayed({
+            if (!isAdded) {
+                return@postDelayed
+            }
             updateLoveDateAndTime()
             setTimer()
         }, 1000)
