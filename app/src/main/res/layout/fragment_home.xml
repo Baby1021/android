@@ -153,7 +153,7 @@
                     android:layout_margin="8dp"
                     android:background="@drawable/bg_ripper_for_blue"
                     android:gravity="center"
-                    android:text="记账sss"
+                    android:text="记账"
                     android:textColor="@android:color/white"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toStartOf="@+id/guideline"
