@@ -21,7 +21,9 @@ fun startLoveDetailActivity(fragment: Fragment?, love: Love?, code: Int) {
     if (love != null) {
         bundle.putString("love", Provider.getGson().toJson(love))
     }
+    intent.putExtra("route", "/router/love/detail")
     intent.putExtras(bundle)
+    intent.action = "android.intent.action.RUN"
     fragment.startActivityForResult(intent, code)
 }
 
