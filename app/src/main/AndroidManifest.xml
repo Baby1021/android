@@ -70,7 +70,7 @@
 
         <!-- 首页 -->
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:launchMode="singleTask">
 
         </activity>

@@ -1,4 +1,4 @@
-package com.laiyuanwen.android.baby.ui.home
+package com.laiyuanwen.android.baby.ui.homepage.home
 
 import android.os.Bundle
 import android.os.Handler
