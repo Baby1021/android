@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import com.laiyuanwen.android.baby.LoginActivity
 import com.laiyuanwen.android.baby.bean.Love
@@ -42,7 +43,7 @@ fun toBill(activity: Activity) {
     val input = EditText(activity)
     val builder = AlertDialog.Builder(activity)
 
-    input.setText("http://")
+    input.setText(getSp(activity).getString("debug_h5_server", "http://"))
 
     builder.setTitle("输入环境(线上环境不需要输入)")
             .setView(input)
@@ -53,7 +54,11 @@ fun toBill(activity: Activity) {
             }
             .setPositiveButton("指定测试环境") { _, _ ->
                 val intent = Intent(activity, BabyBrowserActivity::class.java)
-                intent.putExtra(BabyBrowserActivity.URL, input.text.toString())
+                val server = input.text.toString()
+                getSp(activity).edit {
+                    putString("debug_h5_server", server)
+                }
+                intent.putExtra(BabyBrowserActivity.URL, server)
                 activity.startActivity(intent)
             }
     builder.show()
