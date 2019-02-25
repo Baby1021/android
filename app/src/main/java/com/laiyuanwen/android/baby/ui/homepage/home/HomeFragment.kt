@@ -1,5 +1,6 @@
 package com.laiyuanwen.android.baby.ui.homepage.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -12,6 +13,8 @@ import com.laiyuanwen.android.baby.R
 import com.laiyuanwen.android.baby.base.BaseFragment
 import com.laiyuanwen.android.baby.databinding.FragmentHomeBinding
 import com.laiyuanwen.android.baby.util.setStatusBarColor
+import com.laiyuanwen.android.baby.util.toBill
+import com.laiyuanwen.android.baby.x5.BabyBrowserActivity
 
 
 /**
@@ -46,7 +49,7 @@ class HomeFragment : BaseFragment() {
             toast("图片功能开发中")
         }
         binding.billItem.setOnClickListener {
-            toast("记账功能开发中")
+            activity?.let { it1 -> toBill(it1) }
         }
         binding.anniversaryItem.setOnClickListener {
             toast("纪念日功能开发中")
