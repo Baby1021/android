@@ -49,7 +49,7 @@ fun toBill(activity: Activity) {
             .setView(input)
             .setNegativeButton("线上环境") { dialog, _ ->
                 val intent = Intent(activity, BabyBrowserActivity::class.java)
-                intent.putExtra(BabyBrowserActivity.URL, "http://39.108.227.137:3000/bill/index.html")
+                intent.putExtra(BabyBrowserActivity.URL, "http://39.108.227.137:3030/index.html")
                 activity.startActivity(intent)
             }
             .setPositiveButton("指定测试环境") { _, _ ->
