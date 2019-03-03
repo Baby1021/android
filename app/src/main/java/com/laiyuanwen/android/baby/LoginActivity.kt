@@ -4,10 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.edit
-import com.google.android.material.snackbar.Snackbar
-import com.laiyuanwen.android.baby.Common.SharedPreferenceKey.USER_ID
-import com.laiyuanwen.android.baby.util.getSp
+import com.laiyuanwen.android.baby.ui.MainActivity
 import com.laiyuanwen.android.baby.util.saveLogin
 import kotlinx.android.synthetic.main.activity_login.*
 
