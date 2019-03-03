@@ -23,13 +23,14 @@ class X5WebView : WebView {
 
         override fun onPageFinished(webView: WebView?, s: String?) {
             super.onPageFinished(webView, s)
-            val call = "javascript:js(\"" + "赖远文" + "\")"
-            webView!!.loadUrl(call)
+            // Java调用Js
+//            val call = "javascript:js(\"" + "赖远文" + "\")"
+//            webView!!.loadUrl(call)
         }
     }
 
     @SuppressLint("SetJavaScriptEnabled")
-    constructor(arg0: Context, arg1: AttributeSet) : super(arg0, arg1) {
+    constructor(arg0: Context, arg1: AttributeSet?) : super(arg0, arg1) {
         this.webViewClient = client
         // this.setWebChromeClient(chromeClient);
         // WebStorage webStorage = WebStorage.getInstance();
