@@ -1,6 +1,5 @@
 package com.laiyuanwen.android.baby.ui.homepage.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -8,13 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.laiyuanwen.android.baby.Common.LOVER_START_TIME_MILLIS
 import com.laiyuanwen.android.baby.R
 import com.laiyuanwen.android.baby.base.BaseFragment
 import com.laiyuanwen.android.baby.databinding.FragmentHomeBinding
 import com.laiyuanwen.android.baby.util.setStatusBarColor
 import com.laiyuanwen.android.baby.util.toBill
-import com.laiyuanwen.android.baby.x5.BabyBrowserActivity
 
 
 /**
@@ -24,6 +24,7 @@ import com.laiyuanwen.android.baby.x5.BabyBrowserActivity
  */
 class HomeFragment : BaseFragment() {
 
+    private lateinit var viewModel: HomeViewModel
     private lateinit var handler: Handler
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +40,7 @@ class HomeFragment : BaseFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         binding.rightStateLayout.setOnClickListener {
             toast("切换状态功能开发中")
         }
@@ -67,38 +69,29 @@ class HomeFragment : BaseFragment() {
             toast("宝贝近照功能开发中")
         }
 
-        updateLoveDateAndTime()
-        setTimer()
+        observeTime()
     }
 
-    private fun setTimer() {
-        handler.postDelayed({
-            if (!isAdded) {
-                return@postDelayed
-            }
-            updateLoveDateAndTime()
-            setTimer()
-        }, 1000)
+    private fun observeTime() {
+        // TODO 这个要怎么写？
+        viewModel.time.value?.apply { updateTime(this) }
+        viewModel.time.observe(this, Observer { time ->
+            updateTime(time)
+        })
     }
 
-    private fun updateLoveDateAndTime() {
-        val startTime = LOVER_START_TIME_MILLIS
-        val nowtime = System.currentTimeMillis()
-
-        val distance = nowtime - startTime
-
-        val day = distance / (1000 * 24 * 60 * 60)
-        val hour = (distance - day * (1000 * 24 * 60 * 60)) / (60 * 60 * 1000)
-        val minutes = (distance - day * (1000 * 24 * 60 * 60) - (hour * 60 * 60 * 1000)) / (60 * 1000)
-        val seconds = (distance - day * (1000 * 24 * 60 * 60) - (hour * 60 * 60 * 1000) - (minutes * 60 * 1000)) / (1000)
-
-        binding.loveDate.text = "${day}天"
-        binding.loveTime.text = resources.getString(R.string.string_time, hour, minutes, seconds)
+    private fun updateTime(time: Time) {
+        binding.loveDate.text = "${time.day}天"
+        binding.loveTime.text = resources.getString(R.string.string_time, time.hour, time.minutes, time.seconds)
     }
 
     private fun toast(content: String) {
         Toast.makeText(context, "\uD83D\uDE2D\uD83D\uDE2D\uD83D\uDE2D\uD83D\uDE2D$content", Toast.LENGTH_SHORT).show()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.stop()
+    }
 
 }
