@@ -23,6 +23,11 @@ import pub.devrel.easypermissions.EasyPermissions
 class MainActivity : AppCompatActivity() {
 
     lateinit var navHostFragment: NavHostFragment
+    lateinit var mHomeFragment: HomeFragment
+    lateinit var mLovesFragment: LovesFragment
+    lateinit var mTaskCaseFragment: TakeCaseFragment
+    lateinit var mTasksFragment: TasksFragment
+    lateinit var mUserFragment: UserFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -74,18 +74,6 @@
 
         </activity>
 
-        <!-- Debug页面 -->
-        <activity android:name=".debug.DebugActivity">
-
-        </activity>
-
-        <!-- 详情页 -->
-        <activity
-            android:name=".flutter.LoveDetailActivity"
-            android:theme="@style/FlutterTheme">
-
-        </activity>
-
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileProvider"

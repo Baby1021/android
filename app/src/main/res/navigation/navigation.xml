@@ -50,9 +50,6 @@
             android:id="@+id/action_lovesFragment_to_imageSurpriseDialogFragment"
             app:destination="@id/imageSurpriseDialogFragment" />
         <action
-            android:id="@+id/action_lovesFragment_to_loveDetailActivity"
-            app:destination="@id/loveDetailActivity" />
-        <action
             android:id="@+id/main_to_take_case"
             app:destination="@id/takeCaseFragment" />
         <action
@@ -115,11 +112,6 @@
         android:name="com.laiyuanwen.android.baby.ui.homepage.surprise.VoiceSurpriseDialogFragment"
         android:label="VoiceSurpriseDialogFragment" />
 
-    <activity
-        android:id="@+id/loveDetailActivity"
-        android:name="com.laiyuanwen.android.baby.flutter.LoveDetailActivity"
-        android:label="activity_detail"
-        tools:layout="@layout/activity_detail" />
     <fragment
         android:id="@+id/dateFragment"
         android:name="com.laiyuanwen.android.baby.ui.date.DateFragment"
