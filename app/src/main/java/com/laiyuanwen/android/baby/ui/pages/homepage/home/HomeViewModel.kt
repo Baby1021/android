@@ -1,4 +1,4 @@
-package com.laiyuanwen.android.baby.ui.homepage.home
+package com.laiyuanwen.android.baby.ui.pages.homepage.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

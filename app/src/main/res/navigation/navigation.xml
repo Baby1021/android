@@ -9,7 +9,7 @@
     <!-- 首页 -->
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.laiyuanwen.android.baby.ui.homepage.home.HomeFragment"
+        android:name="com.laiyuanwen.android.baby.ui.pages.homepage.home.HomeFragment"
         android:label="首页"
         tools:layout="@layout/fragment_home">
         <action
@@ -29,7 +29,7 @@
     <!-- Love列表 -->
     <fragment
         android:id="@+id/lovesFragment"
-        android:name="com.laiyuanwen.android.baby.ui.homepage.love.LovesFragment"
+        android:name="com.laiyuanwen.android.baby.ui.pages.homepage.love.LovesFragment"
         android:label="LovesFragment"
         tools:layout="@layout/fragment_loves">
         <action
@@ -84,7 +84,7 @@
     <!-- love提醒列表 -->
     <fragment
         android:id="@+id/loveRemindsFragment"
-        android:name="com.laiyuanwen.android.baby.ui.homepage.love.LoveRemindsFragment"
+        android:name="com.laiyuanwen.android.baby.ui.pages.homepage.love.LoveRemindsFragment"
         android:label="LoveRemindsFragment"
         tools:layout="@layout/fragment_love_reminds">
 
@@ -101,20 +101,20 @@
     <!-- todo 这个Surprise应该可以合并 -->
     <fragment
         android:id="@+id/imageSurpriseDialogFragment"
-        android:name="com.laiyuanwen.android.baby.ui.homepage.surprise.ImageSurpriseDialogFragment"
+        android:name="com.laiyuanwen.android.baby.ui.pages.homepage.surprise.ImageSurpriseDialogFragment"
         android:label="ImageSurpriseDialogFragment" />
     <fragment
         android:id="@+id/videoSurpriseDialogFragment"
-        android:name="com.laiyuanwen.android.baby.ui.homepage.surprise.VideoSurpriseDialogFragment"
+        android:name="com.laiyuanwen.android.baby.ui.pages.homepage.surprise.VideoSurpriseDialogFragment"
         android:label="VideoSurpriseDialogFragment" />
     <fragment
         android:id="@+id/voiceSurpriseDialogFragment"
-        android:name="com.laiyuanwen.android.baby.ui.homepage.surprise.VoiceSurpriseDialogFragment"
+        android:name="com.laiyuanwen.android.baby.ui.pages.homepage.surprise.VoiceSurpriseDialogFragment"
         android:label="VoiceSurpriseDialogFragment" />
 
     <fragment
         android:id="@+id/dateFragment"
-        android:name="com.laiyuanwen.android.baby.ui.date.DateFragment"
+        android:name="com.laiyuanwen.android.baby.ui.pages.date.DateFragment"
         android:label="DateFragment">
         <action
             android:id="@+id/main_to_task"
@@ -135,7 +135,7 @@
 
     <fragment
         android:id="@+id/takeCaseFragment"
-        android:name="com.laiyuanwen.android.baby.ui.homepage.takecase.TakeCaseFragment"
+        android:name="com.laiyuanwen.android.baby.ui.pages.homepage.takecase.TakeCaseFragment"
         android:label="TakeCaseFragment">
         <action
             android:id="@+id/main_to_love"
@@ -155,7 +155,7 @@
     </fragment>
     <fragment
         android:id="@+id/userFragment"
-        android:name="com.laiyuanwen.android.baby.ui.homepage.user.UserFragment"
+        android:name="com.laiyuanwen.android.baby.ui.pages.homepage.user.UserFragment"
         android:label="UserFragment">
         <action
             android:id="@+id/main_to_task"
@@ -172,7 +172,7 @@
     </fragment>
     <fragment
         android:id="@+id/tasksFragment"
-        android:name="com.laiyuanwen.android.baby.ui.homepage.task.TasksFragment"
+        android:name="com.laiyuanwen.android.baby.ui.pages.homepage.task.TasksFragment"
         android:label="TasksFragment">
         <action
             android:id="@+id/main_to_user"

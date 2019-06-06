@@ -1,4 +1,4 @@
-package com.laiyuanwen.android.baby.ui.homepage.love
+package com.laiyuanwen.android.baby.ui.pages.homepage.love
 
 import android.graphics.Point
 import android.os.Bundle

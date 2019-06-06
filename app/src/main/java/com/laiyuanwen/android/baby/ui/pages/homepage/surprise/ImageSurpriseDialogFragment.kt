@@ -1,4 +1,4 @@
-package com.laiyuanwen.android.baby.ui.homepage.surprise
+package com.laiyuanwen.android.baby.ui.pages.homepage.surprise
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +12,8 @@ import kotlinx.android.synthetic.main.fragment_surprise_image.*
 
 /**
  * Created by laiyuanwen on 2019-01-20.
+ *
+ * 首页弹窗
  */
 class ImageSurpriseDialogFragment : BaseDialogFragment() {
 

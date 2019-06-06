@@ -3,7 +3,7 @@ package com.laiyuanwen.android.baby
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.laiyuanwen.android.baby.ui.MainActivity
+import com.laiyuanwen.android.baby.ui.pages.homepage.MainActivity
 import com.laiyuanwen.android.baby.util.isLogin
 
 class WelcomeActivity : AppCompatActivity() {

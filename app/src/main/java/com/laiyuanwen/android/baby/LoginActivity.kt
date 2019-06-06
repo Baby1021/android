@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
-import com.laiyuanwen.android.baby.ui.MainActivity
+import com.laiyuanwen.android.baby.ui.pages.homepage.MainActivity
 import com.laiyuanwen.android.baby.util.saveLogin
 import kotlinx.android.synthetic.main.activity_login.*
 

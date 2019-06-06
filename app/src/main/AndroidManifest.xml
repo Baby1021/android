@@ -69,7 +69,7 @@
 
         <!-- 首页 -->
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.pages.homepage.MainActivity"
             android:launchMode="singleTask">
 
         </activity>

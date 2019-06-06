@@ -1,4 +1,4 @@
-package com.laiyuanwen.android.baby.ui
+package com.laiyuanwen.android.baby.ui.pages.homepage
 
 import android.Manifest
 import android.os.Bundle
@@ -10,11 +10,11 @@ import com.laiyuanwen.android.baby.Common
 import com.laiyuanwen.android.baby.Common.PermissionRequestCode.RC_WRITE_EXTERNAL_STORAGE
 import com.laiyuanwen.android.baby.R
 import com.laiyuanwen.android.baby.platform.PlatformService
-import com.laiyuanwen.android.baby.ui.homepage.home.HomeFragment
-import com.laiyuanwen.android.baby.ui.homepage.love.LovesFragment
-import com.laiyuanwen.android.baby.ui.homepage.takecase.TakeCaseFragment
-import com.laiyuanwen.android.baby.ui.homepage.task.TasksFragment
-import com.laiyuanwen.android.baby.ui.homepage.user.UserFragment
+import com.laiyuanwen.android.baby.ui.pages.homepage.home.HomeFragment
+import com.laiyuanwen.android.baby.ui.pages.homepage.love.LovesFragment
+import com.laiyuanwen.android.baby.ui.pages.homepage.takecase.TakeCaseFragment
+import com.laiyuanwen.android.baby.ui.pages.homepage.task.TasksFragment
+import com.laiyuanwen.android.baby.ui.pages.homepage.user.UserFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import pub.devrel.easypermissions.AfterPermissionGranted
 import pub.devrel.easypermissions.EasyPermissions

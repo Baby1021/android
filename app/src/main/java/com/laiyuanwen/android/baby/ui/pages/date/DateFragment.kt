@@ -1,4 +1,4 @@
-package com.laiyuanwen.android.baby.ui.date
+package com.laiyuanwen.android.baby.ui.pages.date
 
 import android.os.Bundle
 import android.view.LayoutInflater

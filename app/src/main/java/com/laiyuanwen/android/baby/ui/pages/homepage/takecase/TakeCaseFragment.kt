@@ -1,4 +1,4 @@
-package com.laiyuanwen.android.baby.ui.homepage.takecase
+package com.laiyuanwen.android.baby.ui.pages.homepage.takecase
 
 import androidx.fragment.app.Fragment
 

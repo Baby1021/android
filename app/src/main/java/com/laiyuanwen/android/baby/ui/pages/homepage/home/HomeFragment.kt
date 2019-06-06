@@ -1,4 +1,4 @@
-package com.laiyuanwen.android.baby.ui.homepage.home
+package com.laiyuanwen.android.baby.ui.pages.homepage.home
 
 import android.os.Bundle
 import android.os.Handler
@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.laiyuanwen.android.baby.Common.LOVER_START_TIME_MILLIS
 import com.laiyuanwen.android.baby.R
 import com.laiyuanwen.android.baby.base.BaseFragment
 import com.laiyuanwen.android.baby.databinding.FragmentHomeBinding

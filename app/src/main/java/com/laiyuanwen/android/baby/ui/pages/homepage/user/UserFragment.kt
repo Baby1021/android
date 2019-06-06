@@ -1,4 +1,4 @@
-package com.laiyuanwen.android.baby.ui.homepage.user
+package com.laiyuanwen.android.baby.ui.pages.homepage.user
 
 import android.os.Bundle
 import android.view.LayoutInflater

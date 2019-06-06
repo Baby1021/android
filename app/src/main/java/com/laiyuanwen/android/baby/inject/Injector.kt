@@ -7,7 +7,7 @@ import com.laiyuanwen.android.baby.love.LovesViewModelFactory
 import com.laiyuanwen.android.baby.repository.LoveRepository
 import com.laiyuanwen.android.baby.repository.TaskRepository
 import com.laiyuanwen.android.baby.tasks.TasksViewModelFactory
-import com.laiyuanwen.android.baby.ui.homepage.home.HomeViewModel
+import com.laiyuanwen.android.baby.ui.pages.homepage.home.HomeViewModel
 
 /**
  * Created by laiyuanwen on 2019/1/1.

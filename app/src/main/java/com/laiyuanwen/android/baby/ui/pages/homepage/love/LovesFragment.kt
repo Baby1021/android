@@ -1,4 +1,4 @@
-package com.laiyuanwen.android.baby.ui.homepage.love
+package com.laiyuanwen.android.baby.ui.pages.homepage.love
 
 import android.content.Intent
 import android.os.Bundle
@@ -20,7 +20,7 @@ import com.laiyuanwen.android.baby.databinding.FragmentLovesBinding
 import com.laiyuanwen.android.baby.inject.Injector
 import com.laiyuanwen.android.baby.love.LovesAdapter
 import com.laiyuanwen.android.baby.love.LovesViewModel
-import com.laiyuanwen.android.baby.ui.homepage.surprise.ImageSurpriseDialogFragment
+import com.laiyuanwen.android.baby.ui.pages.homepage.surprise.ImageSurpriseDialogFragment
 import com.laiyuanwen.android.baby.util.getUserId
 import com.laiyuanwen.android.baby.util.setStatusBarColor
 import com.laiyuanwen.android.baby.util.startLoveDetailActivity
