@@ -13,6 +13,7 @@ import com.laiyuanwen.android.baby.R
 import com.laiyuanwen.android.baby.base.BaseFragment
 import com.laiyuanwen.android.baby.databinding.FragmentHomeBinding
 import com.laiyuanwen.android.baby.util.setStatusBarColor
+import com.laiyuanwen.android.baby.util.toAnniversary
 import com.laiyuanwen.android.baby.util.toBill
 
 
@@ -50,10 +51,10 @@ class HomeFragment : BaseFragment() {
             toast("图片功能开发中")
         }
         binding.billItem.setOnClickListener {
-            activity?.let { it1 -> toBill(it1) }
+            activity?.let { toBill(it) }
         }
         binding.anniversaryItem.setOnClickListener {
-            toast("纪念日功能开发中")
+            activity?.let { toAnniversary(it) }
         }
         binding.shoppingCartItem.setOnClickListener {
             toast("购物车功能开发中")
@@ -72,7 +73,6 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun observeTime() {
-        // TODO 这个要怎么写？
         viewModel.time.value?.apply { updateTime(this) }
         viewModel.time.observe(this, Observer { time ->
             updateTime(time)

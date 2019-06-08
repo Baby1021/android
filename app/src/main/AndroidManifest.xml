@@ -5,11 +5,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!--华为安装apk权限-->
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-
-    <!--小米权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 华为安装apk权限 -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" /> <!-- 小米权限 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
@@ -20,10 +17,8 @@
         android:protectionLevel="signature"
         tools:replace="android:protectionLevel" />
 
-    <uses-permission android:name="com.laiyuanwen.android.baby.permission.MIPUSH_RECEIVE" />
-
-    <!-- 蒲公英 必选-->
-    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- 允许程序录制音频 -->
+    <uses-permission android:name="com.laiyuanwen.android.baby.permission.MIPUSH_RECEIVE" /> <!-- 蒲公英 必选 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:name=".BabyApplication"
@@ -37,21 +32,26 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:networkSecurityConfig">
 
-        <meta-data
-            android:name="PGYER_APPID"
-            android:value="4470f4ca0c50925431c66812b7338ab5"></meta-data>
+        <activity android:name=".ui.pages.anniversary.AnniversaryActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
-        <meta-data
-            android:name="com.huawei.hms.client.appid"
-            android:value="100621429" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="com.laiyuanwen.baby"
+                    android:path="/anniversary"
+                    android:scheme="baby" />
+            </intent-filter>
+        </activity>
+
 
         <activity
             android:name=".push.PushActivity"
             android:exported="true"
             android:launchMode="singleTask"
-            android:theme="@style/WelcomeTheme" />
-
-        <!-- 欢迎页 -->
+            android:theme="@style/WelcomeTheme" /> <!-- 欢迎页 -->
         <activity
             android:name=".WelcomeActivity"
             android:theme="@style/WelcomeTheme">
@@ -60,19 +60,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity> <!-- 登录页 -->
+        <activity android:name=".LoginActivity" /> <!-- 首页 -->
 
-        <!--登录页-->
-        <activity android:name=".LoginActivity">
-
-        </activity>
-
-        <!-- 首页 -->
         <activity
             android:name=".ui.pages.homepage.MainActivity"
-            android:launchMode="singleTask">
-
-        </activity>
+            android:launchMode="singleTask" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -84,6 +77,12 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <meta-data
+            android:name="PGYER_APPID"
+            android:value="4470f4ca0c50925431c66812b7338ab5" />
+        <meta-data
+            android:name="com.huawei.hms.client.appid"
+            android:value="100621429" />
     </application>
 
 </manifest>

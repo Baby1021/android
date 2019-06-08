@@ -1,10 +1,7 @@
 package com.laiyuanwen.android.baby.api
 
 import com.google.gson.JsonObject
-import com.laiyuanwen.android.baby.bean.Love
-import com.laiyuanwen.android.baby.bean.NewVersionResult
-import com.laiyuanwen.android.baby.bean.SurpriseResponse
-import com.laiyuanwen.android.baby.bean.Task
+import com.laiyuanwen.android.baby.bean.*
 import kotlinx.coroutines.Deferred
 import retrofit2.http.*
 
@@ -57,4 +54,10 @@ interface BabyApi {
      */
     @PUT("api/v1/user/pushToken")
     fun uploadPushToken(@Body data: JsonObject): Deferred<HttpBody<Any>>
+
+    @POST("api/v1/anniversary")
+    fun addAnniversary(@Body data: JsonObject): Deferred<HttpBody<Any>>
+
+    @GET("api/v1/anniversary")
+    fun getAnniversaries(@Query("userId") userId: String): Deferred<HttpBody<List<Anniversary>>>
 }

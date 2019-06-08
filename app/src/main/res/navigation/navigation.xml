@@ -98,7 +98,6 @@
 
     </fragment>
 
-    <!-- todo 这个Surprise应该可以合并 -->
     <fragment
         android:id="@+id/imageSurpriseDialogFragment"
         android:name="com.laiyuanwen.android.baby.ui.pages.homepage.surprise.ImageSurpriseDialogFragment"
@@ -112,26 +111,26 @@
         android:name="com.laiyuanwen.android.baby.ui.pages.homepage.surprise.VoiceSurpriseDialogFragment"
         android:label="VoiceSurpriseDialogFragment" />
 
-    <fragment
-        android:id="@+id/dateFragment"
-        android:name="com.laiyuanwen.android.baby.ui.pages.date.DateFragment"
-        android:label="DateFragment">
-        <action
-            android:id="@+id/main_to_task"
-            app:destination="@id/tasksFragment" />
-        <action
-            android:id="@+id/main_to_take_case"
-            app:destination="@id/takeCaseFragment" />
-        <action
-            android:id="@+id/main_to_love"
-            app:destination="@id/lovesFragment" />
-        <action
-            android:id="@+id/main_to_home"
-            app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/main_to_user"
-            app:destination="@id/userFragment" />
-    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/dateFragment"-->
+<!--        android:name="com.laiyuanwen.android.baby.ui.pages.anniversary.DateFragment"-->
+<!--        android:label="DateFragment">-->
+<!--        <action-->
+<!--            android:id="@+id/main_to_task"-->
+<!--            app:destination="@id/tasksFragment" />-->
+<!--        <action-->
+<!--            android:id="@+id/main_to_take_case"-->
+<!--            app:destination="@id/takeCaseFragment" />-->
+<!--        <action-->
+<!--            android:id="@+id/main_to_love"-->
+<!--            app:destination="@id/lovesFragment" />-->
+<!--        <action-->
+<!--            android:id="@+id/main_to_home"-->
+<!--            app:destination="@id/homeFragment" />-->
+<!--        <action-->
+<!--            android:id="@+id/main_to_user"-->
+<!--            app:destination="@id/userFragment" />-->
+<!--    </fragment>-->
 
     <fragment
         android:id="@+id/takeCaseFragment"
@@ -140,9 +139,9 @@
         <action
             android:id="@+id/main_to_love"
             app:destination="@id/lovesFragment" />
-        <action
-            android:id="@+id/action_to_date"
-            app:destination="@id/dateFragment" />
+<!--        <action-->
+<!--            android:id="@+id/action_to_date"-->
+<!--            app:destination="@id/dateFragment" />-->
         <action
             android:id="@+id/main_to_home"
             app:destination="@id/homeFragment" />

@@ -11,7 +11,6 @@ import com.laiyuanwen.android.baby.util.installApk
  *
  * 新版本apk下载完成的Receiver
  *
- * todo 下载完成后unregister
  */
 class DownloadFinishReceiver : BroadcastReceiver() {
 

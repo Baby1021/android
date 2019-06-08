@@ -8,4 +8,5 @@
     <string name="string_menu_add_menu">添加Love</string>
 
     <string name="string_time">%1$2d小时%2$2d分钟%3$02d秒</string>
+    <string name="string_day_unit">天前</string>
 </resources>

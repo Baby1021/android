@@ -73,7 +73,7 @@ class LovesFragment : BaseFragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (R.id.add_love == item.itemId) {
+        if (R.id.add == item.itemId) {
             startLoveDetailActivity(this, null, LOVE_DETAIL)
             return true
         }
@@ -113,13 +113,11 @@ class LovesFragment : BaseFragment() {
         })
 
         viewModel.reminds.observe(this, Observer { remind ->
-            // todo navigation
             if (remind.isNullOrEmpty())
                 return@Observer
 
             val fragment = LoveRemindsFragment(remind)
 
-            // todo 这个自己的manager和child的manager的区别
             fragment.show(childFragmentManager, "");
         })
 

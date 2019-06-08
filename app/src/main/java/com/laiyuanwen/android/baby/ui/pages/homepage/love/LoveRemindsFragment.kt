@@ -107,7 +107,6 @@ class LoveRemindsFragment(
 
     }
 
-    // todo Dialog宽高
     override fun onResume() {
         super.onResume()
         val lp = dialog.window!!.attributes

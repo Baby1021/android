@@ -3,6 +3,7 @@ package com.laiyuanwen.android.baby.util
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
@@ -62,4 +63,13 @@ fun toBill(activity: Activity) {
             }
     builder.show()
 
+}
+
+/**
+ * 纪念日
+ */
+fun toAnniversary(activity: Activity) {
+    val uri = Uri.parse("baby://com.laiyuanwen.baby/anniversary")
+    val intent = Intent(Intent.ACTION_VIEW, uri)
+    activity.startActivityForResult(intent, -1)
 }

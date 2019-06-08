@@ -6,4 +6,4 @@ package com.laiyuanwen.android.baby.api
 data class HttpBody<T>(
         val message: String,
         val code: Int,
-        val data: T)
+        val data: T?)
