@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.laiyuanwen.android.baby.LoginActivity;
-import com.laiyuanwen.android.baby.ui.MainActivity;
+import com.laiyuanwen.android.baby.ui.pages.homepage.MainActivity;
 import com.umeng.message.UmengNotifyClickActivity;
 
 import org.android.agoo.common.AgooConstants;
