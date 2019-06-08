@@ -91,8 +91,12 @@ class AnniversaryViewModel(val repository: AnniversaryRepository) : ViewModel() 
             getBetweenDay(anniversary),
             getStartDay(anniversary),
             getNextTime(anniversary),
-            0
+            getBetweenYear(anniversary)
     )
+
+    private fun getBetweenYear(anniversary: Anniversary): Int {
+        return 1
+    }
 
     private fun getBetweenDay(anniversary: Anniversary): String {
         val distance = System.currentTimeMillis() - anniversary.time
