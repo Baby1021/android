@@ -1,15 +1,15 @@
 package com.laiyuanwen.android.baby
 
 import android.annotation.SuppressLint
+import android.app.Application
 import android.content.Context
 import com.laiyuanwen.android.baby.platform.PlatformService
-import io.flutter.app.FlutterApplication
 
 
 /**
  * Created by laiyuanwen on 2018/12/31.
  */
-class BabyApplication : FlutterApplication() {
+class BabyApplication : Application() {
 
 
     companion object {

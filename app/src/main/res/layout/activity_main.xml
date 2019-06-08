@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.pages.homepage.MainActivity">
 
     <!--defaultNavHost 的作用是处理返回事件-->
     <fragment

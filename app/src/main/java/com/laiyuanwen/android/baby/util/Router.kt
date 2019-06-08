@@ -3,6 +3,7 @@ package com.laiyuanwen.android.baby.util
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
@@ -10,7 +11,6 @@ import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import com.laiyuanwen.android.baby.LoginActivity
 import com.laiyuanwen.android.baby.bean.Love
-import com.laiyuanwen.android.baby.flutter.LoveDetailActivity
 import com.laiyuanwen.android.baby.x5.BabyBrowserActivity
 
 /**
@@ -21,15 +21,15 @@ fun startLoveDetailActivity(fragment: Fragment?, love: Love?, code: Int) {
     if (fragment == null) {
         return
     }
-    val intent = Intent(fragment.context, LoveDetailActivity::class.java)
-    val bundle = Bundle()
-    if (love != null) {
-        bundle.putString("love", Provider.getGson().toJson(love))
-    }
-    intent.putExtra("route", "/router/love/detail")
-    intent.putExtras(bundle)
-    intent.action = "android.intent.action.RUN"
-    fragment.startActivityForResult(intent, code)
+//    val intent = Intent(fragment.context, LoveDetailActivity::class.java)
+//    val bundle = Bundle()
+//    if (love != null) {
+//        bundle.putString("love", Provider.getGson().toJson(love))
+//    }
+//    intent.putExtra("route", "/router/love/detail")
+//    intent.putExtras(bundle)
+//    intent.action = "android.intent.action.RUN"
+//    fragment.startActivityForResult(intent, code)
 }
 
 fun toLogin(context: Context) {
@@ -63,4 +63,13 @@ fun toBill(activity: Activity) {
             }
     builder.show()
 
+}
+
+/**
+ * 纪念日
+ */
+fun toAnniversary(activity: Activity) {
+    val uri = Uri.parse("baby://com.laiyuanwen.baby/anniversary")
+    val intent = Intent(Intent.ACTION_VIEW, uri)
+    activity.startActivityForResult(intent, -1)
 }

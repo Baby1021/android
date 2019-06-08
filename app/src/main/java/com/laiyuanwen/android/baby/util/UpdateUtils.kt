@@ -20,9 +20,6 @@ import java.io.File
 /**
  * Created by laiyuanwen on 2019-01-19.
  *
- * todo inline
- * todo 抽离常量
- * todo 优化DownloadManager的用法 (下载失败、downloadId、下载进度等等）
  */
 
 const val APK_MIME_TYPE = "application/vnd.android.package-archive"

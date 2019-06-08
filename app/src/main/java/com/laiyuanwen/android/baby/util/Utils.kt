@@ -1,7 +1,9 @@
 package com.laiyuanwen.android.baby.util
 
 import android.app.Activity
+import android.content.Context
 import android.view.View
+import android.widget.Toast
 
 /**
  * Created by laiyuanwen on 2019-02-16.
@@ -27,4 +29,8 @@ fun setStatusBarColor(activity: Activity, statusColor: Int) {
 
     window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 
+}
+
+fun toast(context: Context?, msg: String) {
+    Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
 }

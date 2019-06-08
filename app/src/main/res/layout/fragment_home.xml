@@ -21,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.laiyuanwen.android.baby.ui.CircleImageView
+            <com.laiyuanwen.android.baby.ui.views.CircleImageView
                 android:id="@+id/left_avatar"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
@@ -57,7 +57,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.laiyuanwen.android.baby.ui.CircleImageView
+            <com.laiyuanwen.android.baby.ui.views.CircleImageView
                 android:id="@+id/right_avatar"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
