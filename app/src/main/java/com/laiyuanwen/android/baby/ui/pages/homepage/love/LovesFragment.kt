@@ -67,8 +67,8 @@ class LovesFragment : BaseFragment() {
         subscribeUI()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        inflater?.inflate(R.menu.menu_love_list, menu)
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_love_list, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 

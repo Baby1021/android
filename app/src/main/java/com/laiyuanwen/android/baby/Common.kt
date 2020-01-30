@@ -18,6 +18,10 @@ object Common {
     const val CHANNEL_METHOD_GET_ARGUMENT = "getArgument"
     const val CHANNEL_METHOD_SET_RESULT = "setResult"
 
+    object SharedPreferenceName {
+        const val SETTING = "setting"
+    }
+
     object SharedPreferenceKey {
         const val USER_ID = "userId"
         const val PUSH_TOKEN = "push_token"

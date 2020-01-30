@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.laiyuanwen.android.baby.base.BaseFragment
 import com.laiyuanwen.android.baby.databinding.FragmentUserBinding
+import com.laiyuanwen.android.baby.util.toSetting
 
 /**
  * Created by laiyuanwen on 2018/12/31.
@@ -16,6 +17,11 @@ class UserFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentUserBinding.inflate(inflater, container, false)
+
+        binding.setting.setOnClickListener {
+            activity?.let { toSetting(it) }
+        }
+
         return binding.root
     }
 }

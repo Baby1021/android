@@ -14,7 +14,7 @@ open class BaseDialogFragment : DialogFragment() {
         set(value) {
             field = value
             if (this.dialog != null) {
-                this.dialog.setOnCancelListener(value)
+                this.dialog?.setOnCancelListener(value)
             }
         }
 
@@ -25,6 +25,6 @@ open class BaseDialogFragment : DialogFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        this.dialog.setOnCancelListener(onCancelListener)
+        this.dialog?.setOnCancelListener(onCancelListener)
     }
 }

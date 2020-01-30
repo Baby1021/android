@@ -9,4 +9,7 @@
 
     <string name="string_time">%1$2d小时%2$2d分钟%3$02d秒</string>
     <string name="string_day_unit">天前</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="sync_title">开发者模式</string>
 </resources>

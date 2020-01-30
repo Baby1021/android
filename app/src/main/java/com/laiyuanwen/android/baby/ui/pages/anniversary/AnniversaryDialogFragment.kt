@@ -46,8 +46,8 @@ class AnniversaryDialogFragment : BaseDialogFragment(), DatePickerDialog.OnDateS
     }
 
     private fun initWindow() {
-        val lp = dialog.window!!.attributes
-        val windowManager = dialog.window.windowManager
+        val lp = dialog?.window!!.attributes
+        val windowManager = dialog?.window!!.windowManager
         val display: Display = windowManager?.defaultDisplay!!
 
         val point = Point()
@@ -56,7 +56,7 @@ class AnniversaryDialogFragment : BaseDialogFragment(), DatePickerDialog.OnDateS
         lp.width = (point.x * 0.75).toInt()
         lp.height = (point.y * 0.6).toInt()
 
-        dialog.window!!.attributes = lp
+        dialog?.window!!.attributes = lp
     }
 
     private fun createDatePickerDialog(): DatePickerDialog {
@@ -67,7 +67,7 @@ class AnniversaryDialogFragment : BaseDialogFragment(), DatePickerDialog.OnDateS
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        dialog.setOnCancelListener { viewModel.hideDialog() }
+        dialog?.setOnCancelListener { viewModel.hideDialog() }
 
         binding.submit.setOnClickListener {
             viewModel.submit()

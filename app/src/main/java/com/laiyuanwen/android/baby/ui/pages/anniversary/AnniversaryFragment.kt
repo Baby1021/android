@@ -77,7 +77,7 @@ class AnniversaryFragment : BaseFragment() {
         binding.toolbar.setNavigationOnClickListener { activity.finish() }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater?.inflate(R.menu.menu_love_list, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
