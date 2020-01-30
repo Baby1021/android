@@ -31,7 +31,20 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:networkSecurityConfig">
+        <activity
+            android:name=".ui.pages.setting.SettingsActivity"
+            android:label="@string/title_activity_settings">
 
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:host="com.laiyuanwen.baby"
+                    android:path="/settings"
+                    android:scheme="baby" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".ui.pages.anniversary.AnniversaryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -45,8 +58,6 @@
                     android:scheme="baby" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".push.PushActivity"
             android:exported="true"
@@ -62,7 +73,6 @@
             </intent-filter>
         </activity> <!-- 登录页 -->
         <activity android:name=".LoginActivity" /> <!-- 首页 -->
-
         <activity
             android:name=".ui.pages.homepage.MainActivity"
             android:launchMode="singleTask" />

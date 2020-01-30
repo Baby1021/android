@@ -1,0 +1,7 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreferenceCompat
+        app:key="is_baby_app_debug"
+        app:title="@string/sync_title" />
+
+</PreferenceScreen>

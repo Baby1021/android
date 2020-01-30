@@ -15,7 +15,7 @@ class BabyApplication : Application() {
     companion object {
 
         @SuppressLint("StaticFieldLeak")
-        lateinit var contextSingle: Context
+        private lateinit var contextSingle: Context
 
         fun getApplicationContext(): Context = contextSingle;
     }

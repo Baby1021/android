@@ -109,7 +109,7 @@ class LoveRemindsFragment(
 
     override fun onResume() {
         super.onResume()
-        val lp = dialog.window!!.attributes
+        val lp = dialog?.window!!.attributes
         val windowManager = activity?.windowManager
         val display: Display = windowManager?.defaultDisplay!!
 
@@ -119,7 +119,7 @@ class LoveRemindsFragment(
         lp.width = (point.x * 0.8).toInt()
         lp.height = (point.y * 0.6).toInt()
 
-        dialog.window!!.attributes = lp
+        dialog?.window!!.attributes = lp
     }
 
     fun exposureRemind(loveId: Long) {
