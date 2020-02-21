@@ -16,9 +16,9 @@ data class User(
         val name: String
 ) : Serializable, Parcelable {
     constructor(parcel: Parcel) : this(
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString()) {
+            parcel.readString().toString(),
+            parcel.readString().toString(),
+            parcel.readString().toString()) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

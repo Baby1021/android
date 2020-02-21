@@ -17,11 +17,11 @@ data class LoveComment(
 ) : Serializable, Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readInt(),
-            parcel.readString(),
-            parcel.readString(),
+            parcel.readString().toString(),
+            parcel.readString().toString(),
             parcel.readInt(),
             parcel.readLong(),
-            parcel.readParcelable(User::class.java.classLoader)) {
+            parcel.readParcelable(User::class.java.classLoader)!!) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

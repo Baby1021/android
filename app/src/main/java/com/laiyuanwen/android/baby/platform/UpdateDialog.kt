@@ -84,7 +84,7 @@ class UpdateDialog(
 
     private fun setSize() {
         val lp = window!!.attributes
-        val windowManager = window.windowManager
+        val windowManager = window!!.windowManager
         val display: Display = windowManager?.defaultDisplay!!
 
         val point = Point()

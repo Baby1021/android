@@ -21,11 +21,11 @@ data class Love(
 ) : Serializable, Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readLong(),
-            parcel.readString(),
-            parcel.readParcelable(User::class.java.classLoader),
+            parcel.readString().toString(),
+            parcel.readParcelable(User::class.java.classLoader)!!,
             parcel.readLong(),
             parcel.createStringArrayList(),
-            parcel.createTypedArrayList(LoveComment)) {
+            parcel.createTypedArrayList(LoveComment)!!) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
