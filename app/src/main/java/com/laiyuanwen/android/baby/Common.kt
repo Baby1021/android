@@ -40,7 +40,8 @@ object Common {
     }
 
     object PermissionRequestCode {
-        const val RC_WRITE_EXTERNAL_STORAGE = 1
+        const val PRC_WRITE_EXTERNAL_STORAGE = 1 // 应用更新的权限检查
+        const val PRC_LOCATION = 2 // 定位的权限检查
     }
 
     /**

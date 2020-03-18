@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import com.laiyuanwen.android.baby.platform.PlatformService
+import com.laiyuanwen.android.baby.util.location.LocationManager
 
 
 /**
@@ -25,5 +26,6 @@ class BabyApplication : Application() {
         contextSingle = applicationContext
 
         PlatformService.init(this)
+        LocationManager.init(contextSingle)
     }
 }

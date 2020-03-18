@@ -121,4 +121,7 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
 
     implementation project(':x5')
+
+    // 高德定位SDK
+    implementation 'com.amap.api:location:4.7.2'
 }

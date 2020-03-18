@@ -2,6 +2,7 @@ package com.laiyuanwen.android.baby.api
 
 import com.google.gson.JsonObject
 import com.laiyuanwen.android.baby.bean.*
+import com.laiyuanwen.android.baby.bean.location.BabyLocation
 import kotlinx.coroutines.Deferred
 import retrofit2.http.*
 
@@ -60,4 +61,7 @@ interface BabyApi {
 
     @GET("api/v1/anniversary")
     fun getAnniversaries(@Query("userId") userId: String): Deferred<HttpBody<List<Anniversary>>>
+
+    @POST("api/v1/location/report")
+    fun reportLocation(@Body data: BabyLocation): Deferred<HttpBody<Any>>
 }

@@ -2,13 +2,10 @@ package com.laiyuanwen.android.baby.platform
 
 import android.Manifest
 import android.app.Activity
-import android.app.Application
-import android.util.Log
 import com.laiyuanwen.android.baby.Common
 import com.pgyersdk.update.PgyUpdateManager
 import com.pgyersdk.update.UpdateManagerListener
 import com.pgyersdk.update.javabean.AppBean
-import pub.devrel.easypermissions.AfterPermissionGranted
 import pub.devrel.easypermissions.EasyPermissions
 import java.lang.Exception
 
@@ -35,7 +32,7 @@ object UpdateChecker : EasyPermissions.PermissionCallbacks {
         if (EasyPermissions.hasPermissions(activity, *perms)) {
 //            checkUpdate()
         } else {
-            EasyPermissions.requestPermissions(activity, "下载需要外部写权限哦", Common.PermissionRequestCode.RC_WRITE_EXTERNAL_STORAGE, *perms)
+            EasyPermissions.requestPermissions(activity, "下载需要外部写权限哦", Common.PermissionRequestCode.PRC_WRITE_EXTERNAL_STORAGE, *perms)
         }
     }
 

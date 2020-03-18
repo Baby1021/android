@@ -9,9 +9,11 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.amap.api.location.AMapLocationListener
 import com.laiyuanwen.android.baby.R
 import com.laiyuanwen.android.baby.base.BaseFragment
 import com.laiyuanwen.android.baby.databinding.FragmentHomeBinding
+import com.laiyuanwen.android.baby.util.location.LocationManager
 import com.laiyuanwen.android.baby.util.setStatusBarColor
 import com.laiyuanwen.android.baby.util.toAnniversary
 import com.laiyuanwen.android.baby.util.toBill
@@ -70,6 +72,13 @@ class HomeFragment : BaseFragment() {
         }
 
         observeTime()
+        observeLocation()
+    }
+
+    private fun observeLocation() {
+        LocationManager.getLocation(AMapLocationListener {
+            it?.let { binding.rightState.text = it.aoiName }
+        })
     }
 
     private fun observeTime() {
