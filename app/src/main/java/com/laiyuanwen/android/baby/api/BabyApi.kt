@@ -63,5 +63,5 @@ interface BabyApi {
     fun getAnniversaries(@Query("userId") userId: String): Deferred<HttpBody<List<Anniversary>>>
 
     @POST("api/v1/location/report")
-    fun reportLocation(@Body data: BabyLocation): Deferred<HttpBody<Any>>
+    fun reportLocation(@Body data: JsonObject): Deferred<HttpBody<Any>>
 }
