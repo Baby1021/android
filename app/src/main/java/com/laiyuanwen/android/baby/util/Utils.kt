@@ -3,6 +3,7 @@ package com.laiyuanwen.android.baby.util
 import android.app.Activity
 import android.content.Context
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 
 /**
@@ -26,6 +27,8 @@ fun setStatusBarColor(activity: Activity, statusColor: Int) {
 //            mChildView.fitsSystemWindows = false
 //            ViewCompat.requestApplyInsets(mChildView)
 //        }
+//    window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//    window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
     window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 
