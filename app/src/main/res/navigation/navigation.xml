@@ -192,6 +192,7 @@
     <fragment
         android:id="@+id/locationSelectFragment"
         android:name="com.laiyuanwen.android.baby.ui.pages.locationselect.LocationSelectFragment"
+        tools:layout="@layout/fragment_location_select"
         android:label="LocationSelectFragment" />
 
 </navigation>

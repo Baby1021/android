@@ -71,11 +71,11 @@
                 android:background="@null"
                 android:singleLine="true"
                 android:textColor="#333333"
-                tools:text="望京国际研发园"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/location_btn"
                 app:layout_constraintStart_toEndOf="@id/search_btn"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="望京国际研发园" />
 
             <ImageView
                 android:id="@+id/location_btn"
@@ -90,6 +90,17 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_location_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_layout"
+            tools:listitem="@layout/list_item_location_select" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
