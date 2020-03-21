@@ -168,6 +168,9 @@
         <action
             android:id="@+id/main_to_home"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_locationSelectFragment"
+            app:destination="@id/locationSelectFragment" />
     </fragment>
     <fragment
         android:id="@+id/tasksFragment"
@@ -186,5 +189,9 @@
             android:id="@+id/main_to_home"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/locationSelectFragment"
+        android:name="com.laiyuanwen.android.baby.ui.pages.locationselect.LocationSelectFragment"
+        android:label="LocationSelectFragment" />
 
 </navigation>

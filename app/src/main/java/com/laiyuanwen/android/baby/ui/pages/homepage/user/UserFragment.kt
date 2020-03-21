@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import com.laiyuanwen.android.baby.R
 import com.laiyuanwen.android.baby.base.BaseFragment
 import com.laiyuanwen.android.baby.databinding.FragmentUserBinding
 import com.laiyuanwen.android.baby.util.toSetting
@@ -20,6 +22,11 @@ class UserFragment : BaseFragment() {
 
         binding.setting.setOnClickListener {
             activity?.let { toSetting(it) }
+        }
+        binding.setLocationBtn.setOnClickListener {
+            activity?.let{
+                Navigation.findNavController(it, R.id.home_container).navigate(R.id.locationSelectFragment)
+            }
         }
 
         return binding.root
