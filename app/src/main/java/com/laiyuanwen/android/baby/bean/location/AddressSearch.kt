@@ -3,7 +3,7 @@ package com.laiyuanwen.android.baby.bean.location
 /**
  * Created by laiyuanwen on 2020/3/22.
  */
-data class LocationSearch(
+data class AddressSearch(
         val id: String,
         val name: String, // 唐家人才公寓
         val district: String, // 广东省珠海市香洲区

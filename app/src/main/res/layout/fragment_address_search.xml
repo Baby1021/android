@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.pages.locationselect.LocationSelectFragment">
+        tools:context=".ui.pages.addresssearch.AddressSelectFragment">
 
         <ImageView
             android:id="@+id/bg"
@@ -69,6 +69,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@null"
+                android:imeOptions="actionSearch"
                 android:singleLine="true"
                 android:textColor="#333333"
                 app:layout_constraintBottom_toBottomOf="parent"
