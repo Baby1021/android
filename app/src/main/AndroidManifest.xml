@@ -252,8 +252,8 @@
         </provider>
 
         <!--消息回调-->
-        <service android:name="com.laiyuanwen.android.baby.service.UmengNotificationService"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
+<!--        <service android:name="com.laiyuanwen.android.baby.service.UmengNotificationService"-->
+<!--            android:permission="android.permission.BIND_JOB_SERVICE" />-->
     </application>
 
 </manifest>

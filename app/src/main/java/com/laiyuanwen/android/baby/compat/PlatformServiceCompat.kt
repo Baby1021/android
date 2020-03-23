@@ -50,8 +50,8 @@ fun initPush(application: Application) {
             })
         }
     }
-    mPushAgent.messageHandler = messageHandler
-    mPushAgent.setPushIntentServiceClass(UmengNotificationService::class.java)
+//    mPushAgent.messageHandler = messageHandler
+//    mPushAgent.setPushIntentServiceClass(UmengNotificationService::class.java)
     mPushAgent.onAppStart()
 
     HuaWeiRegister.register(application)
