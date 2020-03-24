@@ -6,8 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.NavHostFragment
 import com.laiyuanwen.android.baby.Common
-import com.laiyuanwen.android.baby.Common.PermissionRequestCode.PRC_LOCATION
-import com.laiyuanwen.android.baby.Common.PermissionRequestCode.PRC_WRITE_EXTERNAL_STORAGE
+import com.laiyuanwen.android.baby.Common.PermissionRequestCode.PRC_BASE
 import com.laiyuanwen.android.baby.R
 import com.laiyuanwen.android.baby.platform.PlatformService
 import com.laiyuanwen.android.baby.ui.pages.homepage.home.HomeFragment
@@ -36,17 +35,18 @@ class MainActivity : AppCompatActivity() {
         navHostFragment = home_container as NavHostFragment
 
         PlatformService.updatePushToken()
+        checkPermission()
         checkUpdate()
-        checkLocationPermission()
+        location()
         initView()
     }
 
     /**
-     * 检查定位权限
+     * 检查权限
      */
-    private fun checkLocationPermission() {
-        if (!EasyPermissions.hasPermissions(this, *LocationManager.PREMISSION)) {
-            EasyPermissions.requestPermissions(this, "定位权限", Common.PermissionRequestCode.PRC_LOCATION, *LocationManager.PREMISSION)
+    private fun checkPermission() {
+        if (!EasyPermissions.hasPermissions(this, *LocationManager.PREMISSION, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            EasyPermissions.requestPermissions(this, "App基础权限", Common.PermissionRequestCode.PRC_BASE, *LocationManager.PREMISSION)
         }
     }
 
@@ -109,19 +109,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    @AfterPermissionGranted(PRC_WRITE_EXTERNAL_STORAGE)
+    @AfterPermissionGranted(PRC_BASE)
     fun checkUpdate() {
-        val perms = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        if (EasyPermissions.hasPermissions(this, *perms)) {
+        if (EasyPermissions.hasPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             PlatformService.checkUpdate(this, false)
-        } else {
-            EasyPermissions.requestPermissions(this, "缓存数据和下载需要外部写权限哦", Common.PermissionRequestCode.PRC_WRITE_EXTERNAL_STORAGE, *perms)
         }
     }
 
-    @AfterPermissionGranted(PRC_LOCATION)
+    @AfterPermissionGranted(PRC_BASE)
     fun location() {
-        LocationManager.location()
+        if (EasyPermissions.hasPermissions(this, *LocationManager.PREMISSION)) {
+            LocationManager.location()
+        }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {

@@ -11,6 +11,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import com.laiyuanwen.android.baby.databinding.FragmentAddressSearchBinding
 import com.laiyuanwen.android.baby.repository.AddressRepository
+import com.laiyuanwen.android.baby.util.location.LocationManager
 import kotlinx.android.synthetic.main.fragment_address_search.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -33,14 +34,22 @@ class AddressSelectFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager;
         addressSearchListAdapter = AddressSearchListAdapter()
         binding.rvLocationList.adapter = addressSearchListAdapter
 
+        LocationManager.getCacheLocation()?.let {
+            input.setText(it.aoiName)
+            search(it.aoiName)
+        }
+
+        input.isFocusable = true
+        input.requestFocus();
+        imm.showSoftInput(input, 0)
         input.setOnEditorActionListener { v, actionId, event ->
             when (actionId) {
                 EditorInfo.IME_ACTION_SEARCH -> {
                     // 关闭键盘
-                    val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager;
                     imm.hideSoftInputFromWindow(input.windowToken, 0);
 
                     input.clearFocus()
