@@ -25,7 +25,7 @@ class UserFragment : BaseFragment() {
         }
         binding.setLocationBtn.setOnClickListener {
             activity?.let{
-                Navigation.findNavController(it, R.id.home_container).navigate(R.id.action_userFragment_to_AddressSelectFragment)
+                Navigation.findNavController(it, R.id.home_container).navigate(R.id.action_userFragment_to_addressSelectFragment)
             }
         }
 

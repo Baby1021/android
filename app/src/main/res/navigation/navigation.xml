@@ -146,8 +146,8 @@
             android:id="@+id/main_to_home"
             app:destination="@id/homeFragment" />
         <action
-            android:id="@+id/action_userFragment_to_AddressSelectFragment"
-            app:destination="@id/locationSelectFragment"
+            android:id="@+id/action_userFragment_to_addressSelectFragment"
+            app:destination="@id/addressSelectFragment"
             app:enterAnim="@anim/fragment_fade_enter"
             app:popExitAnim="@anim/fragment_fade_exit"
             app:exitAnim="@anim/fragment_fade_exit"
@@ -171,7 +171,7 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/locationSelectFragment"
+        android:id="@+id/addressSelectFragment"
         android:name="com.laiyuanwen.android.baby.ui.pages.addresssearch.AddressSelectFragment"
         tools:layout="@layout/fragment_address_search"
         android:label="LocationSelectFragment" />
