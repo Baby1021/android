@@ -3,6 +3,7 @@ package com.laiyuanwen.android.baby.api
 import com.google.gson.JsonObject
 import com.laiyuanwen.android.baby.bean.*
 import com.laiyuanwen.android.baby.bean.location.AddressSearch
+import com.laiyuanwen.android.baby.bean.response.HomeInfo
 import kotlinx.coroutines.Deferred
 import retrofit2.http.*
 
@@ -70,4 +71,7 @@ interface BabyApi {
 
     @POST("api/v1/location/save")
     fun saveAddress(@Body data: JsonObject): Deferred<HttpBody<Any>>
+
+    @GET("api/v1/home/info")
+    fun getHomeInfo(): Deferred<HttpBody<HomeInfo>>
 }

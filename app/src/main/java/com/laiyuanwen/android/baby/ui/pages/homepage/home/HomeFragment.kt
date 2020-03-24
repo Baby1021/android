@@ -12,11 +12,17 @@ import androidx.lifecycle.ViewModelProviders
 import com.amap.api.location.AMapLocationListener
 import com.laiyuanwen.android.baby.R
 import com.laiyuanwen.android.baby.base.BaseFragment
+import com.laiyuanwen.android.baby.bean.response.HomeInfo
 import com.laiyuanwen.android.baby.databinding.FragmentHomeBinding
+import com.laiyuanwen.android.baby.repository.HomeRepository
 import com.laiyuanwen.android.baby.util.location.LocationManager
 import com.laiyuanwen.android.baby.util.setStatusBarColor
 import com.laiyuanwen.android.baby.util.toAnniversary
 import com.laiyuanwen.android.baby.util.toBill
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 /**
@@ -33,6 +39,25 @@ class HomeFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         setStatusBarColor(activity!!, ContextCompat.getColor(context!!, R.color.baby_white))
         handler = Handler()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val result = HomeRepository.getInstance().getHomeInfo()
+
+                withContext(Dispatchers.Main) {
+                    updateInfo(result)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    fun updateInfo(info: HomeInfo) {
+        binding.leftState.text = info.lover?.addressName
     }
 
     lateinit var binding: FragmentHomeBinding
