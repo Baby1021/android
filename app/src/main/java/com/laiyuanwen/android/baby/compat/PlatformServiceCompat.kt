@@ -1,12 +1,10 @@
 import android.app.Application
-import android.app.Notification
 import android.content.Context
 import android.os.Handler
 import android.os.Looper.getMainLooper
 import android.util.Log
 import com.laiyuanwen.android.baby.BabyApplication.Companion.getApplicationContext
 import com.laiyuanwen.android.baby.platform.PlatformService
-import com.laiyuanwen.android.baby.service.UmengNotificationService
 import com.laiyuanwen.android.baby.util.savePushToken
 import com.umeng.commonsdk.UMConfigure
 import com.umeng.message.IUmengRegisterCallback
@@ -33,12 +31,12 @@ fun initPush(application: Application) {
         }
 
         override fun onFailure(p0: String?, p1: String?) {
-            Log.d("laiyuanwen_debug","token注册失败,${p0},${p1}")
+            Log.d("laiyuanwen_debug", "token注册失败,${p0},${p1}")
         }
     })
     val messageHandler: UmengMessageHandler = object : UmengMessageHandler() {
         override fun dealWithCustomMessage(context: Context?, msg: UMessage) {
-            Log.d("laiyuanwen_debug","自定义消息回调：${msg.custom}")
+            Log.d("laiyuanwen_debug", "自定义消息回调：${msg.custom}")
             Handler(getMainLooper()).post(Runnable {
                 // 对于自定义消息，PushSDK默认只统计送达。若开发者需要统计点击和忽略，则需手动调用统计方法。
                 val isClickOrDismissed = true

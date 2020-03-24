@@ -76,9 +76,14 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun observeLocation() {
-        LocationManager.getLocation(AMapLocationListener {
-            it?.let { binding.rightState.text = it.aoiName }
-        })
+        val cacheLocation = LocationManager.getCacheLocation()
+        if (cacheLocation !== null) {
+            binding.rightState.text = cacheLocation.aoiName
+        } else {
+            LocationManager.getLocation(AMapLocationListener {
+                it?.let { binding.rightState.text = it.aoiName }
+            })
+        }
     }
 
     private fun observeTime() {
