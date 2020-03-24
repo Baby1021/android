@@ -27,6 +27,12 @@ android {
             keyAlias = 'wen'
             keyPassword '05280122'
         }
+        debug {
+            storeFile file('/Users/laiyuanwen/Android签名')
+            storePassword '05280122'
+            keyAlias = 'wen'
+            keyPassword '05280122'
+        }
     }
 
     buildTypes {
