@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.laiyuanwen.android.baby.databinding.FragmentAddressSearchBinding
 import com.laiyuanwen.android.baby.repository.AddressRepository
 import com.laiyuanwen.android.baby.util.location.LocationManager
+import com.laiyuanwen.android.baby.util.setDrawStatusBar
 import kotlinx.android.synthetic.main.fragment_address_search.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,6 +27,16 @@ class AddressSelectFragment : Fragment() {
 
     lateinit var binding: FragmentAddressSearchBinding
     lateinit var addressSearchListAdapter: AddressSearchListAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activity?.let { setDrawStatusBar(it, true) }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        activity?.let { setDrawStatusBar(it, false) }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

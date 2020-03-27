@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation
 import com.laiyuanwen.android.baby.R
 import com.laiyuanwen.android.baby.base.BaseFragment
 import com.laiyuanwen.android.baby.databinding.FragmentUserBinding
+import com.laiyuanwen.android.baby.util.setStatusBarColor
 import com.laiyuanwen.android.baby.util.toSetting
 
 /**
@@ -16,6 +18,11 @@ import com.laiyuanwen.android.baby.util.toSetting
 class UserFragment : BaseFragment() {
 
     lateinit var binding: FragmentUserBinding
+
+    override fun onStart() {
+        super.onStart()
+        setStatusBarColor(activity!!, ContextCompat.getColor(context!!, R.color.baby_white))
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentUserBinding.inflate(inflater, container, false)

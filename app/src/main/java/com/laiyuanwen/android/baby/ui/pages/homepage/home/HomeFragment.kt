@@ -37,12 +37,12 @@ class HomeFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStatusBarColor(activity!!, ContextCompat.getColor(context!!, R.color.baby_white))
         handler = Handler()
     }
 
     override fun onStart() {
         super.onStart()
+        setStatusBarColor(activity!!, ContextCompat.getColor(context!!, R.color.baby_white))
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val result = HomeRepository.getInstance().getHomeInfo()
