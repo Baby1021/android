@@ -1,0 +1,5 @@
+language: android
+dist: trusty
+script:
+  # 生成 APK
+  - ./gradlew clean assembleRelease
