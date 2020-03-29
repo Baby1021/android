@@ -22,13 +22,13 @@ android {
 
     signingConfigs {
         release {
-            storeFile file('/Users/laiyuanwen/Android签名')
+            storeFile file('./key/Android签名')
             storePassword '05280122'
             keyAlias = 'wen'
             keyPassword '05280122'
         }
         debug {
-            storeFile file('/Users/laiyuanwen/Android签名')
+            storeFile file('./key/Android签名')
             storePassword '05280122'
             keyAlias = 'wen'
             keyPassword '05280122'
