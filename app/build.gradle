@@ -14,10 +14,6 @@ android {
         versionCode 10
         versionName "0.0.10"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        ndk {
-            abiFilters "armeabi", 'x86'
-        }
     }
 
     signingConfigs {
