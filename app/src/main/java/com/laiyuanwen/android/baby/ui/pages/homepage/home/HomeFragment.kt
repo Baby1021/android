@@ -19,6 +19,7 @@ import com.laiyuanwen.android.baby.util.location.LocationManager
 import com.laiyuanwen.android.baby.util.setStatusBarColor
 import com.laiyuanwen.android.baby.util.toAnniversary
 import com.laiyuanwen.android.baby.util.toBill
+import com.laiyuanwen.android.baby.util.toMap
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -69,7 +70,7 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         binding.rightStateLayout.setOnClickListener {
-            toast("切换状态功能开发中")
+            context?.let { toMap(it) }
         }
         binding.leftStateLayout.setOnClickListener {
             toast("留言功能开发中")

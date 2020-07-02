@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 // navigation生成跳转代码的插件
 apply plugin: 'androidx.navigation.safeargs'
@@ -16,7 +16,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         ndk {
-            abiFilters "armeabi-v7a", "x86"
+            abiFilters "armeabi", 'x86'
         }
     }
 
@@ -140,6 +140,8 @@ dependencies {
 
     implementation project(':x5')
 
-    // 高德定位SDK
-    implementation 'com.amap.api:location:4.7.2'
+    // 高德定位 SDK
+    implementation 'com.amap.api:location:4.9.0'
+    // 高德地图 SDK
+    implementation 'com.amap.api:3dmap:7.2.0'
 }

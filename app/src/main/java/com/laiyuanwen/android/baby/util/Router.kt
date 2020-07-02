@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.laiyuanwen.android.baby.LoginActivity
 import com.laiyuanwen.android.baby.bean.Love
 import com.laiyuanwen.android.baby.repository.SettingRepository
+import com.laiyuanwen.android.baby.ui.pages.map.MapActivity
 import com.laiyuanwen.android.baby.x5.BabyBrowserActivity
 
 /**
@@ -34,6 +35,11 @@ fun startLoveDetailActivity(fragment: Fragment?, love: Love?, code: Int) {
 
 fun toLogin(context: Context) {
     val intent = Intent(context, LoginActivity::class.java)
+    context.startActivity(intent)
+}
+
+fun toMap(context: Context){
+    val intent = Intent(context, MapActivity::class.java)
     context.startActivity(intent)
 }
 

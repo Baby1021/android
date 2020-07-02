@@ -52,6 +52,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:networkSecurityConfig">
+        <activity android:name=".ui.pages.map.MapActivity"></activity>
         <activity
             android:name=".ui.pages.setting.SettingsActivity"
             android:label="@string/title_activity_settings">
