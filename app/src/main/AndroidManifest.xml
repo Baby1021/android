@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.laiyuanwen.android.baby">
 
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <!--访问网络-->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -53,7 +55,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
-        tools:replace="android:networkSecurityConfig">
+        tools:replace="android:networkSecurityConfig,android:allowBackup">
         <activity android:name=".ui.pages.map.MapActivity"></activity>
         <activity
             android:name=".ui.pages.setting.SettingsActivity"

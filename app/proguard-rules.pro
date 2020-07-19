@@ -106,3 +106,7 @@
 -keep   class com.amap.api.maps.**{*;}
 -keep   class com.autonavi.**{*;}
 -keep   class com.amap.api.trace.**{*;}
+
+-keep class com.alibaba.sdk.android.oss.** { *; }
+-dontwarn okio.**
+-dontwarn org.apache.commons.codec.binary.**

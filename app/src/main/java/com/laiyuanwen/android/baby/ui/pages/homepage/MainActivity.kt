@@ -1,7 +1,10 @@
 package com.laiyuanwen.android.baby.ui.pages.homepage
 
 import android.Manifest
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.NavHostFragment
@@ -15,6 +18,7 @@ import com.laiyuanwen.android.baby.ui.pages.homepage.takecase.TakeCaseFragment
 import com.laiyuanwen.android.baby.ui.pages.homepage.task.TasksFragment
 import com.laiyuanwen.android.baby.ui.pages.homepage.user.UserFragment
 import com.laiyuanwen.android.baby.util.location.LocationManager
+import com.laiyuanwen.android.floatwindow.FloatWindowManager
 import kotlinx.android.synthetic.main.activity_main.*
 import pub.devrel.easypermissions.AfterPermissionGranted
 import pub.devrel.easypermissions.EasyPermissions
@@ -33,6 +37,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         navHostFragment = home_container as NavHostFragment
+
+        if (!Settings.canDrawOverlays(this)) {
+            val intent = Intent(
+                    Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                    Uri.parse("package:$packageName")
+            )
+            startActivityForResult(intent, 1234)
+            return
+        }
+//        FloatWindowManager.show(this)
 
         PlatformService.updatePushToken()
         checkPermission()
