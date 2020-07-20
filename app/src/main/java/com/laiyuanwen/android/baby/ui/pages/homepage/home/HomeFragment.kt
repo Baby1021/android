@@ -2,7 +2,6 @@ package com.laiyuanwen.android.baby.ui.pages.homepage.home
 
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +9,14 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.alibaba.sdk.android.oss.*
-import com.alibaba.sdk.android.oss.common.OSSLog
+import com.alibaba.sdk.android.oss.ClientConfiguration
+import com.alibaba.sdk.android.oss.OSSClient
 import com.alibaba.sdk.android.oss.common.auth.OSSAuthCredentialsProvider
 import com.alibaba.sdk.android.oss.common.auth.OSSCredentialProvider
-import com.alibaba.sdk.android.oss.model.GetObjectRequest
 import com.amap.api.location.AMapLocationListener
+import com.bumptech.glide.Glide
 import com.laiyuanwen.android.baby.BabyApplication.Companion.getApplicationContext
+import com.laiyuanwen.android.baby.GlideApp
 import com.laiyuanwen.android.baby.R
 import com.laiyuanwen.android.baby.base.BaseFragment
 import com.laiyuanwen.android.baby.bean.response.HomeInfo
@@ -27,9 +27,9 @@ import com.laiyuanwen.android.baby.util.setStatusBarColor
 import com.laiyuanwen.android.baby.util.toAnniversary
 import com.laiyuanwen.android.baby.util.toBill
 import com.laiyuanwen.android.baby.util.toMap
+import com.laiyuanwen.android.glide.loader.OSSImageData
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.*
-import java.io.IOException
-import java.io.InputStream
 
 
 /**
@@ -43,7 +43,7 @@ class HomeFragment : BaseFragment() {
     private lateinit var handler: Handler
 
     private lateinit var credentialProvider: OSSCredentialProvider
-    private lateinit var oss: OSS
+    private lateinit var oss: OSSClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,45 +64,6 @@ class HomeFragment : BaseFragment() {
         oss = OSSClient(getApplicationContext(), endpoint, credentialProvider, conf);
     }
 
-    suspend fun getImage(){
-        //构造下载文件请求
-        //objectKey等同于objectName，表示从OSS下载文件时需要指定包含文件后缀在内的完整路径，例如abc/efg/123.jpg
-        val get = GetObjectRequest("image-baby", "b79689cd75cf5d3-200x180.jpg")
-
-        //设置下载进度回调
-        get.setProgressListener { request, currentSize, totalSize ->
-            OSSLog.logDebug("getobj_progress: $currentSize  total_size: $totalSize", false)
-        }
-
-        try {
-            // 同步执行下载请求，返回结果
-            val getResult = oss.getObject(get)
-            Log.d("Content-Length", "" + getResult.contentLength)
-
-            // 获取文件输入流
-            val inputStream: InputStream = getResult.objectContent
-            val buffer = ByteArray(2048)
-            var len: Int
-            while (inputStream.read(buffer).also({ len = it }) != -1) {
-                // 处理下载的数据，比如图片展示或者写入文件等
-            }
-
-            // 下载后可以查看文件元信息
-            val metadata = getResult.metadata
-            Log.d("ContentType", metadata.contentType)
-        } catch (e: ClientException) {
-            // 本地异常如网络异常等
-            e.printStackTrace()
-        } catch (e: ServiceException) {
-            // 服务异常
-            Log.e("RequestId", e.requestId)
-            Log.e("ErrorCode", e.errorCode)
-            Log.e("HostId", e.hostId)
-            Log.e("RawMessage", e.rawMessage)
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-    }
 
     override fun onStart() {
         super.onStart()
@@ -138,7 +99,12 @@ class HomeFragment : BaseFragment() {
         binding.leftStateLayout.setOnClickListener {
             toast("留言功能开发中")
             GlobalScope.launch {
-                getImage()
+                withContext(Dispatchers.Main){
+                    GlideApp.with(lover_image)
+//                            .load(OSSImageData(oss,"https://image-baby.oss-cn-shenzhen.aliyuncs.com/b79689cd75cf5d3-200x180.jpg"))
+                            .load("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595179977787&di=8f097c2f80b8ebc1d2ea88b3508e3b7f&imgtype=0&src=http%3A%2F%2Fa3.att.hudong.com%2F14%2F75%2F01300000164186121366756803686.jpg")
+                            .into(lover_image)
+                }
             }
         }
         binding.loverImage.setOnClickListener {
