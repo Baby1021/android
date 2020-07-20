@@ -1,7 +1,7 @@
 package com.laiyuanwen.android.baby.util
 
 import android.content.Context
-import android.preference.PreferenceManager
+import androidx.preference.PreferenceManager
 
 /**
  * Created by laiyuanwen on 2019-01-19.

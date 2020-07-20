@@ -21,6 +21,7 @@ import com.laiyuanwen.android.baby.R
 import com.laiyuanwen.android.baby.base.BaseFragment
 import com.laiyuanwen.android.baby.bean.response.HomeInfo
 import com.laiyuanwen.android.baby.databinding.FragmentHomeBinding
+import com.laiyuanwen.android.baby.platform.oss.BabyOSSClient
 import com.laiyuanwen.android.baby.repository.HomeRepository
 import com.laiyuanwen.android.baby.util.location.LocationManager
 import com.laiyuanwen.android.baby.util.setStatusBarColor
@@ -42,26 +43,9 @@ class HomeFragment : BaseFragment() {
     private lateinit var viewModel: HomeViewModel
     private lateinit var handler: Handler
 
-    private lateinit var credentialProvider: OSSCredentialProvider
-    private lateinit var oss: OSSClient
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         handler = Handler()
-
-        val endpoint = "http://oss-cn-shenzhen.aliyuncs.com";
-
-        // 推荐使用OSSAuthCredentialsProvider。token过期可以及时更新。
-        credentialProvider = OSSAuthCredentialsProvider("http://192.168.0.103:7001/upload")
-
-        // 配置类如果不设置，会有默认配置。
-        val conf = ClientConfiguration();
-//        conf.setConnectionTimeout(15 * 1000); // 连接超时，默认15秒。
-//        conf.setSocketTimeout(15 * 1000); // socket超时，默认15秒。
-//        conf.setMaxConcurrentRequest(5); // 最大并发请求数，默认5个。
-//        conf.setMaxErrorRetry(2); // 失败后最大重试次数，默认2次。
-
-        oss = OSSClient(getApplicationContext(), endpoint, credentialProvider, conf);
     }
 
 
@@ -99,10 +83,9 @@ class HomeFragment : BaseFragment() {
         binding.leftStateLayout.setOnClickListener {
             toast("留言功能开发中")
             GlobalScope.launch {
-                withContext(Dispatchers.Main){
+                withContext(Dispatchers.Main) {
                     GlideApp.with(lover_image)
-//                            .load(OSSImageData(oss,"https://image-baby.oss-cn-shenzhen.aliyuncs.com/b79689cd75cf5d3-200x180.jpg"))
-                            .load("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595179977787&di=8f097c2f80b8ebc1d2ea88b3508e3b7f&imgtype=0&src=http%3A%2F%2Fa3.att.hudong.com%2F14%2F75%2F01300000164186121366756803686.jpg")
+                            .load(OSSImageData(BabyOSSClient.oss, "https://image-baby.oss-cn-shenzhen.aliyuncs.com/b79689cd75cf5d3-200x180.jpg"))
                             .into(lover_image)
                 }
             }

@@ -5,8 +5,10 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import com.google.gson.JsonObject
+import com.laiyuanwen.android.baby.BabyApplication.Companion.getApplicationContext
 import com.laiyuanwen.android.baby.BuildConfig
 import com.laiyuanwen.android.baby.api.RetrofitService
+import com.laiyuanwen.android.baby.platform.oss.BabyOSSClient
 import com.laiyuanwen.android.baby.util.getPushToken
 import com.laiyuanwen.android.baby.util.getUserId
 import com.pgyersdk.crash.PgyCrashManager
@@ -41,6 +43,9 @@ object PlatformService {
         initPush(application)
         initPgyCrash()
         initX5(application)
+        CoroutineScope(Dispatchers.IO).launch {
+            BabyOSSClient.init(getApplicationContext())
+        }
     }
 
     private fun initX5(application: Application) {
