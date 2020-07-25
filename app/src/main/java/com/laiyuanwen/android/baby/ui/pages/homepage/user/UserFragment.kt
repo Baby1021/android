@@ -9,8 +9,7 @@ import androidx.navigation.Navigation
 import com.laiyuanwen.android.baby.R
 import com.laiyuanwen.android.baby.base.BaseFragment
 import com.laiyuanwen.android.baby.databinding.FragmentUserBinding
-import com.laiyuanwen.android.baby.util.setStatusBarColor
-import com.laiyuanwen.android.baby.util.toSetting
+import com.laiyuanwen.android.baby.util.*
 
 /**
  * Created by laiyuanwen on 2018/12/31.
@@ -31,9 +30,13 @@ class UserFragment : BaseFragment() {
             activity?.let { toSetting(it) }
         }
         binding.setLocationBtn.setOnClickListener {
-            activity?.let{
+            activity?.let {
                 Navigation.findNavController(it, R.id.home_container).navigate(R.id.action_userFragment_to_addressSelectFragment)
             }
+        }
+        binding.logout.setOnClickListener {
+            logout()
+            toLogin(it.context)
         }
 
         return binding.root

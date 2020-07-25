@@ -52,7 +52,7 @@ class LovesAdapter(
         val love = getItem(position)
 
         holder.binding.love = love
-        holder.binding.setCreateTime(format.format(Date(love.createTime)))
+        holder.binding.setCreateTime(love.created)
 
         holder.binding.commentBtn.setOnClickListener {
             showCommentEditDialog(love.id)

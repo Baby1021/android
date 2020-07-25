@@ -18,8 +18,8 @@ interface BabyApi {
     /**
      * Love列表
      */
-    @GET("api/v1/love")
-    fun getLovesAsync(@Query("userId") userId: String, @Query("page") page: Int, @Query("limit") limit: Int): Deferred<List<Love>>
+    @GET("api/v1/love/list")
+    fun getLovesAsync(@Query("userId") userId: String, @Query("page") page: Int, @Query("limit") limit: Int): Deferred<HttpBody<List<Love>>>
 
     /**
      * love提醒列表

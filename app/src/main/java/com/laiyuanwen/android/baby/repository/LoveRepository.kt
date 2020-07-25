@@ -22,7 +22,8 @@ class LoveRepository {
     }
 
     suspend fun getLoves(): List<Love> {
-        return RetrofitService.getBabyApi().getLovesAsync(getUserId(), 1, 10).await()
+        val body = RetrofitService.getBabyApi().getLovesAsync(getUserId(), 1, 10).await()
+        return body.data ?: emptyList()
     }
 
     suspend fun getRemindLoves(): List<Love> {

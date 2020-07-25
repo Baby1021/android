@@ -15,7 +15,7 @@ data class Love(
         val id: Long,
         val content: String,
         val user: User,
-        val createTime: Long,
+        val created: String,
         val images: List<String>?,
         val comments: List<LoveComment>
 ) : Serializable, Parcelable {
@@ -23,7 +23,7 @@ data class Love(
             parcel.readLong(),
             parcel.readString().toString(),
             parcel.readParcelable(User::class.java.classLoader)!!,
-            parcel.readLong(),
+            parcel.readString().toString(),
             parcel.createStringArrayList(),
             parcel.createTypedArrayList(LoveComment)!!) {
     }
@@ -32,7 +32,7 @@ data class Love(
         parcel.writeLong(id)
         parcel.writeString(content)
         parcel.writeParcelable(user, flags)
-        parcel.writeLong(createTime)
+        parcel.writeString(created)
         parcel.writeStringList(images)
         parcel.writeTypedList(comments)
     }

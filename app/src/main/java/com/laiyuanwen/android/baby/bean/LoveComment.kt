@@ -9,27 +9,24 @@ import java.io.Serializable
  */
 data class LoveComment(
         val id: Int,
-        val userId: String,
         val content: String,
         val loveId: Int,
-        val createTime: Long,
+        val created: String,
         val user: User
 ) : Serializable, Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readInt(),
             parcel.readString().toString(),
-            parcel.readString().toString(),
             parcel.readInt(),
-            parcel.readLong(),
+            parcel.readString().toString(),
             parcel.readParcelable(User::class.java.classLoader)!!) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
-        parcel.writeString(userId)
         parcel.writeString(content)
         parcel.writeInt(loveId)
-        parcel.writeLong(createTime)
+        parcel.writeString(created)
         parcel.writeParcelable(user, flags)
     }
 
