@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.laiyuanwen.android.baby.LoginActivity
 import com.laiyuanwen.android.baby.bean.Love
 import com.laiyuanwen.android.baby.repository.SettingRepository
+import com.laiyuanwen.android.baby.ui.pages.love.PublishLoveActivity
 import com.laiyuanwen.android.baby.ui.pages.map.MapActivity
 import com.laiyuanwen.android.baby.x5.BabyBrowserActivity
 
@@ -18,19 +19,12 @@ import com.laiyuanwen.android.baby.x5.BabyBrowserActivity
  * Created by laiyuanwen on 2019-01-25.
  */
 
-fun startLoveDetailActivity(fragment: Fragment?, love: Love?, code: Int) {
+fun toPublishLove(fragment: Fragment?, code: Int) {
     if (fragment == null) {
         return
     }
-//    val intent = Intent(fragment.context, LoveDetailActivity::class.java)
-//    val bundle = Bundle()
-//    if (love != null) {
-//        bundle.putString("love", Provider.getGson().toJson(love))
-//    }
-//    intent.putExtra("route", "/router/love/detail")
-//    intent.putExtras(bundle)
-//    intent.action = "android.intent.action.RUN"
-//    fragment.startActivityForResult(intent, code)
+    val intent = Intent(fragment.context, PublishLoveActivity::class.java)
+    fragment.startActivityForResult(intent, code)
 }
 
 fun toLogin(context: Context) {
@@ -38,7 +32,7 @@ fun toLogin(context: Context) {
     context.startActivity(intent)
 }
 
-fun toMap(context: Context){
+fun toMap(context: Context) {
     val intent = Intent(context, MapActivity::class.java)
     context.startActivity(intent)
 }

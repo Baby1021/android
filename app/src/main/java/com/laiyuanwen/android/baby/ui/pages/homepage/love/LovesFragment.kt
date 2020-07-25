@@ -23,7 +23,7 @@ import com.laiyuanwen.android.baby.love.LovesViewModel
 import com.laiyuanwen.android.baby.ui.pages.homepage.surprise.ImageSurpriseDialogFragment
 import com.laiyuanwen.android.baby.util.getUserId
 import com.laiyuanwen.android.baby.util.setStatusBarColor
-import com.laiyuanwen.android.baby.util.startLoveDetailActivity
+import com.laiyuanwen.android.baby.util.toPublishLove
 import kotlinx.android.synthetic.main.fragment_loves.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -74,7 +74,7 @@ class LovesFragment : BaseFragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (R.id.add == item.itemId) {
-            startLoveDetailActivity(this, null, LOVE_DETAIL)
+            toPublishLove(this, LOVE_DETAIL)
             return true
         }
         return super.onOptionsItemSelected(item)

@@ -100,6 +100,9 @@
             </intent-filter>
         </activity> <!-- 登录页 -->
         <activity android:name=".LoginActivity" /> <!-- 首页 -->
+
+        <activity android:name=".ui.pages.love.PublishLoveActivity" />
+
         <activity
             android:name=".ui.pages.homepage.MainActivity"
             android:launchMode="singleTask"
@@ -114,9 +117,9 @@
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
-                tools:replace="android:resource"
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
+                android:resource="@xml/file_paths"
+                tools:replace="android:resource" />
         </provider>
 
         <meta-data
