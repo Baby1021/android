@@ -14,7 +14,7 @@ object BabyOSSClient {
 
     fun init(applicationContext: Context) {
         val endpoint = "http://oss-cn-shenzhen.aliyuncs.com";
-        val credentialProvider = BabyOSSCredentialsProvider(applicationContext, "http://192.168.0.103:7001/upload")
+        val credentialProvider = BabyOSSCredentialsProvider(applicationContext, "http://39.108.227.137:7001/upload")
 
         // 配置类如果不设置，会有默认配置。
         val conf = ClientConfiguration();

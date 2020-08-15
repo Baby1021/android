@@ -15,8 +15,7 @@ class RetrofitService {
     companion object {
         @JvmField
         val retrofit: Retrofit = Retrofit.Builder()
-//                .baseUrl("http://39.108.227.137:7001")
-                .baseUrl("http://10.0.2.2:7001")
+                .baseUrl("http://39.108.227.137:7001")
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(getClient())

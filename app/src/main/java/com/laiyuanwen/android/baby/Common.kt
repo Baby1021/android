@@ -34,9 +34,10 @@ object Common {
         const val FLUTTER_LOVE_DETAIL_IS_CHANGE = "isRefresh"
     }
 
-    object ActivityRequestCode {
+    object RequestCode {
         const val FLUTTER_RESULT = 1
         const val LOVE_DETAIL = 2
+        const val SELECT_IMAGE = 3 // 选择图片
     }
 
     object PermissionRequestCode {

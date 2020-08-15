@@ -150,44 +150,4 @@ class HomeFragment : BaseFragment() {
         super.onDestroy()
         viewModel.stop()
     }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        println(requestCode)
-
-        if (data == null)
-            return
-
-        GlobalScope.launch {
-
-            val column = arrayOf<String>(MediaStore.Images.Media.DATA);
-
-            val cursor = activity?.contentResolver?.query(data.data!!, column, null, null, null)
-            cursor!!.moveToFirst()
-            val columnIndex = cursor!!.getColumnIndex(column.get(0))
-
-            val picturePath = cursor.getString(columnIndex)
-
-            Log.d("PickPicture", picturePath);
-            cursor.close();
-
-
-            val put: PutObjectRequest? = PutObjectRequest("image-baby", "test/demo.jpg", picturePath)
-            try {
-                val putResult: PutObjectResult = BabyOSSClient.oss.putObject(put)
-                Log.d("PutObject", "UploadSuccess")
-                Log.d("ETag", putResult.getETag())
-                Log.d("RequestId", putResult.getRequestId())
-            } catch (e: ClientException) {
-                // 本地异常，如网络异常等。
-                e.printStackTrace()
-            } catch (e: ServiceException) {
-                // 服务异常。
-                Log.e("RequestId", e.getRequestId())
-                Log.e("ErrorCode", e.getErrorCode())
-                Log.e("HostId", e.getHostId())
-                Log.e("RawMessage", e.getRawMessage())
-            }
-        }
-    }
 }

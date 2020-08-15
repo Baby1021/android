@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
-import com.laiyuanwen.android.baby.Common.ActivityRequestCode.LOVE_DETAIL
+import com.laiyuanwen.android.baby.Common.RequestCode.LOVE_DETAIL
 import com.laiyuanwen.android.baby.Common.BundleKey.FLUTTER_LOVE_DETAIL_IS_CHANGE
 import com.laiyuanwen.android.baby.R
 import com.laiyuanwen.android.baby.api.RetrofitService
