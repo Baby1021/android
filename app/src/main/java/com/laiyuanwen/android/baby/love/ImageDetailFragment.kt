@@ -8,6 +8,8 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.laiyuanwen.android.baby.base.BaseFragment
 import com.laiyuanwen.android.baby.databinding.FragmentImageBinding
+import com.laiyuanwen.android.baby.platform.oss.BabyOSSClient
+import com.laiyuanwen.android.glide.loader.OSSImageData
 
 /**
  * Created by laiyuanwen on 2019-01-27.
@@ -29,8 +31,9 @@ class ImageDetailFragment : BaseFragment() {
 
         val binding = FragmentImageBinding.inflate(inflater, container, false);
 
+        val url = args.images[args.index]
         Glide.with(context!!)
-                .load(args.images[args.index])
+                .load(if (url.indexOf("aliyun") >= 0) OSSImageData(BabyOSSClient.oss, url) else url)
                 .into(binding.imageDetail)
 
         binding.index.text = args.index.toString()

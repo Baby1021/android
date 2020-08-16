@@ -21,16 +21,18 @@ class OSSDataFetcher(val model: OSSImageData) : DataFetcher<InputStream> {
     override fun cleanup() {
     }
 
-    override fun getDataSource(): DataSource  = DataSource.REMOTE
+    override fun getDataSource(): DataSource = DataSource.REMOTE
 
     override fun cancel() {
     }
 
     override fun loadData(priority: Priority, callback: DataFetcher.DataCallback<in InputStream>) {
 
+        val key = model.url.substring(model.url.lastIndexOf('/') + 1)
+
         //构造下载文件请求
         //objectKey等同于objectName，表示从OSS下载文件时需要指定包含文件后缀在内的完整路径，例如abc/efg/123.jpg
-        val get = GetObjectRequest("image-baby", "b79689cd75cf5d3-200x180.jpg")
+        val get = GetObjectRequest("image-baby", key)
 
         //设置下载进度回调
         get.setProgressListener { request, currentSize, totalSize ->

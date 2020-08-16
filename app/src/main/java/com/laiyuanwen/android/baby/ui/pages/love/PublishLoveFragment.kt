@@ -11,13 +11,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.google.gson.JsonArray
+import com.google.gson.JsonObject
 import com.laiyuanwen.android.baby.Common.RequestCode.SELECT_IMAGE
+import com.laiyuanwen.android.baby.api.RetrofitService
 import com.laiyuanwen.android.baby.databinding.FragmentPublishLoveBinding
 import com.laiyuanwen.android.baby.databinding.ListItemLoveImageBinding
 import com.laiyuanwen.android.baby.extension.md5
+import com.laiyuanwen.android.baby.platform.oss.BabyOSSClient
 import com.laiyuanwen.android.baby.util.getUserId
 import com.laiyuanwen.android.baby.util.toImageSelect
 import com.laiyuanwen.android.baby.util.toast
+import kotlinx.android.synthetic.main.fragment_publish_love.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.io.File
@@ -51,35 +56,22 @@ class PublishLoveFragment : Fragment() {
 
             // 上传图片
             GlobalScope.launch {
-                updateImage(images[0].path)
+                val url = BabyOSSClient.updateImage(images[0].path)
+
+                val json = JsonObject()
+
+                json.addProperty("content", et_content.text.toString())
+                json.addProperty("userId", getUserId())
+
+                val array = JsonArray()
+                array.add(url)
+                json.add("images", array)
+
+                val body = RetrofitService.getBabyApi().publishLove(json).await()
+
+                Log.d("laiyuanwen_debug", body.data.toString())
             }
         }
-    }
-
-    suspend fun updateImage(path: String) {
-
-        // 用户名 + 文件名 + 当前时间
-        val key = "${getUserId()}_${path.substring(path.lastIndexOf('/') + 1)}_${System.currentTimeMillis()}"
-
-//        val file = File(path)
-//        println(file.())
-
-//        val put: PutObjectRequest? = PutObjectRequest("image-baby", key, path)
-//        try {
-//            val putResult: PutObjectResult = BabyOSSClient.oss.putObject(put)
-//            Log.d("PutObject", "UploadSuccess")
-//            Log.d("ETag", putResult.getETag())
-//            Log.d("RequestId", putResult.getRequestId())
-//        } catch (e: ClientException) {
-//            // 本地异常，如网络异常等。
-//            e.printStackTrace()
-//        } catch (e: ServiceException) {
-//            // 服务异常。
-//            Log.e("RequestId", e.getRequestId())
-//            Log.e("ErrorCode", e.getErrorCode())
-//            Log.e("HostId", e.getHostId())
-//            Log.e("RawMessage", e.getRawMessage())
-//        }
     }
 
     private fun updateImageLayout() {
@@ -116,12 +108,8 @@ class PublishLoveFragment : Fragment() {
             val bitmap = BitmapFactory.decodeStream(contentResolver?.openInputStream(uri!!))
             images.add(ImageAndPath(bitmap, picturePath))
             this.updateImageLayout()
-
-            Log.d("laiyuanwen_debug","file md5 : ${File(picturePath).md5()}")
-
         }
     }
-
 
 
 }

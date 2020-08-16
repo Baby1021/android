@@ -16,6 +16,12 @@ interface BabyApi {
     fun getTasksAsync(@Query("userId") userId: String, @Query("page") page: Int, @Query("limit") limit: Int): Deferred<List<Task>>
 
     /**
+     * 发布love
+     */
+    @POST("/api/v1/love/publish")
+    fun publishLove(@Body data: JsonObject): Deferred<HttpBody<HomeInfo>>
+
+    /**
      * Love列表
      */
     @GET("api/v1/love/list")
@@ -74,4 +80,5 @@ interface BabyApi {
 
     @GET("api/v1/home/info")
     fun getHomeInfo(): Deferred<HttpBody<HomeInfo>>
+
 }

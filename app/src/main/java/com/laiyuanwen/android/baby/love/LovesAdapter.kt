@@ -11,11 +11,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.laiyuanwen.android.baby.GlideApp
 import com.laiyuanwen.android.baby.bean.Love
 import com.laiyuanwen.android.baby.databinding.ListItemLoveBinding
 import com.laiyuanwen.android.baby.databinding.ListItemLoveCommentBinding
 import com.laiyuanwen.android.baby.databinding.ListItemLoveImageBinding
+import com.laiyuanwen.android.baby.platform.oss.BabyOSSClient
 import com.laiyuanwen.android.baby.ui.pages.homepage.love.LovesFragmentDirections
+import com.laiyuanwen.android.glide.loader.OSSImageData
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -65,7 +68,7 @@ class LovesAdapter(
         setImageLayout(love, holder)
         setCommentLayout(love, holder)
 
-        Glide.with(fragment)
+        GlideApp.with(fragment)
                 .load(love.user.avatar)
                 .into(holder.binding.avatar)
     }
@@ -82,8 +85,8 @@ class LovesAdapter(
                     fragment.findNavController().navigate(
                             LovesFragmentDirections.actionHomeFragmentToImageDetailFragment(love.images.toTypedArray(), index))
                 }
-                Glide.with(fragment)
-                        .load(s)
+                GlideApp.with(fragment)
+                        .load(if (s.indexOf("aliyun") >= 0) OSSImageData(BabyOSSClient.oss, s) else s)
                         .into(imageView.loveImage)
             }
         } else {

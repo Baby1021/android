@@ -11,38 +11,39 @@ import retrofit2.converter.gson.GsonConverterFactory
 /**
  * Created by laiyuanwen on 2018/12/31.
  */
-class RetrofitService {
-    companion object {
-        @JvmField
-        val retrofit: Retrofit = Retrofit.Builder()
-                .baseUrl("http://39.108.227.137:7001")
-                .addCallAdapterFactory(CoroutineCallAdapterFactory())
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(getClient())
-                .build()
+object RetrofitService {
 
-        @JvmField
-        val babyApi: BabyApi = retrofit.create(BabyApi::class.java)
+    const val HOST = "http://39.108.227.137:7001"
 
-        fun getBabyApi(): BabyApi = babyApi
+    @JvmField
+    val retrofit: Retrofit = Retrofit.Builder()
+            .baseUrl(HOST)
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(getClient())
+            .build()
 
-        private fun getClient(): OkHttpClient {
-            val builder = OkHttpClient.Builder()
-            builder.addInterceptor { chain ->
-                val original: Request = chain.request()
-                val originalHttpUrl: HttpUrl = original.url
+    @JvmField
+    val babyApi: BabyApi = retrofit.create(BabyApi::class.java)
 
-                val url: HttpUrl = originalHttpUrl.newBuilder()
-                        .addQueryParameter("userId", getUserId())
-                        .build()
+    fun getBabyApi(): BabyApi = babyApi
 
-                val requestBuilder: Request.Builder = original.newBuilder()
-                        .url(url)
+    private fun getClient(): OkHttpClient {
+        val builder = OkHttpClient.Builder()
+        builder.addInterceptor { chain ->
+            val original: Request = chain.request()
+            val originalHttpUrl: HttpUrl = original.url
 
-                val request: Request = requestBuilder.build()
-                chain.proceed(request)
-            }
-            return builder.build()
+            val url: HttpUrl = originalHttpUrl.newBuilder()
+                    .addQueryParameter("userId", getUserId())
+                    .build()
+
+            val requestBuilder: Request.Builder = original.newBuilder()
+                    .url(url)
+
+            val request: Request = requestBuilder.build()
+            chain.proceed(request)
         }
+        return builder.build()
     }
 }
